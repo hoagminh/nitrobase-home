@@ -1,0 +1,52 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+backend:
+  name: github
+  repo: hoagminh/tanstack-i18n-cms-template
+  branch: main
+  auth_endpoint: /api/auth
+  commit_messages:
+    openAuthoring: '{{message}} (by {{author-login}})'
+
+app_title: Site Admin
+publish_mode: editorial_workflow
+media_folder: public/uploads
+public_folder: /uploads
+logo:
+  src: /app-icon.png
+  show_in_header: true
+
+i18n:
+  structure: multiple_folders
+  locales: [en, vi]
+  default_locale: en
+
+slug:
+  encoding: unicode
+  clean_accents: true
+  sanitize_replacement: "-"
+  trim: true
+  lowercase: true
+  timezone: utc
+
+collections:
+  - name: "authors"
+    label: "Authors"
+    icon: "person"
+    label_singular: "Author"
+    description: "Authors collections"
+    folder: "contents/authors"
+    slug: "{{slug}}"
+    create: true
+    extension: yaml
+    format: yaml
+    editor:
+      preview: false
+    fields:
+      - { label: "Name", name: "name", widget: "string"}
+      - { label: "Avatar", name: "avatar", widget: "image", required: false }
+      - { label: "Bio", name: "bio", widget: "text", required: false }
+      - { label: "Email", name: "email", widget: "string", required: false }
+      - { label: "Website", name: "website", widget: "string", required: false }
+      - { label: "Twitter", name: "twitter", widget: "string", required: false }
+      - { label: "GitHub", name: "github", widget: "string", required: false }
+  
