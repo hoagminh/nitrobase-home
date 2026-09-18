@@ -1,207 +1,114 @@
-Welcome to your new TanStack Start app!
+# TanStack Start i18n CMS Template
 
-# Getting Started
+A modern, full-stack template combining the power of **TanStack Start**, **LinguiJS** for internationalization, and **Sveltia CMS** for Git-based content management. It provides a robust, type-safe foundation for building multilingual blogs, portfolios, and marketing sites with ease.
 
-To run this application:
+## 🚀 Features
 
-```bash
-npm install
-npm run dev
-```
+- **Full-Stack Framework**: Built on [TanStack Start](https://tanstack.com/start/latest) (React, SSR, File-based routing via TanStack Router).
+- **Internationalization (i18n)**: Integrated with [LinguiJS](https://lingui.dev/) for seamless, type-safe multi-language support.
+- **Git-based CMS**: Ready-to-use [Sveltia CMS](https://sveltia.github.io/sveltia-cms/) at `/admin` (a lightweight alternative to Decap/Netlify CMS).
+- **Type-Safe Content**: Markdown and YAML content parsing via [Content Collections](https://www.content-collections.dev/).
+- **Styling**: Utility-first styling with [Tailwind CSS v4](https://tailwindcss.com/).
+- **Code Quality**: Fast linting and formatting via [Biome](https://biomejs.dev/).
+- **Git Hooks**: Pre-commit and commit-msg hooks powered by [Lefthook](https://github.com/evilmartians/lefthook) & [Commitlint](https://commitlint.js.org/).
 
-# Building For Production
+---
 
-To build this application for production:
+## 📦 Tech Stack
 
-```bash
-npm run build
-```
+- **Runtime & Package Manager**: [Bun](https://bun.sh/)
+- **Frontend**: React 19, TanStack Router
+- **Build Tool**: Vite & Rolldown
+- **i18n**: LinguiJS
+- **CMS**: Sveltia CMS
+- **Content**: Content Collections
 
-## Styling
+---
 
-This project uses [Tailwind CSS](https://tailwindcss.com/) for styling.
+## 🛠️ Getting Started
 
-### Removing Tailwind CSS
+### 1. Installation
 
-If you prefer not to use Tailwind CSS:
-
-1. Remove the demo pages in `src/routes/demo/`
-2. Replace the Tailwind import in `src/styles.css` with your own styles
-3. Remove `tailwindcss()` from the plugins array in `vite.config.ts`
-4. Remove `@tailwindcss/vite` and `tailwindcss` from `package.json`
-
-## Linting & Formatting
-
-This project uses [Biome](https://biomejs.dev/) for linting and formatting. The following scripts are available:
-
+Ensure you have [Bun](https://bun.sh/) installed, then clone the repository and install dependencies:
 
 ```bash
-npm run lint
-npm run format
-npm run check
+git clone https://github.com/hoagminh/tanstack-i18n-cms-template.git my-app
+cd my-app
+bun install
 ```
 
+### 2. Development Server
 
-## Deploy to Cloudflare Workers
+Start the Vite development server on `http://localhost:3000`:
 
-This project uses the Cloudflare Vite plugin (configured in `vite.config.ts`) and `wrangler.jsonc`:
-
-1. Install Wrangler: `npm install -g wrangler`
-2. Authenticate: `wrangler login`
-3. Deploy: `npx wrangler deploy`
-
-For production env vars, run `wrangler secret put MY_VAR` for each secret listed in `.env.example`. Public (non-secret) vars go in `wrangler.jsonc` under `vars`.
-
-KV, D1, R2, and Durable Object bindings are configured in `wrangler.jsonc` — see https://developers.cloudflare.com/workers/wrangler/configuration/.
-
-
-
-## Routing
-
-This project uses [TanStack Router](https://tanstack.com/router) with file-based routing. Routes are managed as files in `src/routes`.
-
-### Adding A Route
-
-To add a new route to your application just add a new file in the `./src/routes` directory.
-
-TanStack will automatically generate the content of the route file for you.
-
-Now that you have two routes you can use a `Link` component to navigate between them.
-
-### Adding Links
-
-To use SPA (Single Page Application) navigation you will need to import the `Link` component from `@tanstack/react-router`.
-
-```tsx
-import { Link } from "@tanstack/react-router";
+```bash
+bun dev
 ```
 
-Then anywhere in your JSX you can use it like so:
+### 3. Build for Production
 
-```tsx
-<Link to="/about">About</Link>
+Compile the application for production:
+
+```bash
+bun run build
+bun run start
 ```
 
-This will create a link that will navigate to the `/about` route.
+---
 
-More information on the `Link` component can be found in the [Link documentation](https://tanstack.com/router/v1/docs/framework/react/api/router/linkComponent).
+## 🌐 Localization (i18n)
 
-### Using A Layout
+This template uses LinguiJS to manage translations. The configured locales are English (`en`) and Vietnamese (`vi`).
 
-In the File Based Routing setup the layout is located in `src/routes/__root.tsx`. Anything you add to the root route will appear in all the routes. The route content will appear in the JSX where you render `{children}` in the `shellComponent`.
+### Adding Translations
+1. Wrap your text in components using the `i18n._("Hello")` macro.
+2. Extract the new strings to catalog files (`.json`):
+   ```bash
+   bun run i18n:extract
+   ```
+3. Translate the messages in `src/locales/vi.json` and `src/locales/en.json`.
+4. Compile the catalogs for production:
+   ```bash
+   bun run i18n:compile
+   ```
 
-Here is an example layout that includes a header:
+---
 
-```tsx
-import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
+## 📝 Content Management (Sveltia CMS)
 
-export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { title: 'My App' },
-    ],
-  }),
-  shellComponent: ({ children }) => (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        <header>
-          <nav>
-            <Link to="/">Home</Link>
-            <Link to="/about">About</Link>
-          </nav>
-        </header>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  ),
-})
-```
+The CMS is configured to run entirely in the browser using GitHub as the backend. 
 
-More information on layouts can be found in the [Layouts documentation](https://tanstack.com/router/latest/docs/framework/react/guide/routing-concepts#layouts).
+1. **Access the CMS**: Navigate to `http://localhost:3000/admin`.
+2. **Configuration**: The CMS structure is defined in `public/admin/config.yml`. Update the `backend.repo` field to match your own GitHub repository if you fork this template.
+3. **Local Backend**: For local testing without pushing to GitHub, you can configure Sveltia CMS's local backend mode (refer to [Sveltia CMS Docs](https://sveltia.github.io/sveltia-cms/)).
 
-## Server Functions
+---
 
-TanStack Start provides server functions that allow you to write server-side code that seamlessly integrates with your client components.
+## 📚 Content Collections
 
-```tsx
-import { createServerFn } from '@tanstack/react-start'
+All content (e.g., Authors, Blog Posts) managed by the CMS is statically checked and transformed into type-safe data by `@content-collections/core`.
 
-const getServerTime = createServerFn({
-  method: 'GET',
-}).handler(async () => {
-  return new Date().toISOString()
-})
+- **Configuration**: Collections are defined in `content-collections.ts` and individual schemas reside in `collections/`.
+- **Usage**: Import your collections directly into your React components:
+  ```tsx
+  import { allAuthors } from "content-collections";
 
-// Use in a component
-function MyComponent() {
-  const [time, setTime] = useState('')
-  
-  useEffect(() => {
-    getServerTime().then(setTime)
-  }, [])
-  
-  return <div>Server time: {time}</div>
-}
-```
+  export function AuthorsList() {
+    return allAuthors.map(author => <div key={author.slug}>{author.name}</div>);
+  }
+  ```
 
-## API Routes
+---
 
-You can create API routes by using the `server` property in your route definitions:
+## ⚓ Git Hooks & Commits
 
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-import { json } from '@tanstack/react-start'
+This project enforces strict code quality and commit message standards.
 
-export const Route = createFileRoute('/api/hello')({
-  server: {
-    handlers: {
-      GET: () => json({ message: 'Hello, World!' }),
-    },
-  },
-})
-```
+- **Pre-commit**: Lefthook runs Biome to lint and format code before allowing a commit.
+- **Commit Messages**: We strictly follow [Conventional Commits](https://www.conventionalcommits.org/). Commit messages must be formatted properly (e.g., `feat: add new button`, `fix: header alignment`). If you violate this, the commit will be rejected by Commitlint.
 
-## Data Fetching
+---
 
-There are multiple ways to fetch data in your application. You can use TanStack Query to fetch data from a server. But you can also use the `loader` functionality built into TanStack Router to load the data for a route before it's rendered.
+## 📄 License
 
-For example:
-
-```tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/people')({
-  loader: async () => {
-    const response = await fetch('https://swapi.dev/api/people')
-    return response.json()
-  },
-  component: PeopleComponent,
-})
-
-function PeopleComponent() {
-  const data = Route.useLoaderData()
-  return (
-    <ul>
-      {data.results.map((person) => (
-        <li key={person.name}>{person.name}</li>
-      ))}
-    </ul>
-  )
-}
-```
-
-Loaders simplify your data fetching logic dramatically. Check out more information in the [Loader documentation](https://tanstack.com/router/latest/docs/framework/react/guide/data-loading#loader-parameters).
-
-
-
-# Learn More
-
-You can learn more about all of the offerings from TanStack in the [TanStack documentation](https://tanstack.com).
-
-For TanStack Start specific documentation, visit [TanStack Start](https://tanstack.com/start).
+MIT
