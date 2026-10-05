@@ -2,7 +2,7 @@
 
 A modern, full-stack template combining the power of **TanStack Start**, **LinguiJS** for internationalization, and **Sveltia CMS** for Git-based content management. It provides a robust, type-safe foundation for building multilingual blogs, portfolios, and marketing sites with ease.
 
-## 🚀 Features
+## Features
 
 - **Full-Stack Framework**: Built on [TanStack Start](https://tanstack.com/start/latest) (React, SSR, File-based routing via TanStack Router).
 - **Internationalization (i18n)**: Integrated with [LinguiJS](https://lingui.dev/) for seamless, type-safe multi-language support.
@@ -14,7 +14,7 @@ A modern, full-stack template combining the power of **TanStack Start**, **Lingu
 
 ---
 
-## 📦 Tech Stack
+## Tech Stack
 
 - **Runtime & Package Manager**: [Bun](https://bun.sh/)
 - **Frontend**: React 19, TanStack Router
@@ -25,7 +25,7 @@ A modern, full-stack template combining the power of **TanStack Start**, **Lingu
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### 1. Installation
 
@@ -56,7 +56,7 @@ bun run start
 
 ---
 
-## 🌐 Localization (i18n)
+## Localization (i18n)
 
 This template uses LinguiJS to manage translations. The configured locales are English (`en`) and Vietnamese (`vi`).
 
@@ -74,7 +74,7 @@ This template uses LinguiJS to manage translations. The configured locales are E
 
 ---
 
-## 📝 Content Management (Sveltia CMS)
+## Content Management (Sveltia CMS)
 
 The CMS is configured to run entirely in the browser using GitHub as the backend. 
 
@@ -84,7 +84,7 @@ The CMS is configured to run entirely in the browser using GitHub as the backend
 
 ---
 
-## 📚 Content Collections
+## Content Collections
 
 All content (e.g., Authors, Blog Posts) managed by the CMS is statically checked and transformed into type-safe data by `@content-collections/core`.
 
@@ -100,7 +100,7 @@ All content (e.g., Authors, Blog Posts) managed by the CMS is statically checked
 
 ---
 
-## ⚓ Git Hooks & Commits
+## Git Hooks & Commits
 
 This project enforces strict code quality and commit message standards.
 
@@ -109,6 +109,6 @@ This project enforces strict code quality and commit message standards.
 
 ---
 
-## 📄 License
+## License
 
 MIT
