@@ -1,5 +1,12 @@
 import { useLingui } from "@lingui/react";
-import { Box, Group, Text, Title, useMantineColorScheme } from "@mantine/core";
+import {
+	Box,
+	Group,
+	Stack,
+	Text,
+	Title,
+	useMantineColorScheme,
+} from "@mantine/core";
 import { ArrowRight, Mail, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { FOOTER_SECTIONS } from "#/constants/landing";
@@ -24,7 +31,7 @@ export function Footer() {
 		<Box component="footer" className={styles.footer}>
 			<div className={styles.mainRow}>
 				{/* Col 1: Brand Info */}
-				<div className={styles.brandCol}>
+				<Stack gap={16} className={styles.brandCol}>
 					<img
 						src={
 							isDark
@@ -44,7 +51,7 @@ export function Footer() {
 					</Text>
 
 					{/* 4 Social boxes */}
-					<div className={styles.socialRow}>
+					<Group gap={12} className={styles.socialRow}>
 						{/* GitHub */}
 						<a
 							href="https://github.com"
@@ -146,8 +153,8 @@ export function Footer() {
 								<circle cx="15.5" cy="12" r="1.5" />
 							</svg>
 						</a>
-					</div>
-				</div>
+					</Group>
+				</Stack>
 
 				{/* Col 2 & 3: Link groups */}
 				{FOOTER_SECTIONS.map((section) => (
