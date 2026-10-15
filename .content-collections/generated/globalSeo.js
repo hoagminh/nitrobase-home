@@ -1,23 +1,23 @@
 
 export default {
   "en": {
-    "site_name": "SaaS Base",
+    "site_name": "Saasbase",
     "title": "SaaS Base - Self-host Supabase, Simplified",
     "description": "Deploy and manage open-source Supabase infrastructure on your own VPS automatically, securely, and without DevOps complexity.",
     "keywords": "supabase self-host, vps deployment, docker backend, postgresql hosting, cloud database alternative, saasbase",
     "image": "/assets/landing/hero-preview.png",
-    "author": "SaaS Base",
+    "author": "Saasbase",
     "twitter_handle": "@saasbase",
     "theme_color": "#101010",
     "url": "https://saasbase.dev"
   },
   "vi": {
-    "site_name": "SaaS Base",
-    "title": "SaaS Base - Tự lưu trữ Supabase đơn giản, bảo mật",
+    "site_name": "Saasbase",
+    "title": "Saasbase - Tự lưu trữ Supabase đơn giản, bảo mật",
     "description": "Triển khai và vận hành hạ tầng Supabase mã nguồn mở trên máy chủ VPS riêng của bạn tự động, bảo mật và không rắc rối DevOps.",
     "keywords": "tự lưu trữ supabase, deploy supabase vps, hạ tầng backend docker, máy chủ riêng, saasbase",
     "image": "/assets/landing/hero-preview.png",
-    "author": "SaaS Base",
+    "author": "Saasbase",
     "twitter_handle": "@saasbase",
     "theme_color": "#101010",
     "url": "https://saasbase.dev"
