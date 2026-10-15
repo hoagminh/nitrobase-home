@@ -102,9 +102,9 @@ export function LegalDocumentView({ doc, activeSlug }: LegalDocumentViewProps) {
 			<Grid gap={48} className={styles.contentGrid}>
 				<Grid.Col span={{ base: 12, md: 8 }}>
 					<Paper
-						p={{ base: "lg", sm: 40 }}
+						// p={{ base: "lg", sm: 24 }}
+						bg="transparent"
 						radius="lg"
-						withBorder
 						className={styles.articleCard}
 					>
 						<Box

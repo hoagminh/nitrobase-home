@@ -5,7 +5,7 @@
 }
 
 .headerSection {
-	margin-bottom: 48px;
+	margin-bottom: 32px;
 	border-bottom: 1px solid var(--border-default);
 	padding-bottom: 32px;
 }
@@ -57,11 +57,11 @@
 	color: var(--text-secondary);
 }
 
-.articleCard {
+/* .articleCard {
 	background-color: var(--surface-primary);
 	border-color: var(--border-default);
 	box-shadow: var(--card-shadow);
-}
+} */
 
 .markdownBody {
 	font-size: 15px;
