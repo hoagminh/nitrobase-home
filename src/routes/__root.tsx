@@ -46,7 +46,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 				},
 				{ name: "google", content: "notranslate" },
 				{
-					title: seo?.title || "SaaS Base - Self-host Supabase, Simplified",
+					title: seo?.title || "Saasbase - Self-host Supabase, Simplified",
 				},
 				...(seo?.theme_color
 					? [{ name: "theme-color", content: seo.theme_color }]
