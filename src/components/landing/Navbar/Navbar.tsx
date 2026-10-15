@@ -119,6 +119,9 @@ export function Navbar() {
 
 			<Drawer
 				opened={opened}
+				position="right"
+				offset={10}
+				radius="md"
 				onClose={() => setOpened(false)}
 				size="sm"
 				title={
