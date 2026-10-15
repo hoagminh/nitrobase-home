@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as Char123LocaleChar125RouteRouteImport } from './routes/{-$locale}/route'
 import { Route as Char123LocaleChar125IndexRouteImport } from './routes/{-$locale}/index'
 import { Route as Char123LocaleChar125LoginRouteImport } from './routes/{-$locale}/login'
+import { Route as Char123LocaleChar125PolicyRouteImport } from './routes/{-$locale}/policy'
+import { Route as Char123LocaleChar125TermsOfServiceRouteImport } from './routes/{-$locale}/terms-of-service'
 import { Route as ApiAuthIndexRouteImport } from './routes/api/auth/index'
 import { Route as ApiAuthCallbackRouteImport } from './routes/api/auth/callback'
 
@@ -33,6 +35,18 @@ const Char123LocaleChar125LoginRoute =
     path: '/login',
     getParentRoute: () => Char123LocaleChar125RouteRoute,
   } as any)
+const Char123LocaleChar125PolicyRoute =
+  Char123LocaleChar125PolicyRouteImport.update({
+    id: '/policy',
+    path: '/policy',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125TermsOfServiceRoute =
+  Char123LocaleChar125TermsOfServiceRouteImport.update({
+    id: '/terms-of-service',
+    path: '/terms-of-service',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 const ApiAuthIndexRoute = ApiAuthIndexRouteImport.update({
   id: '/api/auth/',
   path: '/api/auth/',
@@ -47,12 +61,16 @@ const ApiAuthCallbackRoute = ApiAuthCallbackRouteImport.update({
 export interface FileRoutesByFullPath {
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/{-$locale}/login': typeof Char123LocaleChar125LoginRoute
+  '/{-$locale}/policy': typeof Char123LocaleChar125PolicyRoute
+  '/{-$locale}/terms-of-service': typeof Char123LocaleChar125TermsOfServiceRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/': typeof ApiAuthIndexRoute
 }
 export interface FileRoutesByTo {
   '/{-$locale}/login': typeof Char123LocaleChar125LoginRoute
+  '/{-$locale}/policy': typeof Char123LocaleChar125PolicyRoute
+  '/{-$locale}/terms-of-service': typeof Char123LocaleChar125TermsOfServiceRoute
   '/{-$locale}': typeof Char123LocaleChar125IndexRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth': typeof ApiAuthIndexRoute
@@ -61,6 +79,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
   '/{-$locale}/login': typeof Char123LocaleChar125LoginRoute
+  '/{-$locale}/policy': typeof Char123LocaleChar125PolicyRoute
+  '/{-$locale}/terms-of-service': typeof Char123LocaleChar125TermsOfServiceRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
   '/api/auth/': typeof ApiAuthIndexRoute
@@ -70,15 +90,25 @@ export interface FileRouteTypes {
   fullPaths:
     | '/{-$locale}'
     | '/{-$locale}/login'
+    | '/{-$locale}/policy'
+    | '/{-$locale}/terms-of-service'
     | '/{-$locale}/'
     | '/api/auth/callback'
     | '/api/auth/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/{-$locale}/login' | '/{-$locale}' | '/api/auth/callback' | '/api/auth'
+  to:
+    | '/{-$locale}/login'
+    | '/{-$locale}/policy'
+    | '/{-$locale}/terms-of-service'
+    | '/{-$locale}'
+    | '/api/auth/callback'
+    | '/api/auth'
   id:
     | '__root__'
     | '/{-$locale}'
     | '/{-$locale}/login'
+    | '/{-$locale}/policy'
+    | '/{-$locale}/terms-of-service'
     | '/{-$locale}/'
     | '/api/auth/callback'
     | '/api/auth/'
@@ -113,6 +143,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof Char123LocaleChar125LoginRouteImport
       parentRoute: typeof Char123LocaleChar125RouteRoute
     }
+    '/{-$locale}/policy': {
+      id: '/{-$locale}/policy'
+      path: '/policy'
+      fullPath: '/{-$locale}/policy'
+      preLoaderRoute: typeof Char123LocaleChar125PolicyRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/terms-of-service': {
+      id: '/{-$locale}/terms-of-service'
+      path: '/terms-of-service'
+      fullPath: '/{-$locale}/terms-of-service'
+      preLoaderRoute: typeof Char123LocaleChar125TermsOfServiceRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
     '/api/auth/': {
       id: '/api/auth/'
       path: '/api/auth'
@@ -132,12 +176,17 @@ declare module '@tanstack/react-router' {
 
 interface Char123LocaleChar125RouteRouteChildren {
   Char123LocaleChar125LoginRoute: typeof Char123LocaleChar125LoginRoute
+  Char123LocaleChar125PolicyRoute: typeof Char123LocaleChar125PolicyRoute
+  Char123LocaleChar125TermsOfServiceRoute: typeof Char123LocaleChar125TermsOfServiceRoute
   Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
 }
 
 const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
   {
     Char123LocaleChar125LoginRoute: Char123LocaleChar125LoginRoute,
+    Char123LocaleChar125PolicyRoute: Char123LocaleChar125PolicyRoute,
+    Char123LocaleChar125TermsOfServiceRoute:
+      Char123LocaleChar125TermsOfServiceRoute,
     Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
   }
 

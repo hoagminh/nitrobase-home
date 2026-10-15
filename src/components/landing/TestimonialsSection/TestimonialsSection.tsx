@@ -113,7 +113,7 @@ export function TestimonialsSection() {
 				{TESTIMONIALS.map((item) => (
 					<Carousel.Slide key={item.id}>
 						<Stack justify="space-between" className={styles.card}>
-							<Text className={styles.quote}>"{i18n._(item.quoteKey)}"</Text>
+							<Text className={styles.quote}>"{i18n._(item.quote)}"</Text>
 
 							<Group gap={12} className={styles.authorRow}>
 								<Avatar

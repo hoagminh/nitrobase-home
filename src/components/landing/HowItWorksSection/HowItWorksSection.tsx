@@ -90,18 +90,18 @@ export function HowItWorksSection() {
 							<Stack gap={6} className={styles.stepTextGroup}>
 								<Group gap={8} align="center" className={styles.stepTitleRow}>
 									<Title order={3} className={styles.stepTitle}>
-										{i18n._(step.titleKey)}
+										{i18n._(step.title)}
 									</Title>
 									<MoveRight size={16} className={styles.stepArrow} />
 								</Group>
-								<Text className={styles.stepDesc}>{i18n._(step.descKey)}</Text>
+								<Text className={styles.stepDesc}>{i18n._(step.desc)}</Text>
 							</Stack>
 						</Group>
 
 						<Box className={styles.imageFrame}>
 							<img
 								src={step.imageUrl}
-								alt={step.titleKey}
+								alt={i18n._(step.title)}
 								className={styles.stepImg}
 							/>
 						</Box>

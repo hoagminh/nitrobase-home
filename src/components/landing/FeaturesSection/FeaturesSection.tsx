@@ -67,14 +67,14 @@ export function FeaturesSection() {
 								{renderIcon(item.iconName)}
 							</ThemeIcon>
 							<Title order={3} className={styles.cardTitle}>
-								{i18n._(item.titleKey)}
+								{i18n._(item.title)}
 							</Title>
-							<Text className={styles.cardDesc}>{i18n._(item.descKey)}</Text>
+							<Text className={styles.cardDesc}>{i18n._(item.desc)}</Text>
 						</Stack>
 
 						<a href="#how-it-works" className={styles.cardAction}>
 							<Group gap={6}>
-								<Text component="span">{i18n._(item.actionKey)}</Text>
+								<Text component="span">{i18n._(item.action)}</Text>
 								<MoveRight size={14} />
 							</Group>
 						</a>

@@ -10,6 +10,7 @@ import {
 import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { FOOTER_SECTIONS } from "#/constants/landing";
+import { LocalizedLink } from "#/libs/i18n";
 import styles from "./Footer.module.css";
 
 export function Footer() {
@@ -47,9 +48,9 @@ export function Footer() {
 					<Title order={3} className={styles.brandHeadline}>
 						{i18n._("Self-host Supabase, without\nthe complexity.")}
 					</Title>
-					<Text className={styles.brandDesc}>
+					<Text className={styles.brandDesc} maw={350}>
 						{i18n._(
-							"SaaS Base helps you deploy and manage your own\nSupabase infrastructure on VPS - automatically,\nsecurely, and without the DevOps headache.",
+							"SaasBase helps you deploy and manage your own Supabase infrastructure on VPS - automatically,\nsecurely, and without the DevOps headache.",
 						)}
 					</Text>
 
@@ -155,14 +156,24 @@ export function Footer() {
 				</Stack>
 
 				{FOOTER_SECTIONS.map((section) => (
-					<div key={section.titleKey} className={styles.linksCol}>
-						<h4 className={styles.colTitle}>{i18n._(section.titleKey)}</h4>
+					<div key={section.id} className={styles.linksCol}>
+						<h4 className={styles.colTitle}>{i18n._(section.title)}</h4>
 						<div className={styles.linksList}>
-							{section.links.map((link) => (
-								<a key={link.labelKey} href={link.href} className={styles.link}>
-									{i18n._(link.labelKey)}
-								</a>
-							))}
+							{section.links.map((link) =>
+								link.href.startsWith("/") ? (
+									<LocalizedLink
+										key={link.id}
+										to={link.href}
+										className={styles.link}
+									>
+										{i18n._(link.label)}
+									</LocalizedLink>
+								) : (
+									<a key={link.id} href={link.href} className={styles.link}>
+										{i18n._(link.label)}
+									</a>
+								),
+							)}
 						</div>
 					</div>
 				))}
@@ -174,7 +185,7 @@ export function Footer() {
 					</div>
 					<p className={styles.newsletterDesc}>
 						{i18n._(
-							"Be the first to know about new features,\nproduct updates and more.",
+							"Be the first to know about new features, product updates and more.",
 						)}
 					</p>
 
@@ -189,7 +200,11 @@ export function Footer() {
 						<form onSubmit={handleSubscribe} className={styles.newsletterForm}>
 							<Mail size={16} className={styles.mailIcon} />
 							<input
+								id="newsletter-email"
+								name="email"
 								type="email"
+								autoComplete="email"
+								aria-label={i18n._("Enter your email")}
 								placeholder={i18n._("Enter your email")}
 								value={email}
 								onChange={(e) => setEmail(e.target.value)}

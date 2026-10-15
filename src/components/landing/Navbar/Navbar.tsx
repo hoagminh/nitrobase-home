@@ -56,7 +56,7 @@ export function Navbar() {
 				<nav className={styles.navLinks} aria-label="Main Navigation">
 					{NAV_LINKS.map((link) => (
 						<a key={link.id} href={link.href} className={styles.navLink}>
-							{i18n._(link.labelKey)}
+							{i18n._(link.label)}
 						</a>
 					))}
 				</nav>
@@ -141,7 +141,7 @@ export function Navbar() {
 								className={styles.drawerNavLink}
 								onClick={() => setOpened(false)}
 							>
-								{i18n._(link.labelKey)}
+								{i18n._(link.label)}
 							</a>
 						))}
 					</nav>

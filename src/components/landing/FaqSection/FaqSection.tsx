@@ -144,10 +144,8 @@ export function FaqSection() {
 					>
 						{FAQ_ITEMS.map((item) => (
 							<Accordion.Item key={item.id} value={item.id}>
-								<Accordion.Control>
-									{i18n._(item.questionKey)}
-								</Accordion.Control>
-								<Accordion.Panel>{i18n._(item.answerKey)}</Accordion.Panel>
+								<Accordion.Control>{i18n._(item.question)}</Accordion.Control>
+								<Accordion.Panel>{i18n._(item.answer)}</Accordion.Panel>
 							</Accordion.Item>
 						))}
 					</Accordion>

@@ -1,14 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { LoginForm } from "#/components/auth/LoginForm/LoginForm";
+import type { Locale } from "#/libs/i18n";
+import { generatePageHead, type PageSeo } from "#/libs/seo";
 
 export const Route = createFileRoute("/{-$locale}/login")({
-	head: ({ match }) => ({
-		meta: [
-			{
-				title: `SaaS Base · ${match.context.i18n._("Sign in")}`,
-			},
-		],
-	}),
+	loader: ({ context }) => {
+		const locale = (context.i18n.locale as Locale) || "en";
+		const globalSeoData = context.globalSeoData;
+		const title = `SaaS Base · ${context.i18n._("Sign in")}`;
+		const description = context.i18n._(
+			"Sign in to your SaaS Base account to deploy and manage Supabase backend instances.",
+		);
+
+		const canonicalUrl =
+			locale === "en"
+				? "https://saasbase.dev/login"
+				: "https://saasbase.dev/vi/login";
+
+		const pageSeo: PageSeo = {
+			title,
+			description,
+			canonicalUrl,
+			locale,
+			siteName: globalSeoData?.site_name || "SaaS Base",
+			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
+			imageUrl: "/assets/auth/login-bg.png",
+			alternates: [
+				{ hrefLang: "en", href: "https://saasbase.dev/login" },
+				{ hrefLang: "vi", href: "https://saasbase.dev/vi/login" },
+				{ hrefLang: "x-default", href: "https://saasbase.dev/login" },
+			],
+		};
+
+		return { pageSeo };
+	},
+	head: ({ loaderData }) => generatePageHead(loaderData?.pageSeo),
 	component: LoginPage,
 });
 

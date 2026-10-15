@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 backend:
   name: github
-  repo: hoagminh/tanstack-i18n-cms-template
+  repo: hoagminh/saasbase-landing
   branch: main
   auth_endpoint: /api/auth
   commit_messages:
     openAuthoring: '{{message}} (by {{author-login}})'
 
-app_title: Site Admin
+app_title: SaasBase Admin
 publish_mode: editorial_workflow
 media_folder: public/uploads
 public_folder: /uploads
@@ -49,4 +49,45 @@ collections:
       - { label: "Website", name: "website", widget: "string", required: false }
       - { label: "Twitter", name: "twitter", widget: "string", required: false }
       - { label: "GitHub", name: "github", widget: "string", required: false }
-  
+
+  - name: "legal"
+    label: "Legal Documents"
+    icon: "policy"
+    label_singular: "Legal Document"
+    description: "Legal policies and terms"
+    folder: "contents/legal"
+    slug: "{{slug}}"
+    create: true
+    extension: md
+    format: frontmatter
+    i18n: true
+    editor:
+      preview: false
+    fields:
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - { label: "Description", name: "description", widget: "text", required: false, i18n: true }
+      - { label: "Last Updated", name: "lastUpdated", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, default: "{{now}}", required: false, i18n: duplicate }
+      - { label: "Body", name: "body", widget: "markdown", i18n: true }
+
+  - name: "settings"
+    label: "Site Settings"
+    icon: "settings"
+    i18n:
+      structure: single_file
+    editor:
+      preview: false
+    files:
+      - label: "Global SEO"
+        name: "global_seo"
+        i18n: true
+        file: "contents/settings/seo.yaml"
+        fields:
+          - { label: "Site Name", name: "site_name", widget: "string", i18n: true }
+          - { label: "Default Meta Title", name: "title", widget: "string", i18n: true }
+          - { label: "Default Meta Description", name: "description", widget: "text", i18n: true }
+          - { label: "Default Keywords", name: "keywords", widget: "text", i18n: true }
+          - { label: "Default Image", name: "image", widget: "image", required: false, i18n: duplicate }
+          - { label: "Author", name: "author", widget: "string", required: false, i18n: true }
+          - { label: "Twitter Handle", name: "twitter_handle", widget: "string", required: false, i18n: true }
+          - { label: "Theme Color", name: "theme_color", widget: "string", required: false, i18n: duplicate }
+          - { label: "URL", name: "url", widget: "string", required: false, i18n: duplicate }

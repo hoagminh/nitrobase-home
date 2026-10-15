@@ -1,6 +1,8 @@
+import type { MessageDescriptor } from "@lingui/core";
+
 export interface INavLink {
 	id: string;
-	labelKey: string;
+	label: MessageDescriptor;
 	href: string;
 }
 
@@ -12,39 +14,42 @@ export interface ITechPartner {
 
 export interface IWorkflowStep {
 	step: number;
-	titleKey: string;
-	descKey: string;
-	imageUrl: string;
 	badgeKey: string;
+	title: MessageDescriptor;
+	desc: MessageDescriptor;
+	imageUrl: string;
 }
 
-export interface IFeatureHighlight {
+export interface IBenefitItem {
 	id: string;
-	titleKey: string;
-	descKey: string;
-	iconName: "zap" | "shield-check" | "server" | "database" | "grid-2x2";
+	iconName: "zap" | "database" | "grid-2x2" | "shield-check";
+	title: MessageDescriptor;
+	desc: MessageDescriptor;
+	action: MessageDescriptor;
 }
 
 export interface ITestimonial {
 	id: string;
 	name: string;
-	role: string;
-	quoteKey: string;
+	role: MessageDescriptor;
+	quote: MessageDescriptor;
 	avatarUrl: string;
 }
 
 export interface IFaqItem {
 	id: string;
-	questionKey: string;
-	answerKey: string;
+	question: MessageDescriptor;
+	answer: MessageDescriptor;
 }
 
 export interface IFooterLink {
-	labelKey: string;
+	id: string;
+	label: MessageDescriptor;
 	href: string;
 }
 
 export interface IFooterSection {
-	titleKey: string;
+	id: string;
+	title: MessageDescriptor;
 	links: IFooterLink[];
 }

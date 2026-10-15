@@ -1,0 +1,196 @@
+.container {
+	padding-top: 64px;
+	padding-bottom: 80px;
+	width: 100%;
+}
+
+.headerSection {
+	margin-bottom: 48px;
+	border-bottom: 1px solid var(--border-default);
+	padding-bottom: 32px;
+}
+
+.backLink {
+	display: inline-flex;
+	align-items: center;
+	color: var(--text-secondary);
+	margin-bottom: 24px;
+	transition:
+		color 0.15s ease,
+		transform 0.15s ease;
+}
+
+.backLink:hover {
+	color: var(--text-primary);
+	transform: translateX(-2px);
+}
+
+.docBadge {
+	background-color: var(--bg-secondary);
+	color: var(--text-primary);
+	border: 1px solid var(--border-default);
+	font-weight: 600;
+}
+
+.title {
+	font-size: 40px;
+	line-height: 48px;
+	font-weight: 700;
+	color: var(--text-primary);
+	letter-spacing: -0.02em;
+	margin-bottom: 16px;
+}
+
+.description {
+	font-size: 18px;
+	line-height: 28px;
+	color: var(--text-secondary);
+	max-width: 800px;
+	margin-bottom: 24px;
+}
+
+.metaRow {
+	color: var(--text-secondary);
+}
+
+.metaItem {
+	color: var(--text-secondary);
+}
+
+.articleCard {
+	background-color: var(--surface-primary);
+	border-color: var(--border-default);
+	box-shadow: var(--card-shadow);
+}
+
+.markdownBody {
+	font-size: 15px;
+	line-height: 1.8;
+	color: var(--text-primary);
+}
+
+.markdownBody h2 {
+	font-size: 22px;
+	line-height: 32px;
+	font-weight: 700;
+	margin-top: 40px;
+	margin-bottom: 16px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--border-default);
+	color: var(--text-primary);
+	letter-spacing: -0.01em;
+}
+
+.markdownBody h2:first-of-type {
+	margin-top: 0;
+}
+
+.markdownBody h3 {
+	font-size: 17px;
+	line-height: 26px;
+	font-weight: 600;
+	margin-top: 28px;
+	margin-bottom: 12px;
+	color: var(--text-primary);
+}
+
+.markdownBody p {
+	margin-top: 0;
+	margin-bottom: 16px;
+	color: var(--text-secondary);
+}
+
+.markdownBody ul,
+.markdownBody ol {
+	margin-top: 0;
+	margin-bottom: 20px;
+	padding-left: 24px;
+	color: var(--text-secondary);
+}
+
+.markdownBody li {
+	margin-bottom: 8px;
+	line-height: 1.7;
+}
+
+.markdownBody strong {
+	color: var(--text-primary);
+	font-weight: 600;
+}
+
+.markdownBody a {
+	color: var(--action-primary);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+	transition: opacity 0.15s ease;
+}
+
+.markdownBody a:hover {
+	opacity: 0.8;
+}
+
+.sidebarSticky {
+	position: sticky;
+	top: 100px;
+}
+
+.sidebarCard {
+	background-color: var(--surface-primary);
+	border-color: var(--border-default);
+	box-shadow: var(--card-shadow);
+}
+
+.sidebarTitle {
+	letter-spacing: 0.05em;
+}
+
+.navLink {
+	border-radius: 8px;
+	color: var(--text-secondary);
+	font-weight: 500;
+	transition:
+		background-color 0.15s ease,
+		color 0.15s ease;
+}
+
+.navLink:hover {
+	background-color: var(--state-hover);
+	color: var(--text-primary);
+}
+
+.navLink[data-active="true"] {
+	background-color: var(--bg-secondary);
+	color: var(--text-primary);
+	font-weight: 600;
+	border: 1px solid var(--border-default);
+}
+
+.supportBox {
+	color: var(--text-secondary);
+}
+
+.contactBtn {
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
+	font-weight: 600;
+	border-radius: 8px;
+	transition:
+		opacity 0.15s ease,
+		transform 0.1s ease;
+}
+
+.contactBtn:hover {
+	opacity: 0.92;
+	transform: translateY(-1px);
+}
+
+@media (max-width: 900px) {
+	.title {
+		font-size: 32px;
+		line-height: 40px;
+	}
+
+	.sidebarSticky {
+		position: static;
+	}
+}

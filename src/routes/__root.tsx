@@ -7,48 +7,64 @@ import {
 	Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { globalSeo } from "content-collections";
 import type { Locale } from "#/libs/i18n";
 import { mantineTheme } from "#/theme/theme";
 import appCss from "../styles.css?url";
 
 interface MyRouterContext {
 	i18n: I18n;
+	globalSeoData?: (typeof globalSeo)[Locale];
 }
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
 	beforeLoad: ({ context }) => {
-		const locale = context.i18n.locale as Locale;
+		const locale = (context.i18n.locale as Locale) || "en";
+		const globalSeoData = globalSeo[locale] || globalSeo.en;
 		return {
 			locale,
+			globalSeoData,
 		};
 	},
 	loader: ({ context }) => {
-		const { locale } = context;
+		const { locale, globalSeoData } = context;
 		return {
 			locale,
+			globalSeoData,
 		};
 	},
-	head: () => ({
-		meta: [
-			{
-				charSet: "utf-8",
-			},
-			{
-				name: "viewport",
-				content: "width=device-width, initial-scale=1",
-			},
-			{ name: "google", content: "notranslate" },
-			{
-				title: "SaaS Base - Self-host Supabase, Simplified",
-			},
-		],
-		links: [
-			{
-				rel: "stylesheet",
-				href: appCss,
-			},
-		],
-	}),
+	head: ({ loaderData }) => {
+		const seo = loaderData?.globalSeoData;
+		return {
+			meta: [
+				{
+					charSet: "utf-8",
+				},
+				{
+					name: "viewport",
+					content: "width=device-width, initial-scale=1",
+				},
+				{ name: "google", content: "notranslate" },
+				{
+					title: seo?.title || "SaaS Base - Self-host Supabase, Simplified",
+				},
+				...(seo?.theme_color
+					? [{ name: "theme-color", content: seo.theme_color }]
+					: []),
+			],
+			links: [
+				{
+					rel: "stylesheet",
+					href: appCss,
+				},
+				{
+					rel: "icon",
+					type: "image/png",
+					href: "/assets/landing/logo-dark.png",
+				},
+			],
+		};
+	},
 	shellComponent: RootDocument,
 	notFoundComponent: () => (
 		<div className="flex h-screen items-center justify-center p-4">
