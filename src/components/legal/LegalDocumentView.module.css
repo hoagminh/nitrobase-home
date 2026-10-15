@@ -174,14 +174,22 @@
 	color: var(--action-primary-text);
 	font-weight: 600;
 	border-radius: 8px;
+	border: none;
+	text-decoration: none;
 	transition:
 		opacity 0.15s ease,
 		transform 0.1s ease;
 }
 
 .contactBtn:hover {
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
 	opacity: 0.92;
 	transform: translateY(-1px);
+}
+
+.contactBtn:active {
+	transform: translateY(0);
 }
 
 @media (max-width: 900px) {
