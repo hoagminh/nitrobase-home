@@ -1,4 +1,5 @@
 import type { I18n } from "@lingui/core";
+import { ColorSchemeScript, MantineProvider } from "@mantine/core";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import {
 	createRootRouteWithContext,
@@ -7,6 +8,7 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { Locale } from "#/libs/i18n";
+import { mantineTheme } from "#/theme/theme";
 import appCss from "../styles.css?url";
 
 interface MyRouterContext {
@@ -37,7 +39,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 			},
 			{ name: "google", content: "notranslate" },
 			{
-				title: "Tanstack Template",
+				title: "SaaS Base - Self-host Supabase, Simplified",
 			},
 		],
 		links: [
@@ -52,7 +54,9 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 		<div className="flex h-screen items-center justify-center p-4">
 			<div className="text-center">
 				<h1 className="text-4xl font-bold">404 - Not Found</h1>
-				<p className="mt-2 text-slate-600">The page you are looking for does not exist.</p>
+				<p className="mt-2 text-slate-600">
+					The page you are looking for does not exist.
+				</p>
 			</div>
 		</div>
 	),
@@ -61,12 +65,15 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 function RootDocument({ children }: { children: React.ReactNode }) {
 	const { i18n } = Route.useRouteContext();
 	return (
-		<html lang={i18n.locale}>
+		<html lang={i18n.locale} data-mantine-color-scheme="dark">
 			<head>
+				<ColorSchemeScript defaultColorScheme="dark" />
 				<HeadContent />
 			</head>
 			<body>
-				{children}
+				<MantineProvider theme={mantineTheme} defaultColorScheme="dark">
+					{children}
+				</MantineProvider>
 				<TanStackDevtools
 					config={{
 						position: "bottom-right",

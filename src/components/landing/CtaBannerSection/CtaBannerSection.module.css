@@ -1,0 +1,145 @@
+.section {
+	padding: 48px 130px;
+	max-width: 1440px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.bannerCard {
+	position: relative;
+	border-radius: 16px;
+	border: 1px solid var(--border-default);
+	background-color: var(--bg-primary);
+	padding: 64px 24px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.glowLeft {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	top: -60px;
+	left: -40px;
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0.08) 0%,
+		rgba(0, 0, 0, 0) 70%
+	);
+	filter: blur(80px);
+	pointer-events: none;
+}
+
+.glowRight {
+	position: absolute;
+	width: 200px;
+	height: 200px;
+	border-radius: 50%;
+	bottom: -60px;
+	right: -40px;
+	background: radial-gradient(
+		circle,
+		rgba(255, 255, 255, 0.08) 0%,
+		rgba(0, 0, 0, 0) 70%
+	);
+	filter: blur(80px);
+	pointer-events: none;
+}
+
+.badgePill {
+	padding: 4px 16px;
+	border-radius: 99px;
+	border: 1px solid var(--border-default);
+	background-color: var(--bg-secondary);
+	font-size: 12px;
+	line-height: 16px;
+	font-weight: 500;
+	color: var(--text-primary);
+	z-index: 1;
+}
+
+.pulseDot {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background-color: var(--text-primary);
+	filter: blur(0.5px);
+}
+
+.titleGroup {
+	z-index: 1;
+}
+
+.title {
+	font-size: 32px;
+	line-height: 40px;
+	font-weight: 600;
+	color: var(--text-primary);
+	letter-spacing: -0.01em;
+}
+
+.description {
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 600;
+	color: var(--text-secondary);
+	max-width: 700px;
+}
+
+.actionsArea {
+	z-index: 1;
+	padding-top: 8px;
+}
+
+.ctaBtn {
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 500;
+	padding: 12px 24px;
+	border-radius: 99px;
+	height: auto;
+	border: none;
+	transition:
+		opacity 0.15s ease,
+		transform 0.1s ease;
+}
+
+.ctaBtn:hover {
+	opacity: 0.92;
+	transform: translateY(-1px);
+}
+
+.subText {
+	font-size: 12px;
+	line-height: 16px;
+	color: var(--text-disabled);
+}
+
+@media (max-width: 1200px) {
+	.section {
+		padding: 40px 40px;
+	}
+}
+
+@media (max-width: 768px) {
+	.section {
+		padding: 32px 20px;
+	}
+
+	.bannerCard {
+		padding: 48px 16px;
+	}
+
+	.title {
+		font-size: 24px;
+		line-height: 32px;
+	}
+
+	.description {
+		font-size: 15px;
+		line-height: 22px;
+	}
+}

@@ -1,0 +1,142 @@
+.section {
+	padding: 48px 0 24px;
+	max-width: 1440px;
+	margin: 0 auto;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	overflow: hidden;
+}
+
+/* Marquee Container with fade gradient masks on sides */
+.marqueeContainer {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		black 12%,
+		black 88%,
+		transparent 100%
+	);
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent 0%,
+		black 12%,
+		black 88%,
+		transparent 100%
+	);
+}
+
+.marqueeTrack {
+	display: flex;
+	width: max-content;
+	gap: 64px;
+	animation: marquee 28s linear infinite;
+}
+
+.marqueeTrack:hover {
+	animation-play-state: paused;
+}
+
+.marqueeGroup {
+	display: flex;
+	align-items: center;
+	gap: 64px;
+	flex-shrink: 0;
+}
+
+.logoItem {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	opacity: 0.8;
+	user-select: none;
+	cursor: default;
+	transition:
+		opacity 0.2s ease,
+		transform 0.2s ease;
+}
+
+.logoItem:hover {
+	opacity: 1;
+	transform: translateY(-2px);
+}
+
+.logoImg {
+	height: 28px;
+	width: auto;
+	max-width: 42px;
+	object-fit: contain;
+}
+
+.logoName {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+	color: var(--text-disabled);
+}
+
+/* Scroll To Explore Button */
+.scrollIndicator {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	color: var(--text-disabled);
+	font-size: 12px;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	margin-top: 48px;
+	padding: 8px 16px;
+	border-radius: 99px;
+	transition:
+		color 0.2s ease,
+		background-color 0.2s ease,
+		transform 0.2s ease;
+}
+
+.scrollIndicator:hover {
+	color: var(--text-primary);
+	background-color: var(--state-hover);
+	transform: translateY(2px);
+}
+
+.mouseIcon {
+	animation: mouseFloat 2s ease-in-out infinite;
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes mouseFloat {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(3px);
+	}
+}
+
+@media (max-width: 768px) {
+	.marqueeTrack {
+		gap: 40px;
+		animation-duration: 20s;
+	}
+
+	.marqueeGroup {
+		gap: 40px;
+	}
+
+	.scrollIndicator {
+		margin-top: 36px;
+	}
+}

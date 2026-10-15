@@ -1,0 +1,193 @@
+.footer {
+	padding: 48px 130px 24px;
+	max-width: 1440px;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.srOnly {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.mainRow {
+	display: grid;
+	grid-template-columns: 1.2fr 0.6fr 0.6fr 1fr;
+	gap: 48px;
+	padding-bottom: 48px;
+	border-bottom: 2px solid var(--border-default);
+}
+
+.logoImg {
+	height: 38px;
+	width: auto;
+	object-fit: contain;
+	align-self: flex-start;
+}
+
+.brandHeadline {
+	font-size: 18px;
+	line-height: 26px;
+	font-weight: 600;
+	color: var(--text-primary);
+	white-space: pre-line;
+}
+
+.brandDesc {
+	font-size: 14px;
+	line-height: 20px;
+	color: var(--text-secondary);
+	white-space: pre-line;
+}
+
+.socialRow {
+	padding-top: 8px;
+}
+
+.socialBox {
+	width: 36px;
+	height: 36px;
+	border-radius: 8px;
+	border: 1px solid var(--border-default);
+	background-color: var(--surface-primary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-secondary);
+	transition:
+		color 0.15s ease,
+		border-color 0.15s ease;
+	text-decoration: none;
+}
+
+.socialBox:hover {
+	color: var(--text-primary);
+	border-color: var(--text-secondary);
+}
+
+.colTitle {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 500;
+	color: var(--text-primary);
+}
+
+.link {
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 500;
+	color: var(--text-secondary);
+	text-decoration: none;
+	transition: color 0.15s ease;
+}
+
+.link:hover {
+	color: var(--text-primary);
+}
+
+.newsletterTitle {
+	font-size: 18px;
+	line-height: 26px;
+	color: var(--text-primary);
+}
+
+.newsletterDesc {
+	font-size: 14px;
+	line-height: 20px;
+	color: var(--text-secondary);
+	white-space: pre-line;
+}
+
+.newsletterForm {
+	display: flex;
+	align-items: center;
+	padding: 4px 6px 4px 16px;
+	border-radius: 99px;
+	border: 1px solid var(--border-default);
+	background-color: transparent;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.mailIcon {
+	color: var(--text-disabled);
+	flex-shrink: 0;
+}
+
+.emailInput {
+	background: transparent;
+	border: none;
+	outline: none;
+	color: var(--text-primary);
+	font-size: 14px;
+	line-height: 20px;
+	width: 100%;
+}
+
+.emailInput::placeholder {
+	color: var(--text-disabled);
+}
+
+.arrowBtn {
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
+	border: 2px solid var(--bg-secondary);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	flex-shrink: 0;
+	transition: transform 0.15s ease;
+}
+
+.arrowBtn:hover {
+	transform: scale(1.05);
+}
+
+.bottomRow {
+	padding-top: 24px;
+	width: 100%;
+}
+
+.copyright {
+	font-size: 12px;
+	line-height: 18px;
+	color: var(--text-disabled);
+}
+
+.secureBadge {
+	color: var(--text-disabled);
+	font-size: 12px;
+	line-height: 18px;
+}
+
+@media (max-width: 1200px) {
+	.footer {
+		padding: 48px 40px 24px;
+	}
+
+	.mainRow {
+		grid-template-columns: 1fr 1fr;
+		gap: 36px;
+	}
+}
+
+@media (max-width: 640px) {
+	.footer {
+		padding: 40px 20px 24px;
+	}
+
+	.mainRow {
+		grid-template-columns: 1fr;
+	}
+}
