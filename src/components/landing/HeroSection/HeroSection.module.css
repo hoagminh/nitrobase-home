@@ -4,6 +4,7 @@
 	max-width: 1440px;
 	margin: 0 auto;
 	width: 100%;
+	overflow-x: clip;
 }
 
 .grid {
@@ -38,12 +39,14 @@
 	display: block;
 	background: linear-gradient(180deg, #616161 0%, #c7c7c7 100%);
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
 :global([data-mantine-color-scheme="light"]) .gradientSubtitle {
 	background: linear-gradient(180deg, #616161 0%, #101010 100%);
 	-webkit-background-clip: text;
+	background-clip: text;
 	-webkit-text-fill-color: transparent;
 }
 
@@ -75,6 +78,8 @@
 }
 
 .primaryCta:hover {
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
 	opacity: 0.92;
 	transform: translateY(-1px);
 }
@@ -143,6 +148,15 @@
 	z-index: 0;
 }
 
+:global([data-mantine-color-scheme="light"]) .ellipseGlow {
+	background: radial-gradient(
+		circle,
+		rgba(0, 0, 0, 0.03) 0%,
+		rgba(0, 0, 0, 0) 70%
+	);
+	border-color: rgba(0, 0, 0, 0.06);
+}
+
 .mainCard {
 	position: relative;
 	z-index: 1;
@@ -183,6 +197,51 @@
 	transform: scale(1.03);
 }
 
+.modalActions {
+	padding-top: 12px;
+}
+
+.modalCloseBtn {
+	background: transparent;
+	color: var(--text-primary);
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 500;
+	padding: 0 18px;
+	height: 40px;
+	border-radius: 8px;
+	border: 1px solid var(--border-default);
+	transition:
+		background-color 0.15s ease,
+		border-color 0.15s ease;
+}
+
+.modalCloseBtn:hover {
+	background: var(--state-hover);
+}
+
+.modalPrimaryBtn {
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 500;
+	padding: 0 20px;
+	height: 40px;
+	border-radius: 8px;
+	border: none;
+	transition:
+		opacity 0.15s ease,
+		transform 0.1s ease;
+}
+
+.modalPrimaryBtn:hover {
+	opacity: 0.92;
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
+	transform: translateY(-1px);
+}
+
 @media (max-width: 1200px) {
 	.section {
 		padding: 32px 40px 48px;
@@ -202,9 +261,23 @@
 		justify-content: center;
 		min-height: auto;
 	}
+
+	.ellipseGlow {
+		right: auto;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: min(500px, 92vw);
+		height: auto;
+		aspect-ratio: 525 / 466;
+	}
 }
 
 @media (max-width: 600px) {
+	.ellipseGlow {
+		width: min(320px, 88vw);
+	}
+
 	.verticalDivider {
 		display: none;
 	}
@@ -220,6 +293,16 @@
 	}
 
 	.actions > * {
+		width: 100%;
+		justify-content: center;
+	}
+
+	.modalActions {
+		flex-direction: column-reverse;
+		width: 100%;
+	}
+
+	.modalActions > * {
 		width: 100%;
 		justify-content: center;
 	}

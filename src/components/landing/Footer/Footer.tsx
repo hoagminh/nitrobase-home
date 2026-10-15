@@ -34,7 +34,6 @@ export function Footer() {
 	return (
 		<Box component="footer" className={styles.footer}>
 			<div className={styles.mainRow}>
-				{/* Col 1: Brand Info */}
 				<Stack gap={16} className={styles.brandCol}>
 					<img
 						src={
@@ -54,9 +53,7 @@ export function Footer() {
 						)}
 					</Text>
 
-					{/* 4 Social boxes */}
 					<Group gap={12} className={styles.socialRow}>
-						{/* GitHub */}
 						<a
 							href="https://github.com"
 							target="_blank"
@@ -81,7 +78,6 @@ export function Footer() {
 							</svg>
 						</a>
 
-						{/* Twitter / X */}
 						<a
 							href="https://twitter.com"
 							target="_blank"
@@ -106,7 +102,6 @@ export function Footer() {
 							</svg>
 						</a>
 
-						{/* LinkedIn */}
 						<a
 							href="https://linkedin.com"
 							target="_blank"
@@ -132,7 +127,6 @@ export function Footer() {
 							</svg>
 						</a>
 
-						{/* Discord / Community */}
 						<a
 							href="https://discord.com"
 							target="_blank"
@@ -160,7 +154,6 @@ export function Footer() {
 					</Group>
 				</Stack>
 
-				{/* Col 2 & 3: Link groups */}
 				{FOOTER_SECTIONS.map((section) => (
 					<div key={section.titleKey} className={styles.linksCol}>
 						<h4 className={styles.colTitle}>{i18n._(section.titleKey)}</h4>
@@ -174,7 +167,6 @@ export function Footer() {
 					</div>
 				))}
 
-				{/* Col 4: Stay Updated Newsletter */}
 				<div className={styles.newsletterCol}>
 					<h4 className={styles.colTitle}>{i18n._("STAY UPDATED")}</h4>
 					<div className={styles.newsletterTitle}>
@@ -216,7 +208,6 @@ export function Footer() {
 				</div>
 			</div>
 
-			{/* Bottom Bar */}
 			<Group
 				justify="space-between"
 				align="center"

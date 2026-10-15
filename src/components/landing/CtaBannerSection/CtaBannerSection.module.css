@@ -17,34 +17,54 @@
 
 .glowLeft {
 	position: absolute;
-	width: 200px;
-	height: 200px;
+	width: 360px;
+	height: 360px;
 	border-radius: 50%;
-	top: -60px;
-	left: -40px;
+	top: -140px;
+	left: -120px;
 	background: radial-gradient(
 		circle,
-		rgba(255, 255, 255, 0.08) 0%,
-		rgba(0, 0, 0, 0) 70%
+		rgba(255, 255, 255, 0.12) 0%,
+		rgba(255, 255, 255, 0.04) 55%,
+		transparent 75%
 	);
-	filter: blur(80px);
+	filter: blur(30px);
 	pointer-events: none;
 }
 
 .glowRight {
 	position: absolute;
-	width: 200px;
-	height: 200px;
+	width: 360px;
+	height: 360px;
 	border-radius: 50%;
-	bottom: -60px;
-	right: -40px;
+	bottom: -140px;
+	right: -120px;
 	background: radial-gradient(
 		circle,
-		rgba(255, 255, 255, 0.08) 0%,
-		rgba(0, 0, 0, 0) 70%
+		rgba(255, 255, 255, 0.12) 0%,
+		rgba(255, 255, 255, 0.04) 55%,
+		transparent 75%
 	);
-	filter: blur(80px);
+	filter: blur(30px);
 	pointer-events: none;
+}
+
+:global([data-mantine-color-scheme="light"]) .glowLeft {
+	background: radial-gradient(
+		circle,
+		rgba(16, 16, 16, 0.18) 0%,
+		rgba(16, 16, 16, 0.06) 55%,
+		transparent 75%
+	);
+}
+
+:global([data-mantine-color-scheme="light"]) .glowRight {
+	background: radial-gradient(
+		circle,
+		rgba(16, 16, 16, 0.18) 0%,
+		rgba(16, 16, 16, 0.06) 55%,
+		transparent 75%
+	);
 }
 
 .badgePill {
@@ -109,6 +129,8 @@
 
 .ctaBtn:hover {
 	opacity: 0.92;
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
 	transform: translateY(-1px);
 }
 
@@ -141,5 +163,19 @@
 	.description {
 		font-size: 15px;
 		line-height: 22px;
+	}
+
+	.glowLeft {
+		width: 220px;
+		height: 220px;
+		top: -90px;
+		left: -80px;
+	}
+
+	.glowRight {
+		width: 220px;
+		height: 220px;
+		bottom: -90px;
+		right: -80px;
 	}
 }

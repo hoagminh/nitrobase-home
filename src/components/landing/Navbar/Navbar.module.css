@@ -114,6 +114,8 @@
 }
 
 .primaryBtn:hover {
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
 	opacity: 0.92;
 	transform: translateY(-1px);
 }

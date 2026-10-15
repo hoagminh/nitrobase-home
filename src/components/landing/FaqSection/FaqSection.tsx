@@ -76,7 +76,6 @@ export function FaqSection() {
 	return (
 		<Box component="section" id="faq" className={styles.section}>
 			<Group justify="space-between" align="flex-start" className={styles.grid}>
-				{/* Left Support Column */}
 				<Stack gap={48} className={styles.leftColumn}>
 					<Stack gap={12} className={styles.titleArea}>
 						<Text component="span" className={styles.tag}>
@@ -98,7 +97,6 @@ export function FaqSection() {
 						</Text>
 					</Stack>
 
-					{/* Support Card */}
 					<Stack gap={16} className={styles.supportCard}>
 						<ThemeIcon
 							size={40}
@@ -130,15 +128,18 @@ export function FaqSection() {
 					</Stack>
 				</Stack>
 
-				{/* Right Mantine Accordion */}
 				<Box className={styles.rightColumn}>
 					<Accordion
 						defaultValue="faq-1"
-						chevron={<ChevronDown size={18} />}
+						chevron={<ChevronDown size={20} />}
 						classNames={{
+							root: styles.accordionRoot,
 							item: styles.accordionItem,
 							control: styles.accordionControl,
+							label: styles.accordionLabel,
+							chevron: styles.accordionChevron,
 							panel: styles.accordionPanel,
+							content: styles.accordionContent,
 						}}
 					>
 						{FAQ_ITEMS.map((item) => (
@@ -153,7 +154,6 @@ export function FaqSection() {
 				</Box>
 			</Group>
 
-			{/* Contact Support Modal */}
 			<Modal
 				opened={contactOpened}
 				onClose={closeContact}
@@ -260,6 +260,7 @@ export function FaqSection() {
 								<Button
 									type="submit"
 									loading={isSubmitting}
+									className={styles.modalSubmitBtn}
 									leftSection={<Send size={16} />}
 								>
 									{i18n._("Send Message")}

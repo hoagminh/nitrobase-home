@@ -31,6 +31,7 @@ import {
 	Terminal,
 	Zap,
 } from "lucide-react";
+import { LocalizedLink } from "#/libs/i18n";
 import styles from "./HeroSection.module.css";
 
 export function HeroSection() {
@@ -47,14 +48,11 @@ export function HeroSection() {
 				spacing={{ base: 32, md: 40 }}
 				className={styles.grid}
 			>
-				{/* Left Content */}
 				<Stack gap={24} className={styles.content}>
-					{/* Tagline */}
 					<Text className={styles.tagline}>
 						{i18n._("SELF-HOST SUPABASE, SIMPLIFIED")}
 					</Text>
 
-					{/* Main Display Title */}
 					<Title order={1} className={styles.title}>
 						{i18n._("Self-host Supabase.")}
 						<span className={styles.gradientSubtitle}>
@@ -64,18 +62,16 @@ export function HeroSection() {
 						</span>
 					</Title>
 
-					{/* Description */}
 					<Text className={styles.description}>
 						{i18n._(
 							"SaaSBase helps you deploy and manage Supabase on your own VPS - automatically, securely, and with a simple interface. Focus on building, not configuring.",
 						)}
 					</Text>
 
-					{/* Action Buttons */}
 					<Group gap={16} className={styles.actions}>
 						<Button
-							component="a"
-							href="/signup"
+							component={LocalizedLink}
+							to="/signup"
 							size="md"
 							radius="md"
 							className={styles.primaryCta}
@@ -96,7 +92,6 @@ export function HeroSection() {
 						</Button>
 					</Group>
 
-					{/* 3 Value Props */}
 					<Group gap={24} className={styles.valueProps}>
 						<Group gap={8} wrap="nowrap" className={styles.valueItem}>
 							<ThemeIcon
@@ -151,7 +146,6 @@ export function HeroSection() {
 					</Group>
 				</Stack>
 
-				{/* Right Visual Mockups */}
 				<Box className={styles.visualWrapper}>
 					<Box className={styles.ellipseGlow} />
 
@@ -173,7 +167,6 @@ export function HeroSection() {
 				</Box>
 			</SimpleGrid>
 
-			{/* Interactive Live Demo Modal */}
 			<Modal
 				opened={demoOpened}
 				onClose={closeDemo}
@@ -381,14 +374,19 @@ export function HeroSection() {
 						</Tabs.Panel>
 					</Tabs>
 
-					<Group justify="flex-end" pt="xs">
-						<Button variant="default" onClick={closeDemo}>
+					<Group justify="flex-end" gap={12} className={styles.modalActions}>
+						<Button
+							type="button"
+							variant="default"
+							onClick={closeDemo}
+							className={styles.modalCloseBtn}
+						>
 							{i18n._("Close Preview")}
 						</Button>
 						<Button
-							component="a"
-							href="/signup"
-							className={styles.primaryCta}
+							component={LocalizedLink}
+							to="/signup"
+							className={styles.modalPrimaryBtn}
 							rightSection={<MoveRight size={16} />}
 						>
 							{i18n._("Deploy Your Instance Now")}

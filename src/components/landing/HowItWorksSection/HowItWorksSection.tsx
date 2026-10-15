@@ -17,7 +17,6 @@ export function HowItWorksSection() {
 
 	return (
 		<Box component="section" id="how-it-works" className={styles.section}>
-			{/* Header area */}
 			<Group
 				justify="space-between"
 				align="flex-start"
@@ -72,7 +71,6 @@ export function HowItWorksSection() {
 				</Stack>
 			</Group>
 
-			{/* 3 Steps */}
 			<SimpleGrid
 				cols={{ base: 1, md: 3 }}
 				spacing={24}

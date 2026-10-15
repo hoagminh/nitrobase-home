@@ -32,7 +32,6 @@ export function FeaturesSection() {
 
 	return (
 		<Box component="section" id="features" className={styles.section}>
-			{/* Header */}
 			<Stack gap={16} align="center" className={styles.header}>
 				<Text component="span" className={styles.tag}>
 					{i18n._("BENEFITS")}
@@ -51,7 +50,6 @@ export function FeaturesSection() {
 				</Text>
 			</Stack>
 
-			{/* 4 Cards Grid */}
 			<SimpleGrid
 				cols={{ base: 1, sm: 2, lg: 4 }}
 				spacing={24}

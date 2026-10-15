@@ -16,10 +16,8 @@ export function TechStackSection() {
 
 	return (
 		<Box component="section" className={styles.section}>
-			{/* Infinite Marquee Logo Cloud */}
 			<Box className={styles.marqueeContainer}>
 				<Box className={styles.marqueeTrack}>
-					{/* Group 1 */}
 					<Box className={styles.marqueeGroup}>
 						{TECH_PARTNERS.map((partner) => (
 							<Group
@@ -39,7 +37,6 @@ export function TechStackSection() {
 						))}
 					</Box>
 
-					{/* Group 2 (Duplicate for continuous loop) */}
 					<Box className={styles.marqueeGroup} aria-hidden="true">
 						{TECH_PARTNERS.map((partner) => (
 							<Group
@@ -61,7 +58,6 @@ export function TechStackSection() {
 				</Box>
 			</Box>
 
-			{/* Interactive Scroll To Explore Button */}
 			<UnstyledButton
 				onClick={handleScrollToExplore}
 				className={styles.scrollIndicator}

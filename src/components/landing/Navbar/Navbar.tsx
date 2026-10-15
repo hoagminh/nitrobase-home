@@ -13,7 +13,7 @@ import {
 import { Globe, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NAV_LINKS } from "#/constants/landing";
-import { type Locale, locales, useLocale } from "#/libs/i18n";
+import { type Locale, LocalizedLink, locales, useLocale } from "#/libs/i18n";
 import styles from "./Navbar.module.css";
 
 export function Navbar() {
@@ -37,8 +37,11 @@ export function Navbar() {
 	return (
 		<header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
 			<div className={styles.container}>
-				{/* Logo */}
-				<a href="/" className={styles.logoWrapper} aria-label="SaaS Base Home">
+				<LocalizedLink
+					to="/"
+					className={styles.logoWrapper}
+					aria-label="SaaS Base Home"
+				>
 					<img
 						src={
 							isDark
@@ -48,9 +51,8 @@ export function Navbar() {
 						alt="SaaS Base Logo"
 						className={styles.logoImage}
 					/>
-				</a>
+				</LocalizedLink>
 
-				{/* Desktop Navigation Links */}
 				<nav className={styles.navLinks} aria-label="Main Navigation">
 					{NAV_LINKS.map((link) => (
 						<a key={link.id} href={link.href} className={styles.navLink}>
@@ -59,9 +61,7 @@ export function Navbar() {
 					))}
 				</nav>
 
-				{/* Actions */}
 				<div className={styles.actions}>
-					{/* Locale Switcher */}
 					<Menu shadow="md" width={140} position="bottom-end">
 						<Menu.Target>
 							<ActionIcon
@@ -86,7 +86,6 @@ export function Navbar() {
 						</Menu.Dropdown>
 					</Menu>
 
-					{/* Theme Toggle */}
 					<ActionIcon
 						variant="default"
 						size="lg"
@@ -97,17 +96,14 @@ export function Navbar() {
 						{isDark ? <Sun size={18} /> : <Moon size={18} />}
 					</ActionIcon>
 
-					{/* Sign In */}
-					<a href="/login" className={styles.signInBtn}>
+					<LocalizedLink to="/login" className={styles.signInBtn}>
 						{i18n._("Sign in")}
-					</a>
+					</LocalizedLink>
 
-					{/* Get Started CTA */}
-					<a href="/signup" className={styles.primaryBtn}>
+					<LocalizedLink to="/signup" className={styles.primaryBtn}>
 						{i18n._("Get Started")}
-					</a>
+					</LocalizedLink>
 
-					{/* Mobile Menu Burger */}
 					<div className={styles.mobileMenu}>
 						<Burger
 							opened={opened}
@@ -119,7 +115,6 @@ export function Navbar() {
 				</div>
 			</div>
 
-			{/* Mobile Drawer */}
 			<Drawer
 				opened={opened}
 				onClose={() => setOpened(false)}
@@ -151,7 +146,6 @@ export function Navbar() {
 						))}
 					</nav>
 
-					{/* Theme & Language on Mobile */}
 					<Stack gap={12} className={styles.drawerMetaControls}>
 						<Group justify="space-between" w="100%">
 							<Text className={styles.drawerMetaText}>
@@ -187,8 +181,8 @@ export function Navbar() {
 					</Stack>
 
 					<div className={styles.drawerActions}>
-						<a
-							href="/login"
+						<LocalizedLink
+							to="/login"
 							className={styles.signInBtn}
 							style={{
 								textAlign: "center",
@@ -197,15 +191,15 @@ export function Navbar() {
 							onClick={() => setOpened(false)}
 						>
 							{i18n._("Sign in")}
-						</a>
-						<a
-							href="/signup"
+						</LocalizedLink>
+						<LocalizedLink
+							to="/signup"
 							className={styles.primaryBtn}
 							style={{ textAlign: "center" }}
 							onClick={() => setOpened(false)}
 						>
 							{i18n._("Get Started")}
-						</a>
+						</LocalizedLink>
 					</div>
 				</div>
 			</Drawer>

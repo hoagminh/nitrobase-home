@@ -19,7 +19,6 @@ export function TestimonialsSection() {
 
 	return (
 		<Box component="section" id="testimonials" className={styles.section}>
-			{/* Header area */}
 			<Group justify="space-between" align="flex-end" className={styles.header}>
 				<Stack gap={16} className={styles.titleArea}>
 					<Text component="span" className={styles.tag}>
@@ -91,7 +90,6 @@ export function TestimonialsSection() {
 				</Group>
 			</Group>
 
-			{/* Testimonials Carousel */}
 			<Carousel
 				slideSize={{ base: "100%", sm: "50%", md: "33.333333%", lg: "25%" }}
 				slideGap="md"

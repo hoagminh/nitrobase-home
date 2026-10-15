@@ -87,24 +87,46 @@
 	display: block;
 }
 
+.linksCol {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
 .colTitle {
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
 	color: var(--text-primary);
+	margin: 0;
+}
+
+.linksList {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .link {
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 500;
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: 400;
 	color: var(--text-secondary);
 	text-decoration: none;
 	transition: color 0.15s ease;
+	display: inline-block;
 }
 
 .link:hover {
 	color: var(--text-primary);
+}
+
+.newsletterCol {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
 .newsletterTitle {
