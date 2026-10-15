@@ -7,7 +7,7 @@ import {
 	Title,
 	useMantineColorScheme,
 } from "@mantine/core";
-import { ArrowRight, Mail, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { FOOTER_SECTIONS } from "#/constants/landing";
 import styles from "./Footer.module.css";
@@ -16,14 +16,18 @@ export function Footer() {
 	const { i18n } = useLingui();
 	const { colorScheme } = useMantineColorScheme();
 	const [email, setEmail] = useState("");
+	const [isSubscribed, setIsSubscribed] = useState(false);
 
 	const isDark = colorScheme === "dark";
 
 	const handleSubscribe = (e: React.FormEvent) => {
 		e.preventDefault();
 		if (email) {
-			alert(i18n._("Thank you for subscribing!"));
+			setIsSubscribed(true);
 			setEmail("");
+			setTimeout(() => {
+				setIsSubscribed(false);
+			}, 4000);
 		}
 	};
 
@@ -182,24 +186,33 @@ export function Footer() {
 						)}
 					</p>
 
-					<form onSubmit={handleSubscribe} className={styles.newsletterForm}>
-						<Mail size={16} className={styles.mailIcon} />
-						<input
-							type="email"
-							placeholder={i18n._("Enter your email")}
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							className={styles.emailInput}
-							required
-						/>
-						<button
-							type="submit"
-							className={styles.arrowBtn}
-							aria-label={i18n._("Subscribe")}
-						>
-							<ArrowRight size={16} />
-						</button>
-					</form>
+					{isSubscribed ? (
+						<div className={styles.newsletterSuccess}>
+							<CheckCircle2 size={18} className={styles.successIcon} />
+							<Text size="sm" className={styles.successText}>
+								{i18n._("Thank you for subscribing! Check your inbox.")}
+							</Text>
+						</div>
+					) : (
+						<form onSubmit={handleSubscribe} className={styles.newsletterForm}>
+							<Mail size={16} className={styles.mailIcon} />
+							<input
+								type="email"
+								placeholder={i18n._("Enter your email")}
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								className={styles.emailInput}
+								required
+							/>
+							<button
+								type="submit"
+								className={styles.arrowBtn}
+								aria-label={i18n._("Subscribe")}
+							>
+								<ArrowRight size={16} />
+							</button>
+						</form>
+					)}
 				</div>
 			</div>
 

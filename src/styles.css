@@ -14,6 +14,7 @@
 	--action-primary-text: #ffffff;
 	--state-hover: #f0f0f0;
 	--card-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+	--focus-ring: rgba(16, 16, 16, 0.25);
 }
 
 [data-mantine-color-scheme="dark"] {
@@ -28,10 +29,16 @@
 	--action-primary-text: #101010;
 	--state-hover: #2c2c2c;
 	--card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+	--focus-ring: rgba(255, 255, 255, 0.25);
 }
 
 * {
 	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 88px;
 }
 
 html,
@@ -47,12 +54,46 @@ body {
 	font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
 		sans-serif;
 	transition: background-color 0.2s ease, color 0.2s ease;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
+/* Accessibility Focus Ring */
+:focus-visible {
+	outline: 2px solid var(--action-primary);
+	outline-offset: 2px;
+}
+
+/* Text Selection Styling */
+::selection {
+	background-color: color-mix(in srgb, var(--text-primary) 20%, transparent);
+	color: var(--text-primary);
+}
+
+/* Sleek Modern Scrollbar */
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--border-default);
+	border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: var(--text-secondary);
+}
+
+/* Move TanStack devtools control cleanly to bottom-right corner */
 [data-tsd-control] {
 	top: auto !important;
 	left: auto !important;
 	bottom: 16px !important;
 	right: 16px !important;
 }
-

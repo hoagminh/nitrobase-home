@@ -69,6 +69,12 @@
 .carouselRoot {
 	width: 100%;
 	padding-bottom: 48px;
+	cursor: grab;
+	user-select: none;
+}
+
+.carouselRoot:active {
+	cursor: grabbing;
 }
 
 .carouselSlide {
@@ -152,8 +158,34 @@
 	}
 }
 
+@media (max-width: 900px) {
+	.header {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 24px;
+	}
+
+	.statsArea {
+		width: 100%;
+		justify-content: flex-start;
+		flex-wrap: wrap;
+	}
+}
+
 @media (max-width: 768px) {
 	.section {
 		padding: 40px 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.verticalDivider {
+		display: none;
+	}
+
+	.statsArea {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 16px;
 	}
 }

@@ -3,28 +3,42 @@ import {
 	ActionIcon,
 	Burger,
 	Drawer,
+	Group,
 	Menu,
+	SegmentedControl,
+	Stack,
+	Text,
 	useMantineColorScheme,
 } from "@mantine/core";
 import { Globe, Moon, Sun } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { NAV_LINKS } from "#/constants/landing";
 import { type Locale, locales, useLocale } from "#/libs/i18n";
 import styles from "./Navbar.module.css";
 
 export function Navbar() {
 	const { i18n } = useLingui();
-	const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+	const { colorScheme, toggleColorScheme, setColorScheme } =
+		useMantineColorScheme();
 	const { currentLocale, switchLocale } = useLocale();
 	const [opened, setOpened] = useState(false);
+	const [scrolled, setScrolled] = useState(false);
 
 	const isDark = colorScheme === "dark";
 
+	useEffect(() => {
+		const handleScroll = () => {
+			setScrolled(window.scrollY > 10);
+		};
+		window.addEventListener("scroll", handleScroll, { passive: true });
+		return () => window.removeEventListener("scroll", handleScroll);
+	}, []);
+
 	return (
-		<header className={styles.header}>
+		<header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
 			<div className={styles.container}>
 				{/* Logo */}
-				<a href="/" className={styles.logoWrapper}>
+				<a href="/" className={styles.logoWrapper} aria-label="SaaS Base Home">
 					<img
 						src={
 							isDark
@@ -37,7 +51,7 @@ export function Navbar() {
 				</a>
 
 				{/* Desktop Navigation Links */}
-				<nav className={styles.navLinks}>
+				<nav className={styles.navLinks} aria-label="Main Navigation">
 					{NAV_LINKS.map((link) => (
 						<a key={link.id} href={link.href} className={styles.navLink}>
 							{i18n._(link.labelKey)}
@@ -99,7 +113,7 @@ export function Navbar() {
 							opened={opened}
 							onClick={() => setOpened(!opened)}
 							size="sm"
-							aria-label="Toggle navigation"
+							aria-label={i18n._("Toggle navigation")}
 						/>
 					</div>
 				</div>
@@ -109,7 +123,7 @@ export function Navbar() {
 			<Drawer
 				opened={opened}
 				onClose={() => setOpened(false)}
-				size="xs"
+				size="sm"
 				title={
 					<img
 						src={
@@ -123,37 +137,72 @@ export function Navbar() {
 				}
 				padding="lg"
 			>
-				<div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
-					{NAV_LINKS.map((link) => (
-						<a
-							key={link.id}
-							href={link.href}
-							className={styles.navLink}
-							onClick={() => setOpened(false)}
-							style={{ fontSize: "16px", padding: "8px 0" }}
-						>
-							{i18n._(link.labelKey)}
-						</a>
-					))}
-					<div
-						style={{
-							marginTop: "16px",
-							display: "flex",
-							flexDirection: "column",
-							gap: "12px",
-						}}
-					>
+				<div className={styles.drawerContent}>
+					<nav className={styles.drawerNavLinks} aria-label="Mobile Navigation">
+						{NAV_LINKS.map((link) => (
+							<a
+								key={link.id}
+								href={link.href}
+								className={styles.drawerNavLink}
+								onClick={() => setOpened(false)}
+							>
+								{i18n._(link.labelKey)}
+							</a>
+						))}
+					</nav>
+
+					{/* Theme & Language on Mobile */}
+					<Stack gap={12} className={styles.drawerMetaControls}>
+						<Group justify="space-between" w="100%">
+							<Text className={styles.drawerMetaText}>
+								{i18n._("Appearance")}
+							</Text>
+							<SegmentedControl
+								value={colorScheme}
+								onChange={(val) => setColorScheme(val as "dark" | "light")}
+								data={[
+									{ label: i18n._("Dark"), value: "dark" },
+									{ label: i18n._("Light"), value: "light" },
+								]}
+								size="xs"
+								radius="md"
+							/>
+						</Group>
+
+						<Group justify="space-between" w="100%">
+							<Text className={styles.drawerMetaText}>
+								{i18n._("Language")}
+							</Text>
+							<SegmentedControl
+								value={currentLocale}
+								onChange={(val) => switchLocale(val as Locale)}
+								data={locales.map((l) => ({
+									label: l.nativeName,
+									value: l.code,
+								}))}
+								size="xs"
+								radius="md"
+							/>
+						</Group>
+					</Stack>
+
+					<div className={styles.drawerActions}>
 						<a
 							href="/login"
 							className={styles.signInBtn}
-							style={{ textAlign: "center" }}
+							style={{
+								textAlign: "center",
+								border: "1px solid var(--border-default)",
+							}}
+							onClick={() => setOpened(false)}
 						>
 							{i18n._("Sign in")}
 						</a>
 						<a
 							href="/signup"
 							className={styles.primaryBtn}
-							style={{ justifyContent: "center" }}
+							style={{ textAlign: "center" }}
+							onClick={() => setOpened(false)}
 						>
 							{i18n._("Get Started")}
 						</a>

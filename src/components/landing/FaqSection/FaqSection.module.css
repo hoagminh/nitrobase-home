@@ -71,14 +71,17 @@
 
 .contactBtn {
 	color: var(--text-primary);
-	text-decoration: none;
 	font-size: 14px;
 	font-weight: 500;
 	width: fit-content;
+	height: auto;
+	background: transparent;
+	border: none;
 	transition: transform 0.15s ease;
 }
 
 .contactBtn:hover {
+	background: transparent;
 	transform: translateX(4px);
 }
 
@@ -132,6 +135,17 @@
 
 	.grid {
 		gap: 40px;
+		flex-direction: column;
+	}
+
+	.leftColumn {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	.supportCard {
+		max-width: 100%;
+		width: 100%;
 	}
 
 	.rightColumn {
