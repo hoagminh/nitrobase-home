@@ -28,12 +28,17 @@
 	text-decoration: none;
 	transition:
 		color 0.15s ease,
+		background-color 0.15s ease,
 		transform 0.15s ease;
 }
 
 .backLink:hover {
 	color: var(--text-primary);
 	transform: translateX(-2px);
+}
+
+.backLinkText {
+	display: inline;
 }
 
 .logoWrapper {
@@ -251,6 +256,28 @@
 
 .footerLink:hover {
 	text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+	.backLinkText {
+		display: none;
+	}
+
+	.backLink {
+		width: 36px;
+		height: 36px;
+		padding: 0;
+		justify-content: center;
+		border-radius: 8px;
+		border: 1px solid var(--border-default);
+		background-color: var(--surface-primary);
+		color: var(--text-primary);
+	}
+
+	.backLink:hover {
+		transform: none;
+		background-color: var(--state-hover);
+	}
 }
 
 @media (max-width: 480px) {

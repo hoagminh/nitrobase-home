@@ -65,9 +65,13 @@ export function LoginForm() {
 	return (
 		<div className={styles.pageContainer}>
 			<header className={styles.topBar}>
-				<LocalizedLink to="/" className={styles.backLink}>
+				<LocalizedLink
+					to="/"
+					className={styles.backLink}
+					aria-label={i18n._("Back to home")}
+				>
 					<ArrowLeft size={16} />
-					<span>{i18n._("Back to home")}</span>
+					<span className={styles.backLinkText}>{i18n._("Back to home")}</span>
 				</LocalizedLink>
 
 				<LocalizedLink
