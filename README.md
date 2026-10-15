@@ -6,7 +6,7 @@ Built with **TanStack Start**, **React 19**, **Mantine UI**, **LinguiJS**, and *
 
 ---
 
-## ✨ Features & Architecture
+## Features & Architecture
 
 - **Full-Stack & SSR**: Powered by [TanStack Start](https://tanstack.com/start/latest) and React 19 with type-safe file-based routing and Server-Side Rendering.
 - **Design System & Mantine UI**: Integrated with [@mantine/core](https://mantine.dev/) and [@mantine/carousel](https://mantine.dev/x/carousel/) supporting:
@@ -36,7 +36,7 @@ Built with **TanStack Start**, **React 19**, **Mantine UI**, **LinguiJS**, and *
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```text
 ├── collections/                  # Content Collections schema definitions
@@ -71,7 +71,7 @@ Built with **TanStack Start**, **React 19**, **Mantine UI**, **LinguiJS**, and *
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -99,7 +99,7 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
 ---
 
-## 🌐 Localization (i18n) Workflow
+## Localization (i18n) Workflow
 
 All user-visible strings must be internationalized using Lingui.
 
@@ -122,7 +122,7 @@ bun run i18n:compile
 
 ---
 
-## 🛠 Available Scripts
+## Available Scripts
 
 | Command | Description |
 | :--- | :--- |
@@ -137,7 +137,7 @@ bun run i18n:compile
 
 ---
 
-## 📝 Git Workflow & Commit Guidelines
+## Git Workflow & Commit Guidelines
 
 This project strictly enforces **Conventional Commits**. Any commit message failing the convention will be rejected by Commitlint:
 
@@ -153,6 +153,6 @@ chore(i18n): update Vietnamese message catalog
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the [MIT License](LICENSE).
