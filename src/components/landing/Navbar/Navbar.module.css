@@ -168,6 +168,12 @@
 	color: var(--text-secondary);
 }
 
+.desktopActions {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
 .drawerActions {
 	display: flex;
 	flex-direction: column;
@@ -176,13 +182,54 @@
 	padding-top: 24px;
 }
 
+.drawerSignInBtn {
+	color: var(--text-primary);
+	border: 1px solid var(--border-default);
+	background: transparent;
+	font-size: 15px;
+	font-weight: 500;
+	padding: 12px 20px;
+	border-radius: 8px;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color 0.15s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.drawerSignInBtn:hover {
+	background-color: var(--state-hover);
+}
+
+.drawerPrimaryBtn {
+	background-color: var(--action-primary);
+	color: var(--action-primary-text);
+	font-size: 15px;
+	font-weight: 500;
+	padding: 12px 20px;
+	border-radius: 8px;
+	text-align: center;
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition:
+		opacity 0.15s ease,
+		transform 0.1s ease;
+}
+
+.drawerPrimaryBtn:hover {
+	opacity: 0.92;
+	transform: translateY(-1px);
+}
+
 @media (max-width: 992px) {
 	.navLinks {
 		display: none;
 	}
 
-	.signInBtn,
-	.primaryBtn {
+	.desktopActions {
 		display: none;
 	}
 

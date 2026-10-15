@@ -62,47 +62,49 @@ export function Navbar() {
 				</nav>
 
 				<div className={styles.actions}>
-					<Menu shadow="md" width={140} position="bottom-end">
-						<Menu.Target>
-							<ActionIcon
-								variant="default"
-								size="lg"
-								radius="md"
-								aria-label={i18n._("Switch language")}
-							>
-								<Globe size={18} />
-							</ActionIcon>
-						</Menu.Target>
-						<Menu.Dropdown>
-							{locales.map((loc) => (
-								<Menu.Item
-									key={loc.code}
-									onClick={() => switchLocale(loc.code as Locale)}
-									fw={currentLocale === loc.code ? 700 : 400}
+					<div className={styles.desktopActions}>
+						<Menu shadow="md" width={140} position="bottom-end">
+							<Menu.Target>
+								<ActionIcon
+									variant="default"
+									size="lg"
+									radius="md"
+									aria-label={i18n._("Switch language")}
 								>
-									{loc.nativeName}
-								</Menu.Item>
-							))}
-						</Menu.Dropdown>
-					</Menu>
+									<Globe size={18} />
+								</ActionIcon>
+							</Menu.Target>
+							<Menu.Dropdown>
+								{locales.map((loc) => (
+									<Menu.Item
+										key={loc.code}
+										onClick={() => switchLocale(loc.code as Locale)}
+										fw={currentLocale === loc.code ? 700 : 400}
+									>
+										{loc.nativeName}
+									</Menu.Item>
+								))}
+							</Menu.Dropdown>
+						</Menu>
 
-					<ActionIcon
-						variant="default"
-						size="lg"
-						radius="md"
-						onClick={toggleColorScheme}
-						aria-label={i18n._("Toggle theme")}
-					>
-						{isDark ? <Sun size={18} /> : <Moon size={18} />}
-					</ActionIcon>
+						<ActionIcon
+							variant="default"
+							size="lg"
+							radius="md"
+							onClick={toggleColorScheme}
+							aria-label={i18n._("Toggle theme")}
+						>
+							{isDark ? <Sun size={18} /> : <Moon size={18} />}
+						</ActionIcon>
 
-					<LocalizedLink to="/login" className={styles.signInBtn}>
-						{i18n._("Sign in")}
-					</LocalizedLink>
+						<LocalizedLink to="/login" className={styles.signInBtn}>
+							{i18n._("Sign in")}
+						</LocalizedLink>
 
-					<LocalizedLink to="/signup" className={styles.primaryBtn}>
-						{i18n._("Get Started")}
-					</LocalizedLink>
+						<LocalizedLink to="/signup" className={styles.primaryBtn}>
+							{i18n._("Get Started")}
+						</LocalizedLink>
+					</div>
 
 					<div className={styles.mobileMenu}>
 						<Burger
@@ -183,19 +185,14 @@ export function Navbar() {
 					<div className={styles.drawerActions}>
 						<LocalizedLink
 							to="/login"
-							className={styles.signInBtn}
-							style={{
-								textAlign: "center",
-								border: "1px solid var(--border-default)",
-							}}
+							className={styles.drawerSignInBtn}
 							onClick={() => setOpened(false)}
 						>
 							{i18n._("Sign in")}
 						</LocalizedLink>
 						<LocalizedLink
 							to="/signup"
-							className={styles.primaryBtn}
-							style={{ textAlign: "center" }}
+							className={styles.drawerPrimaryBtn}
 							onClick={() => setOpened(false)}
 						>
 							{i18n._("Get Started")}
