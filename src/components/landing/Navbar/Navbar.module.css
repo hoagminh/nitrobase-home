@@ -78,46 +78,55 @@
 
 .signInBtn {
 	color: var(--text-primary);
-	font-weight: 500;
-	font-size: 15px;
-	line-height: 24px;
+	font-weight: var(--btn-font-weight);
+	font-size: 14px;
+	line-height: 20px;
 	background: transparent;
-	border: none;
+	border: 1px solid transparent;
 	cursor: pointer;
-	padding: 10px 20px;
-	border-radius: 8px;
-	transition: background-color 0.15s ease;
+	padding: 8px 16px;
+	border-radius: var(--btn-radius);
+	transition: var(--btn-transition);
 	text-decoration: none;
 }
 
 .signInBtn:hover {
 	background-color: var(--state-hover);
+	transform: translateY(-0.5px);
+}
+
+.signInBtn:active {
+	transform: translateY(0.5px);
 }
 
 .primaryBtn {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	font-size: 15px;
-	line-height: 24px;
-	font-weight: 500;
-	padding: 10px 22px;
-	border-radius: 8px;
-	border: none;
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
+	font-size: 14px;
+	line-height: 20px;
+	font-weight: var(--btn-font-weight);
+	padding: 8px 18px;
+	border-radius: var(--btn-radius);
 	cursor: pointer;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	transition: var(--btn-transition);
 	text-decoration: none;
 }
 
 .primaryBtn:hover {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	opacity: 0.92;
-	transform: translateY(-1px);
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.primaryBtn:active {
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .mobileMenu {
@@ -183,45 +192,61 @@
 }
 
 .drawerSignInBtn {
-	color: var(--text-primary);
-	border: 1px solid var(--border-default);
-	background: transparent;
+	color: var(--btn-secondary-text);
+	border: var(--btn-secondary-border);
+	background: var(--btn-secondary-bg);
+	box-shadow: var(--btn-secondary-shadow);
 	font-size: 15px;
-	font-weight: 500;
+	font-weight: var(--btn-font-weight);
 	padding: 12px 20px;
-	border-radius: 8px;
+	border-radius: var(--btn-radius);
 	text-align: center;
 	text-decoration: none;
-	transition: background-color 0.15s ease;
+	transition: var(--btn-transition);
 	display: flex;
 	align-items: center;
 	justify-content: center;
 }
 
 .drawerSignInBtn:hover {
-	background-color: var(--state-hover);
+	background-color: var(--btn-secondary-bg-hover);
+	border-color: var(--btn-secondary-border-hover);
+	box-shadow: var(--btn-secondary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.drawerSignInBtn:active {
+	box-shadow: var(--btn-secondary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .drawerPrimaryBtn {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
 	font-size: 15px;
-	font-weight: 500;
+	font-weight: var(--btn-font-weight);
 	padding: 12px 20px;
-	border-radius: 8px;
+	border-radius: var(--btn-radius);
 	text-align: center;
 	text-decoration: none;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	transition: var(--btn-transition);
 }
 
 .drawerPrimaryBtn:hover {
-	opacity: 0.92;
-	transform: translateY(-1px);
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.drawerPrimaryBtn:active {
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 @media (max-width: 992px) {

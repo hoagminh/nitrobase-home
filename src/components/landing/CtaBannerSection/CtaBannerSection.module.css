@@ -114,25 +114,29 @@
 }
 
 .ctaBtn {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
 	font-size: 16px;
 	line-height: 24px;
-	font-weight: 500;
-	padding: 12px 24px;
-	border-radius: 99px;
+	font-weight: var(--btn-font-weight);
+	padding: 12px 28px;
+	border-radius: var(--btn-radius);
 	height: auto;
-	border: none;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	transition: var(--btn-transition);
 }
 
 .ctaBtn:hover {
-	opacity: 0.92;
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	transform: translateY(-1px);
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.ctaBtn:active {
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .subText {

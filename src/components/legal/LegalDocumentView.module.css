@@ -170,26 +170,26 @@
 }
 
 .contactBtn {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	font-weight: 600;
-	border-radius: 8px;
-	border: none;
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
+	font-weight: var(--btn-font-weight);
+	border-radius: var(--btn-radius);
 	text-decoration: none;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	transition: var(--btn-transition);
 }
 
 .contactBtn:hover {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	opacity: 0.92;
-	transform: translateY(-1px);
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
 }
 
 .contactBtn:active {
-	transform: translateY(0);
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 @media (max-width: 900px) {

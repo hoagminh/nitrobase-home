@@ -171,19 +171,25 @@
 }
 
 .modalSubmitBtn {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	border: none;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
+	border-radius: var(--btn-radius);
+	font-weight: var(--btn-font-weight);
+	transition: var(--btn-transition);
 }
 
 .modalSubmitBtn:hover:not(:disabled) {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	opacity: 0.92;
-	transform: translateY(-1px);
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.modalSubmitBtn:active:not(:disabled) {
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 @media (max-width: 1200px) {

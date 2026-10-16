@@ -1,19 +1,8 @@
-import { useLingui } from "@lingui/react";
-import { Box, Group, Text, UnstyledButton } from "@mantine/core";
-import { Mouse } from "lucide-react";
+import { Box, Group, Text } from "@mantine/core";
 import { TECH_PARTNERS } from "#/constants/landing";
 import styles from "./TechStackSection.module.css";
 
 export function TechStackSection() {
-	const { i18n } = useLingui();
-
-	const handleScrollToExplore = () => {
-		const target = document.getElementById("how-it-works");
-		if (target) {
-			target.scrollIntoView({ behavior: "smooth", block: "start" });
-		}
-	};
-
 	return (
 		<Box component="section" className={styles.section}>
 			<Box className={styles.marqueeContainer}>
@@ -57,17 +46,6 @@ export function TechStackSection() {
 					</Box>
 				</Box>
 			</Box>
-
-			<UnstyledButton
-				onClick={handleScrollToExplore}
-				className={styles.scrollIndicator}
-				aria-label={i18n._("Scroll to explore")}
-			>
-				<Group justify="center" gap={6}>
-					<Mouse size={14} className={styles.mouseIcon} />
-					<Text component="span">{i18n._("SCROLL TO EXPLORE")}</Text>
-				</Group>
-			</UnstyledButton>
 		</Box>
 	);
 }

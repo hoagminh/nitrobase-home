@@ -13,6 +13,13 @@ export const mantineTheme: MantineThemeOverride = createTheme({
 		},
 	},
 	defaultRadius: "md",
+	radius: {
+		xs: "4px",
+		sm: "6px",
+		md: "10px",
+		lg: "14px",
+		xl: "20px",
+	},
 	cursorType: "pointer",
 	colors: {
 		dark: [

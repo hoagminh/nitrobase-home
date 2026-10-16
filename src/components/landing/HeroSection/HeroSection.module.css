@@ -63,42 +63,55 @@
 }
 
 .primaryCta {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 500;
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
+	font-size: 15px;
+	line-height: 22px;
+	font-weight: var(--btn-font-weight);
 	padding: 12px 24px;
-	border-radius: 8px;
+	border-radius: var(--btn-radius);
 	height: auto;
-	border: none;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	transition: var(--btn-transition);
 }
 
 .primaryCta:hover {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	opacity: 0.92;
-	transform: translateY(-1px);
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.primaryCta:active {
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .secondaryCta {
-	background-color: transparent;
-	color: var(--text-primary);
-	font-size: 16px;
-	line-height: 24px;
-	font-weight: 500;
+	background: var(--btn-secondary-bg);
+	color: var(--btn-secondary-text);
+	border: var(--btn-secondary-border);
+	box-shadow: var(--btn-secondary-shadow);
+	font-size: 15px;
+	line-height: 22px;
+	font-weight: var(--btn-font-weight);
 	padding: 12px 24px;
-	border-radius: 8px;
+	border-radius: var(--btn-radius);
 	height: auto;
-	border: 1px solid var(--border-default);
-	transition: background-color 0.15s ease;
+	transition: var(--btn-transition);
 }
 
 .secondaryCta:hover {
-	background-color: var(--state-hover);
+	background-color: var(--btn-secondary-bg-hover);
+	border-color: var(--btn-secondary-border-hover);
+	box-shadow: var(--btn-secondary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.secondaryCta:active {
+	box-shadow: var(--btn-secondary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .valueProps {
@@ -212,44 +225,55 @@
 }
 
 .modalCloseBtn {
-	background: transparent;
-	color: var(--text-primary);
+	background: var(--btn-secondary-bg);
+	color: var(--btn-secondary-text);
+	border: var(--btn-secondary-border);
+	box-shadow: var(--btn-secondary-shadow);
 	font-size: 14px;
 	line-height: 20px;
-	font-weight: 500;
+	font-weight: var(--btn-font-weight);
 	padding: 0 18px;
 	height: 40px;
-	border-radius: 8px;
-	border: 1px solid var(--border-default);
-	transition:
-		background-color 0.15s ease,
-		border-color 0.15s ease;
+	border-radius: var(--btn-radius);
+	transition: var(--btn-transition);
 }
 
 .modalCloseBtn:hover {
-	background: var(--state-hover);
+	background: var(--btn-secondary-bg-hover);
+	border-color: var(--btn-secondary-border-hover);
+	box-shadow: var(--btn-secondary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.modalCloseBtn:active {
+	box-shadow: var(--btn-secondary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .modalPrimaryBtn {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
 	font-size: 14px;
 	line-height: 20px;
-	font-weight: 500;
+	font-weight: var(--btn-font-weight);
 	padding: 0 20px;
 	height: 40px;
-	border-radius: 8px;
-	border: none;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	border-radius: var(--btn-radius);
+	transition: var(--btn-transition);
 }
 
-.modalPrimaryBtn:hover {
-	opacity: 0.92;
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	transform: translateY(-1px);
+.modalPrimaryBtn:hover:not(:disabled) {
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.modalPrimaryBtn:active:not(:disabled) {
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 @media (max-width: 1200px) {

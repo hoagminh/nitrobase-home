@@ -137,23 +137,28 @@
 	justify-content: center;
 	gap: 8px;
 	height: 42px;
-	border-radius: 8px;
+	border-radius: var(--btn-radius);
 	font-size: 13px;
-	font-weight: 500;
-	border: 1px solid var(--border-default);
-	background-color: transparent;
-	color: var(--text-primary);
+	font-weight: var(--btn-font-weight);
+	border: var(--btn-secondary-border);
+	background-color: var(--btn-secondary-bg);
+	color: var(--btn-secondary-text);
+	box-shadow: var(--btn-secondary-shadow);
 	text-decoration: none;
 	cursor: pointer;
-	transition:
-		background-color 0.15s ease,
-		border-color 0.15s ease,
-		transform 0.1s ease;
+	transition: var(--btn-transition);
 }
 
 .socialBtn:hover {
-	background-color: var(--state-hover);
-	transform: translateY(-1px);
+	background-color: var(--btn-secondary-bg-hover);
+	border-color: var(--btn-secondary-border-hover);
+	box-shadow: var(--btn-secondary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.socialBtn:active {
+	box-shadow: var(--btn-secondary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .divider {
@@ -209,30 +214,34 @@
 }
 
 .submitBtn {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
+	background: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+	border: var(--btn-primary-border);
+	box-shadow: var(--btn-primary-shadow);
 	height: 42px;
-	border-radius: 8px;
+	border-radius: var(--btn-radius);
 	font-size: 14px;
-	font-weight: 600;
-	border: none;
+	font-weight: var(--btn-font-weight);
 	width: 100%;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
 	gap: 8px;
 	cursor: pointer;
-	transition:
-		opacity 0.15s ease,
-		transform 0.1s ease;
+	transition: var(--btn-transition);
 	margin-top: 4px;
 }
 
 .submitBtn:hover:not(:disabled) {
-	background-color: var(--action-primary);
-	color: var(--action-primary-text);
-	opacity: 0.92;
-	transform: translateY(-1px);
+	background: var(--btn-primary-bg-hover);
+	color: var(--btn-primary-text);
+	box-shadow: var(--btn-primary-shadow-hover);
+	transform: translateY(-0.5px);
+}
+
+.submitBtn:active:not(:disabled) {
+	box-shadow: var(--btn-primary-shadow-active);
+	transform: translateY(0.5px);
 }
 
 .submitBtn:disabled {
