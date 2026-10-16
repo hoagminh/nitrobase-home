@@ -10,7 +10,7 @@ import {
 	Text,
 	Title,
 } from "@mantine/core";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { TESTIMONIALS } from "#/constants/landing";
 import styles from "./TestimonialsSection.module.css";
 
@@ -39,8 +39,8 @@ export function TestimonialsSection() {
 				</Stack>
 
 				<Group gap={24} className={styles.statsArea}>
-					<Group gap={12} wrap="nowrap" className={styles.trustGroup}>
-						<Avatar.Group className={styles.avatarStack}>
+					<Group gap={12} wrap="nowrap">
+						<Avatar.Group>
 							<Avatar
 								src="/assets/landing/avatar-alex.png"
 								alt="Alex"
@@ -60,7 +60,7 @@ export function TestimonialsSection() {
 								size={32}
 							/>
 						</Avatar.Group>
-						<Stack gap={2} className={styles.trustInfo}>
+						<Stack gap={2}>
 							<Text fw={600} className={styles.trustTitle}>
 								{i18n._("Trusted by 1,000+ developers")}
 							</Text>
@@ -76,8 +76,8 @@ export function TestimonialsSection() {
 						className={styles.verticalDivider}
 					/>
 
-					<Stack gap={4} className={styles.ratingGroup}>
-						<Group gap={8} align="center" className={styles.ratingRow}>
+					<Stack gap={4}>
+						<Group gap={8} align="center">
 							<Rating value={5} readOnly size="xs" color="yellow" />
 							<Text fw={700} className={styles.scoreText}>
 								4.9/5
@@ -113,16 +113,23 @@ export function TestimonialsSection() {
 				{TESTIMONIALS.map((item) => (
 					<Carousel.Slide key={item.id}>
 						<Stack justify="space-between" className={styles.card}>
-							<Text className={styles.quote}>"{i18n._(item.quote)}"</Text>
+							<Stack gap={16} className={styles.quoteGroup}>
+								<Quote
+									size={24}
+									className={styles.quoteIcon}
+									fill="currentColor"
+								/>
+								<Text className={styles.quote}>{i18n._(item.quote)}</Text>
+							</Stack>
 
-							<Group gap={12} className={styles.authorRow}>
+							<Group gap={12}>
 								<Avatar
 									src={item.avatarUrl}
 									alt={item.name}
 									radius="xl"
 									size={40}
 								/>
-								<Stack gap={2} className={styles.authorInfo}>
+								<Stack gap={2}>
 									<Text fw={600} className={styles.authorName}>
 										{item.name}
 									</Text>

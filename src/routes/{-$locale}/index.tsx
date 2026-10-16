@@ -5,7 +5,9 @@ import { FeaturesSection } from "#/components/landing/FeaturesSection/FeaturesSe
 import { Footer } from "#/components/landing/Footer/Footer";
 import { HeroSection } from "#/components/landing/HeroSection/HeroSection";
 import { HowItWorksSection } from "#/components/landing/HowItWorksSection/HowItWorksSection";
+import layoutStyles from "#/components/landing/LandingLayout.module.css";
 import { Navbar } from "#/components/landing/Navbar/Navbar";
+import { SectionDivider } from "#/components/landing/SectionDivider/SectionDivider";
 import { TechStackSection } from "#/components/landing/TechStackSection/TechStackSection";
 import { TestimonialsSection } from "#/components/landing/TestimonialsSection/TestimonialsSection";
 import type { Locale } from "#/libs/i18n";
@@ -62,17 +64,26 @@ export const Route = createFileRoute("/{-$locale}/")({
 
 function LandingPage() {
 	return (
-		<main
-			style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
-		>
+		<main className={layoutStyles.main}>
 			<Navbar />
+			<div className={layoutStyles.gridFrame} aria-hidden="true">
+				<div className={layoutStyles.verticalGuideLeft} />
+				<div className={layoutStyles.verticalGuideRight} />
+			</div>
 			<HeroSection />
+			<SectionDivider />
 			<TechStackSection />
+			<SectionDivider />
 			<HowItWorksSection />
+			<SectionDivider />
 			<FeaturesSection />
+			<SectionDivider />
 			<TestimonialsSection />
+			<SectionDivider />
 			<FaqSection />
+			<SectionDivider />
 			<CtaBannerSection />
+			<SectionDivider />
 			<Footer />
 		</main>
 	);

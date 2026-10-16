@@ -48,7 +48,7 @@ export function HowItWorksSection() {
 					>
 						{i18n._("3 simple steps")}
 					</Badge>
-					<Stack gap={10} className={styles.checklist}>
+					<Stack gap={10}>
 						<Group gap={8} wrap="nowrap" className={styles.checkItem}>
 							<CircleCheckBig size={16} className={styles.checkIcon} />
 							<Text component="span">
@@ -71,30 +71,23 @@ export function HowItWorksSection() {
 				</Stack>
 			</Group>
 
-			<SimpleGrid
-				cols={{ base: 1, md: 3 }}
-				spacing={24}
-				className={styles.stepsGrid}
-			>
+			<SimpleGrid cols={{ base: 1, md: 3 }} spacing={24}>
 				{WORKFLOW_STEPS.map((step) => (
 					<Box key={step.step} className={styles.stepCard}>
-						<Group
-							gap={16}
-							align="flex-start"
-							wrap="nowrap"
-							className={styles.stepHeader}
-						>
+						<Group gap={16} align="flex-start" wrap="nowrap">
 							<Text component="span" className={styles.stepNumber}>
 								{step.badgeKey}
 							</Text>
 							<Stack gap={6} className={styles.stepTextGroup}>
-								<Group gap={8} align="center" className={styles.stepTitleRow}>
+								<Group gap={8} align="center" justify="space-between">
 									<Title order={3} className={styles.stepTitle}>
 										{i18n._(step.title)}
 									</Title>
 									<MoveRight size={16} className={styles.stepArrow} />
 								</Group>
-								<Text className={styles.stepDesc}>{i18n._(step.desc)}</Text>
+								<Text lineClamp={3} className={styles.stepDesc}>
+									{i18n._(step.desc)}
+								</Text>
 							</Stack>
 						</Group>
 

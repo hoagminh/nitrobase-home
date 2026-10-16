@@ -47,13 +47,32 @@
 	border: 1px solid var(--border-default);
 	background-color: var(--surface-primary);
 	padding: 24px;
-	max-width: 320px;
+	max-width: 451px;
+	width: 100%;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+[data-mantine-color-scheme="dark"] .supportCard {
+	background-color: transparent;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.supportContent {
+	flex: 1;
 }
 
 .supportIcon {
 	background-color: var(--bg-secondary);
 	border: 1px solid var(--border-default);
 	color: var(--text-primary);
+	border-radius: 8px;
+	flex-shrink: 0;
+}
+
+[data-mantine-color-scheme="dark"] .supportIcon {
+	background-color: #333333;
+	border: none;
+	color: #ffffff;
 }
 
 .supportTitle {
@@ -99,9 +118,15 @@
 .accordionItem {
 	border: 1px solid var(--border-default);
 	border-radius: 16px;
-	background-color: var(--surface-primary);
+	background-color: transparent;
 	overflow: hidden;
-	transition: border-color 0.2s ease;
+	transition:
+		border-color 0.2s ease,
+		background-color 0.2s ease;
+}
+
+.accordionItem[data-active] {
+	background-color: var(--surface-primary);
 }
 
 .accordionItem:hover {
@@ -127,7 +152,11 @@
 
 .accordionChevron {
 	color: var(--text-primary);
-	opacity: 0.8;
+	opacity: 0.9;
+}
+
+[data-mantine-color-scheme="dark"] .accordionChevron {
+	color: #ffffff;
 }
 
 .accordionPanel {

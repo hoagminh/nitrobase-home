@@ -35,7 +35,7 @@ export function Footer() {
 	return (
 		<Box component="footer" className={styles.footer}>
 			<div className={styles.mainRow}>
-				<Stack gap={16} className={styles.brandCol}>
+				<Stack gap={16}>
 					<img
 						src={
 							isDark

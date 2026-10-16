@@ -98,6 +98,16 @@
 	border-color: var(--text-secondary);
 }
 
+.quoteGroup {
+	width: 100%;
+}
+
+.quoteIcon {
+	color: var(--text-primary);
+	opacity: 0.9;
+	flex-shrink: 0;
+}
+
 .quote {
 	font-size: 14px;
 	line-height: 20px;

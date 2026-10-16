@@ -77,7 +77,7 @@ export function FaqSection() {
 		<Box component="section" id="faq" className={styles.section}>
 			<Group justify="space-between" align="flex-start" className={styles.grid}>
 				<Stack gap={48} className={styles.leftColumn}>
-					<Stack gap={12} className={styles.titleArea}>
+					<Stack gap={12}>
 						<Text component="span" className={styles.tag}>
 							{i18n._("FAQ")}
 						</Text>
@@ -97,7 +97,12 @@ export function FaqSection() {
 						</Text>
 					</Stack>
 
-					<Stack gap={16} className={styles.supportCard}>
+					<Group
+						gap={24}
+						align="flex-start"
+						wrap="nowrap"
+						className={styles.supportCard}
+					>
 						<ThemeIcon
 							size={40}
 							radius="md"
@@ -106,26 +111,28 @@ export function FaqSection() {
 						>
 							<ShieldCheck size={20} />
 						</ThemeIcon>
-						<Stack gap={4}>
-							<Title order={3} className={styles.supportTitle}>
-								{i18n._("Still have questions?")}
-							</Title>
-							<Text className={styles.supportDesc}>
-								{i18n._("Our team is here to help. Reach out anytime.")}
-							</Text>
+						<Stack gap={12} className={styles.supportContent}>
+							<Stack gap={4}>
+								<Title order={3} className={styles.supportTitle}>
+									{i18n._("Still have questions?")}
+								</Title>
+								<Text className={styles.supportDesc}>
+									{i18n._("Our team is here to help. Reach out anytime.")}
+								</Text>
+							</Stack>
+							<Button
+								type="button"
+								variant="subtle"
+								onClick={openContact}
+								className={styles.contactBtn}
+								rightSection={<MoveRight size={14} />}
+								p={0}
+								justify="flex-start"
+							>
+								{i18n._("Contact Support")}
+							</Button>
 						</Stack>
-						<Button
-							type="button"
-							variant="subtle"
-							onClick={openContact}
-							className={styles.contactBtn}
-							rightSection={<MoveRight size={14} />}
-							p={0}
-							justify="flex-start"
-						>
-							{i18n._("Contact Support")}
-						</Button>
-					</Stack>
+					</Group>
 				</Stack>
 
 				<Box className={styles.rightColumn}>

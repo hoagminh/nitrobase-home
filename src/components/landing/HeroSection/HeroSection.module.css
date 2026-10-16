@@ -109,7 +109,7 @@
 .valueIcon {
 	width: 22px;
 	height: 22px;
-	color: var(--text-primary);
+	color: var(--text-secondary);
 }
 
 .valueText {
@@ -138,12 +138,9 @@
 	right: -40px;
 	top: -20px;
 	border-radius: 50%;
-	background: radial-gradient(
-		circle,
-		rgba(255, 255, 255, 0.04) 0%,
-		rgba(0, 0, 0, 0) 70%
-	);
-	border: 1px solid rgba(255, 255, 255, 0.05);
+	background: linear-gradient(135deg, #101010 0%, #242424 100%);
+	border: 1px solid #1c1c1c;
+	box-shadow: 0 0 80px rgba(36, 36, 36, 0.35);
 	pointer-events: none;
 	z-index: 0;
 }
@@ -155,6 +152,7 @@
 		rgba(0, 0, 0, 0) 70%
 	);
 	border-color: rgba(0, 0, 0, 0.06);
+	box-shadow: none;
 }
 
 .mainCard {
@@ -166,8 +164,14 @@
 	border-radius: 8px;
 	border: 1px solid var(--border-default);
 	overflow: hidden;
-	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+	box-shadow:
+		0 16px 36px -8px rgba(0, 0, 0, 0.08),
+		0 4px 12px rgba(0, 0, 0, 0.04);
 	background-color: var(--surface-primary);
+}
+
+[data-mantine-color-scheme="dark"] .mainCard {
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
 }
 
 .mainImg {
@@ -187,9 +191,15 @@
 	border-radius: 8px;
 	border: 1px solid var(--border-default);
 	overflow: hidden;
-	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+	box-shadow:
+		0 12px 28px -6px rgba(0, 0, 0, 0.08),
+		0 4px 8px rgba(0, 0, 0, 0.04);
 	background-color: var(--surface-primary);
 	transition: transform 0.2s ease;
+}
+
+[data-mantine-color-scheme="dark"] .floatingCard {
+	box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
 }
 
 .floatingCard:hover {

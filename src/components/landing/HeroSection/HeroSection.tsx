@@ -93,12 +93,8 @@ export function HeroSection() {
 					</Group>
 
 					<Group gap={24} className={styles.valueProps}>
-						<Group gap={8} wrap="nowrap" className={styles.valueItem}>
-							<ThemeIcon
-								variant="transparent"
-								size={24}
-								className={styles.valueIconWrapper}
-							>
+						<Group gap={8} wrap="nowrap">
+							<ThemeIcon variant="transparent" size={24}>
 								<Zap className={styles.valueIcon} />
 							</ThemeIcon>
 							<Text className={styles.valueText}>
@@ -112,12 +108,8 @@ export function HeroSection() {
 							className={styles.verticalDivider}
 						/>
 
-						<Group gap={8} wrap="nowrap" className={styles.valueItem}>
-							<ThemeIcon
-								variant="transparent"
-								size={24}
-								className={styles.valueIconWrapper}
-							>
+						<Group gap={8} wrap="nowrap">
+							<ThemeIcon variant="transparent" size={24}>
 								<ShieldCheck className={styles.valueIcon} />
 							</ThemeIcon>
 							<Text className={styles.valueText}>
@@ -131,12 +123,8 @@ export function HeroSection() {
 							className={styles.verticalDivider}
 						/>
 
-						<Group gap={8} wrap="nowrap" className={styles.valueItem}>
-							<ThemeIcon
-								variant="transparent"
-								size={24}
-								className={styles.valueIconWrapper}
-							>
+						<Group gap={8} wrap="nowrap">
+							<ThemeIcon variant="transparent" size={24}>
 								<Server className={styles.valueIcon} />
 							</ThemeIcon>
 							<Text className={styles.valueText}>
@@ -211,7 +199,7 @@ export function HeroSection() {
 								style={{
 									borderRadius: 12,
 									border: "1px solid var(--border-default)",
-									backgroundColor: "var(--bg-secondary)",
+									backgroundColor: "var(--surface-primary)",
 								}}
 							>
 								<Group justify="space-between">
@@ -245,7 +233,7 @@ export function HeroSection() {
 										p={12}
 										style={{
 											borderRadius: 8,
-											backgroundColor: "var(--surface-primary)",
+											backgroundColor: "var(--bg-secondary)",
 											border: "1px solid var(--border-default)",
 										}}
 									>
@@ -260,7 +248,7 @@ export function HeroSection() {
 										p={12}
 										style={{
 											borderRadius: 8,
-											backgroundColor: "var(--surface-primary)",
+											backgroundColor: "var(--bg-secondary)",
 											border: "1px solid var(--border-default)",
 										}}
 									>
@@ -275,7 +263,7 @@ export function HeroSection() {
 										p={12}
 										style={{
 											borderRadius: 8,
-											backgroundColor: "var(--surface-primary)",
+											backgroundColor: "var(--bg-secondary)",
 											border: "1px solid var(--border-default)",
 										}}
 									>
@@ -354,7 +342,7 @@ export function HeroSection() {
 								style={{
 									borderRadius: 12,
 									border: "1px solid var(--border-default)",
-									backgroundColor: "var(--bg-secondary)",
+									backgroundColor: "var(--surface-primary)",
 								}}
 							>
 								<Group justify="space-between">

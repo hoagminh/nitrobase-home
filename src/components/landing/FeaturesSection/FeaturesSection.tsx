@@ -50,14 +50,10 @@ export function FeaturesSection() {
 				</Text>
 			</Stack>
 
-			<SimpleGrid
-				cols={{ base: 1, sm: 2, lg: 4 }}
-				spacing={24}
-				className={styles.grid}
-			>
+			<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={24}>
 				{BENEFIT_ITEMS.map((item) => (
 					<Stack key={item.id} justify="space-between" className={styles.card}>
-						<Stack gap={12} className={styles.cardTop}>
+						<Stack gap={12}>
 							<ThemeIcon
 								size={40}
 								radius="md"

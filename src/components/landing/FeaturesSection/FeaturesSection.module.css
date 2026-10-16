@@ -41,12 +41,19 @@
 .card {
 	border-radius: 16px;
 	border: 1px solid var(--border-default);
-	background-color: var(--bg-secondary);
+	background-color: var(--surface-primary);
+	box-shadow: var(--card-shadow);
 	padding: 24px 20px;
 	gap: 20px;
 	transition:
 		transform 0.2s ease,
-		border-color 0.2s ease;
+		border-color 0.2s ease,
+		box-shadow 0.2s ease;
+}
+
+[data-mantine-color-scheme="dark"] .card {
+	padding: 16px;
+	gap: 16px;
 }
 
 .card:hover {
@@ -55,9 +62,16 @@
 }
 
 .iconWrapper {
-	background-color: var(--surface-primary);
+	background-color: var(--bg-secondary);
 	border: 1px solid var(--border-default);
 	color: var(--text-primary);
+	border-radius: 8px;
+}
+
+[data-mantine-color-scheme="dark"] .iconWrapper {
+	background-color: #333333;
+	border: none;
+	color: var(--text-secondary);
 }
 
 .cardTitle {
