@@ -13,7 +13,6 @@ import {
 	Stack,
 	Tabs,
 	Text,
-	ThemeIcon,
 	Title,
 	Tooltip,
 } from "@mantine/core";
@@ -32,6 +31,7 @@ import {
 	Zap,
 } from "lucide-react";
 import { LocalizedLink } from "#/libs/i18n";
+import { HeroWorkflowCanvas } from "../HeroWorkflowCanvas/HeroWorkflowCanvas";
 import styles from "./HeroSection.module.css";
 
 export function HeroSection() {
@@ -48,17 +48,18 @@ export function HeroSection() {
 				spacing={{ base: 32, md: 40 }}
 				className={styles.grid}
 			>
-				<Stack gap={24} className={styles.content}>
-					<Text className={styles.tagline}>
-						{i18n._("SELF-HOST SUPABASE, SIMPLIFIED")}
-					</Text>
+				<Stack gap={20} className={styles.content}>
+					<Box className={styles.badgeTag}>
+						<span className={styles.badgeDot} />
+						<span>
+							{i18n._("SaaSBase v1.0 // Self-Hosted Supabase Architecture")}
+						</span>
+					</Box>
 
 					<Title order={1} className={styles.title}>
-						{i18n._("Self-host Supabase.")}
+						{i18n._("Self-host Supabase.")}{" "}
 						<span className={styles.gradientSubtitle}>
-							{i18n._("Without the setup")}
-							<br />
-							{i18n._("headache.")}
+							{i18n._("Without the setup headache.")}
 						</span>
 					</Title>
 
@@ -68,14 +69,14 @@ export function HeroSection() {
 						)}
 					</Text>
 
-					<Group gap={16} className={styles.actions}>
+					<Group gap={14} className={styles.actions}>
 						<Button
 							component={LocalizedLink}
 							to="/signup"
 							size="md"
 							radius="md"
 							className={styles.primaryCta}
-							rightSection={<MoveRight size={18} />}
+							rightSection={<MoveRight size={17} />}
 						>
 							{i18n._("Get Started Free")}
 						</Button>
@@ -86,72 +87,76 @@ export function HeroSection() {
 							radius="md"
 							variant="default"
 							className={styles.secondaryCta}
-							leftSection={<Play size={16} />}
+							leftSection={<Play size={15} />}
 						>
 							{i18n._("Explore Demo")}
 						</Button>
 					</Group>
 
-					<Group gap={24} className={styles.valueProps}>
-						<Group gap={8} wrap="nowrap">
-							<ThemeIcon variant="transparent" size={24}>
-								<Zap className={styles.valueIcon} />
-							</ThemeIcon>
+					<Box className={styles.cliSnippet}>
+						<Terminal size={14} className={styles.cliIcon} />
+						<Code className={styles.cliCode}>{curlSnippet}</Code>
+						<CopyButton value={curlSnippet} timeout={2000}>
+							{({ copied, copy }) => (
+								<Tooltip
+									label={
+										copied ? i18n._("Copied!") : i18n._("Copy install command")
+									}
+								>
+									<Button
+										type="button"
+										size="xs"
+										variant="subtle"
+										onClick={copy}
+										className={styles.copyBtn}
+									>
+										{copied ? (
+											<Check size={13} color="#10b981" />
+										) : (
+											<Copy size={13} />
+										)}
+									</Button>
+								</Tooltip>
+							)}
+						</CopyButton>
+					</Box>
+
+					<Group gap={18} className={styles.valueProps}>
+						<div className={styles.valueItem}>
+							<Zap className={styles.valueIcon} />
 							<Text className={styles.valueText}>
-								{i18n._("Automated\nDeployment")}
+								{i18n._("Automated Deployment")}
 							</Text>
-						</Group>
+						</div>
 
 						<Divider
 							orientation="vertical"
-							h={40}
 							className={styles.verticalDivider}
 						/>
 
-						<Group gap={8} wrap="nowrap">
-							<ThemeIcon variant="transparent" size={24}>
-								<ShieldCheck className={styles.valueIcon} />
-							</ThemeIcon>
+						<div className={styles.valueItem}>
+							<ShieldCheck className={styles.valueIcon} />
 							<Text className={styles.valueText}>
-								{i18n._("Secure &\nPrivate")}
+								{i18n._("End-to-End Encryption")}
 							</Text>
-						</Group>
+						</div>
 
 						<Divider
 							orientation="vertical"
-							h={40}
 							className={styles.verticalDivider}
 						/>
 
-						<Group gap={8} wrap="nowrap">
-							<ThemeIcon variant="transparent" size={24}>
-								<Server className={styles.valueIcon} />
-							</ThemeIcon>
+						<div className={styles.valueItem}>
+							<Server className={styles.valueIcon} />
 							<Text className={styles.valueText}>
-								{i18n._("Your VPS,\nYour Control")}
+								{i18n._("100% VPS Sovereignty")}
 							</Text>
-						</Group>
+						</div>
 					</Group>
 				</Stack>
 
 				<Box className={styles.visualWrapper}>
-					<Box className={styles.ellipseGlow} />
-
-					<Box className={styles.mainCard}>
-						<img
-							src="/assets/landing/hero-preview.png"
-							alt="SaaS Base Dashboard Preview"
-							className={styles.mainImg}
-						/>
-					</Box>
-
-					<Box className={styles.floatingCard}>
-						<img
-							src="/assets/landing/hero-preview-secondary.png"
-							alt="SaaS Base Mobile Preview"
-							className={styles.mainImg}
-						/>
-					</Box>
+					<HeroWorkflowCanvas />
 				</Box>
 			</SimpleGrid>
 

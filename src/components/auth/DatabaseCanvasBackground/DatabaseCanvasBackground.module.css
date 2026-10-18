@@ -1,0 +1,190 @@
+.canvasWrapper {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	z-index: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: auto;
+}
+
+.canvas {
+	width: 100%;
+	height: 100%;
+	display: block;
+	cursor: crosshair;
+	touch-action: none;
+}
+
+.radialOverlay {
+	position: absolute;
+	width: min(1000px, 95vw);
+	height: min(1000px, 95vw);
+	left: 32%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+	pointer-events: none;
+	background: radial-gradient(
+		circle,
+		rgba(62, 207, 142, 0.06) 0%,
+		rgba(56, 189, 248, 0.035) 40%,
+		transparent 70%
+	);
+	filter: blur(50px);
+	z-index: 0;
+	transition: left 0.3s ease;
+}
+
+:global([data-mantine-color-scheme="light"]) .radialOverlay {
+	background: radial-gradient(
+		circle,
+		rgba(16, 185, 129, 0.04) 0%,
+		rgba(14, 165, 233, 0.02) 40%,
+		transparent 70%
+	);
+}
+
+/* Cal.com style vertical grid lines container */
+.gridLinesOverlay {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	display: flex;
+	justify-content: space-between;
+	padding: 0 40px;
+	z-index: 0;
+}
+
+.gridLine {
+	width: 1px;
+	height: 100%;
+	background-image: repeating-linear-gradient(
+		to bottom,
+		transparent,
+		transparent 6px,
+		rgba(255, 255, 255, 0.07) 6px,
+		rgba(255, 255, 255, 0.07) 12px
+	);
+	transition: opacity 0.3s ease;
+}
+
+:global([data-mantine-color-scheme="light"]) .gridLine {
+	background-image: repeating-linear-gradient(
+		to bottom,
+		transparent,
+		transparent 6px,
+		rgba(0, 0, 0, 0.06) 6px,
+		rgba(0, 0, 0, 0.06) 12px
+	);
+}
+
+/* Cal.com bottom telemetry row */
+.telemetryBar {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 48px;
+	padding: 0 max(72px, 5vw) 0 32px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	pointer-events: none;
+	z-index: 1;
+	border-top: 1px solid rgba(255, 255, 255, 0.05);
+	background: linear-gradient(
+		to top,
+		color-mix(in srgb, var(--bg-primary) 85%, transparent),
+		transparent
+	);
+}
+
+:global([data-mantine-color-scheme="light"]) .telemetryBar {
+	border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.telemetryItem {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	font-family:
+		monospace, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, sans-serif;
+	font-size: 11px;
+	color: var(--text-secondary);
+	letter-spacing: 0.02em;
+	user-select: none;
+}
+
+.telemetryLabel {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-weight: 500;
+	color: var(--text-primary);
+}
+
+.telemetryDot {
+	width: 5px;
+	height: 5px;
+	border-radius: 50%;
+	background-color: #3ecf8e;
+	box-shadow: 0 0 6px rgba(62, 207, 142, 0.8);
+	animation: pulseGlow 2.5s infinite ease-in-out;
+}
+
+:global([data-mantine-color-scheme="light"]) .telemetryDot {
+	background-color: #059669;
+	box-shadow: 0 0 5px rgba(5, 150, 105, 0.5);
+}
+
+.telemetrySub {
+	font-size: 9.5px;
+	color: var(--text-disabled);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+@keyframes pulseGlow {
+	0%,
+	100% {
+		opacity: 0.45;
+		transform: scale(0.9);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.25);
+	}
+}
+
+@media (max-width: 992px) {
+	.radialOverlay {
+		left: 50%;
+	}
+
+	.gridLinesOverlay {
+		display: none;
+	}
+
+	.telemetryBar {
+		padding: 0 16px;
+		justify-content: center;
+		gap: 24px;
+	}
+
+	.telemetryItem:nth-child(n + 4) {
+		display: none;
+	}
+}
+
+@media (max-width: 600px) {
+	.telemetryBar {
+		display: none;
+	}
+}
