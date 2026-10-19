@@ -109,6 +109,7 @@
 	"SshExecutor: connected (host key SHA256 verified)": "SshExecutor: đã kết nối (xác thực vân tay SHA256 thành công)",
 	"Generated 40-char DB passwords & ES256 auth keys": "Đã tạo mật khẩu DB 40 ký tự & khóa xác thực ES256",
 	"Postgres 16, Kong, GoTrue, Realtime, Studio healthy": "Postgres 16, Kong, GoTrue, Realtime, Studio hoạt động tốt",
+	"Close inspector": "Đóng bảng chi tiết",
 	"Click to simulate full deployment workflow": "Nhấp để mô phỏng toàn bộ quy trình triển khai",
 	"Simulating...": "Đang mô phỏng...",
 	"Simulate": "Mô phỏng",

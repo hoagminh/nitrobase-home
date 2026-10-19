@@ -9,6 +9,8 @@
 	justify-content: center;
 	margin: 0 auto;
 	user-select: none;
+	overflow: hidden;
+	border-radius: 12px;
 }
 
 .canvasWrapper {
@@ -79,6 +81,8 @@
 	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 	cursor: pointer;
 	transition: all 0.2s ease;
+	max-width: calc(100% - 24px);
+	box-sizing: border-box;
 }
 
 .telemetryPill:hover {
@@ -108,6 +112,7 @@
 	background: #10b981;
 	box-shadow: 0 0 6px #10b981;
 	animation: liveBlink 2.2s infinite ease-in-out;
+	flex-shrink: 0;
 }
 
 @keyframes liveBlink {
@@ -126,10 +131,16 @@
 	color: #10b981;
 	font-weight: 600;
 	font-size: 10px;
+	flex-shrink: 0;
 }
 
 .pillText {
 	color: inherit;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	min-width: 0;
+	flex: 1;
 }
 
 .pillAction {
@@ -137,16 +148,17 @@
 	font-size: 10px;
 	padding-left: 8px;
 	border-left: 1px solid rgba(255, 255, 255, 0.1);
+	flex-shrink: 0;
 }
 
 :global([data-mantine-color-scheme="light"]) .pillAction {
 	border-left-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Floating Node Inspector Card (when hover/click) */
+/* Floating Node Inspector Card (Blueprint popup on hover/click) */
 .nodeInspector {
 	position: absolute;
-	pointer-events: none;
+	pointer-events: auto;
 	z-index: 25;
 	padding: 10px 14px;
 	border-radius: 8px;
@@ -156,8 +168,9 @@
 		0 12px 30px -5px rgba(0, 0, 0, 0.8),
 		0 0 12px rgba(16, 185, 129, 0.1);
 	backdrop-filter: blur(14px);
-	max-width: 260px;
-	transform: translate(-50%, -115%);
+	width: max-content;
+	max-width: 270px;
+	box-sizing: border-box;
 	transition:
 		opacity 0.15s ease,
 		transform 0.15s ease;
@@ -171,19 +184,63 @@
 		0 0 12px rgba(16, 185, 129, 0.08);
 }
 
+/* Desktop station-specific positioning */
+.inspectorVps {
+	top: 36%;
+	left: 14px;
+	right: auto;
+	transform: translateY(-50%);
+}
+
+.inspectorStack {
+	top: 32%;
+	right: 14px;
+	left: auto;
+	transform: translateY(-50%);
+}
+
+.inspectorForge {
+	top: 26%;
+	left: 50%;
+	right: auto;
+	transform: translateX(-50%);
+}
+
+.inspectorBackup {
+	bottom: 50px;
+	top: auto;
+	left: 50%;
+	right: auto;
+	transform: translateX(-50%);
+}
+
+.inspectorHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 4px;
+}
+
 .inspectorTitle {
 	font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 	font-size: 12px;
 	font-weight: 600;
 	color: #ffffff;
-	margin-bottom: 2px;
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	min-width: 0;
 }
 
 :global([data-mantine-color-scheme="light"]) .inspectorTitle {
 	color: #171717;
+}
+
+.inspectorControls {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-shrink: 0;
 }
 
 .inspectorStatus {
@@ -194,6 +251,39 @@
 	padding: 1px 5px;
 	border-radius: 4px;
 	text-transform: uppercase;
+}
+
+.inspectorCloseBtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	border-radius: 4px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	background: rgba(255, 255, 255, 0.06);
+	color: #a1a1aa;
+	cursor: pointer;
+	font-size: 14px;
+	line-height: 1;
+	padding: 0;
+	transition: all 0.15s ease;
+}
+
+.inspectorCloseBtn:hover {
+	background: rgba(255, 255, 255, 0.15);
+	color: #ffffff;
+}
+
+:global([data-mantine-color-scheme="light"]) .inspectorCloseBtn {
+	border-color: rgba(0, 0, 0, 0.1);
+	background: rgba(0, 0, 0, 0.05);
+	color: #71717a;
+}
+
+:global([data-mantine-color-scheme="light"]) .inspectorCloseBtn:hover {
+	background: rgba(0, 0, 0, 0.1);
+	color: #09090b;
 }
 
 .inspectorDesc {
@@ -236,4 +326,47 @@
 	content: ">";
 	color: #10b981;
 	font-weight: bold;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 640px) {
+	.container {
+		height: 480px;
+	}
+
+	.nodeInspector,
+	.inspectorVps,
+	.inspectorStack,
+	.inspectorForge,
+	.inspectorBackup {
+		top: 10px;
+		bottom: auto;
+		left: 10px;
+		right: 10px;
+		transform: none;
+		max-width: calc(100% - 20px);
+		width: auto;
+		padding: 8px 12px;
+	}
+
+	.telemetryPill {
+		gap: 6px;
+		padding: 4px 10px;
+		font-size: 10px;
+		max-width: calc(100% - 20px);
+		bottom: 10px;
+	}
+
+	.pillText {
+		max-width: 170px;
+	}
+
+	.pillAction {
+		padding-left: 6px;
+		flex-shrink: 0;
+	}
+
+	.pillTag {
+		flex-shrink: 0;
+	}
 }

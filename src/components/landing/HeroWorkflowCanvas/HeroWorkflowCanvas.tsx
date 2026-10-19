@@ -339,10 +339,10 @@ export function HeroWorkflowCanvas() {
 			canvas.style.cursor = "default";
 		};
 
-		const onClick = (e: MouseEvent) => {
+		const handleActionAt = (clientX: number, clientY: number) => {
 			const rect = canvas.getBoundingClientRect();
-			const cx = e.clientX - rect.left;
-			const cy = e.clientY - rect.top;
+			const cx = clientX - rect.left;
+			const cy = clientY - rect.top;
 
 			ripples.push({
 				x: cx,
@@ -352,16 +352,59 @@ export function HeroWorkflowCanvas() {
 				alpha: 1,
 			});
 
-			if (hoveredStationRef.current) {
-				setSelectedStationId((prev) =>
-					prev === hoveredStationRef.current ? null : hoveredStationRef.current,
-				);
+			const layout = getLayout(width, height);
+			const targets = [
+				{ id: "vps", x: layout.vps.x, y: layout.vps.y, r: 48 * layout.scale },
+				{
+					id: "forge",
+					x: layout.forge.x,
+					y: layout.forge.y,
+					r: 46 * layout.scale,
+				},
+				{
+					id: "stack",
+					x: layout.stack.x,
+					y: layout.stack.y,
+					r: 70 * layout.scale,
+				},
+				{
+					id: "backup",
+					x: layout.backup.x,
+					y: layout.backup.y,
+					r: 48 * layout.scale,
+				},
+			];
+
+			let hitId: string | null = null;
+			for (const t of targets) {
+				if (Math.hypot(cx - t.x, cy - t.y) < t.r) {
+					hitId = t.id;
+					break;
+				}
+			}
+
+			if (hitId) {
+				setSelectedStationId((prev) => (prev === hitId ? null : hitId));
+			} else {
+				setSelectedStationId(null);
+			}
+		};
+
+		const onClick = (e: MouseEvent) => {
+			handleActionAt(e.clientX, e.clientY);
+		};
+
+		const onTouchStart = (e: TouchEvent) => {
+			if (e.touches.length > 0) {
+				const touch = e.touches[0];
+				handleActionAt(touch.clientX, touch.clientY);
 			}
 		};
 
 		canvas.addEventListener("mousemove", onMouseMove);
 		canvas.addEventListener("mouseleave", onMouseLeave);
 		canvas.addEventListener("click", onClick);
+		canvas.addEventListener("touchstart", onTouchStart, { passive: true });
 
 		// =========================================================================
 		// 3. 90° ORTHOGONAL CIRCUIT CONDUITS (Strict SaaSBase Workflow Pipeline)
@@ -1181,12 +1224,16 @@ export function HeroWorkflowCanvas() {
 				station: WorkflowStation,
 				nodeX: number,
 				nodeY: number,
-				badgeX: number,
-				badgeY: number,
+				rawBadgeX: number,
+				rawBadgeY: number,
 				isActive: boolean,
 			) => {
-				const badgeW = 168;
+				const badgeW = Math.min(168, Math.max(136, Math.floor(width * 0.44)));
 				const badgeH = 38;
+
+				// Clamp badge position safely inside canvas boundaries
+				const badgeX = Math.max(8, Math.min(width - badgeW - 8, rawBadgeX));
+				const badgeY = Math.max(8, Math.min(height - badgeH - 42, rawBadgeY));
 
 				// 90° Orthogonal Leader Line from 3D Node to HUD Badge
 				ctx.strokeStyle = isActive
@@ -1304,15 +1351,15 @@ export function HeroWorkflowCanvas() {
 			canvas.removeEventListener("mousemove", onMouseMove);
 			canvas.removeEventListener("mouseleave", onMouseLeave);
 			canvas.removeEventListener("click", onClick);
+			canvas.removeEventListener("touchstart", onTouchStart);
 		};
 	}, [isDark, stations]);
 
-	// Currently inspected station (from hover or selection)
+	// Currently inspected station (shows only on click / selection)
 	const activeStation = useMemo(() => {
-		const targetId = selectedStationId || hoveredStationId;
-		if (!targetId) return null;
-		return stations.find((s) => s.id === targetId) || null;
-	}, [selectedStationId, hoveredStationId, stations]);
+		if (!selectedStationId) return null;
+		return stations.find((s) => s.id === selectedStationId) || null;
+	}, [selectedStationId, stations]);
 
 	return (
 		<div className={styles.container} ref={containerRef}>
@@ -1327,33 +1374,43 @@ export function HeroWorkflowCanvas() {
 			{/* Floating Node Inspector Card (Cal.com Blueprint popup on hover/click) */}
 			{activeStation && (
 				<div
-					className={styles.nodeInspector}
-					style={{
-						top:
-							activeStation.id === "forge"
-								? "25%"
-								: activeStation.id === "backup"
-									? "75%"
-									: "48%",
-						left:
-							activeStation.id === "vps"
-								? "22%"
-								: activeStation.id === "stack"
-									? "68%"
-									: "50%",
-					}}
+					className={`${styles.nodeInspector} ${
+						activeStation.id === "vps"
+							? styles.inspectorVps
+							: activeStation.id === "stack"
+								? styles.inspectorStack
+								: activeStation.id === "forge"
+									? styles.inspectorForge
+									: styles.inspectorBackup
+					}`}
 				>
-					<div className={styles.inspectorTitle}>
-						<span>{activeStation.name}</span>
-						<span
-							className={styles.inspectorStatus}
-							style={{
-								color: activeStation.statusColor,
-								backgroundColor: `${activeStation.statusColor}18`,
-							}}
-						>
-							{activeStation.status}
-						</span>
+					<div className={styles.inspectorHeader}>
+						<div className={styles.inspectorTitle}>
+							<span>{activeStation.name}</span>
+						</div>
+						<div className={styles.inspectorControls}>
+							<span
+								className={styles.inspectorStatus}
+								style={{
+									color: activeStation.statusColor,
+									backgroundColor: `${activeStation.statusColor}18`,
+								}}
+							>
+								{activeStation.status}
+							</span>
+							<button
+								type="button"
+								className={styles.inspectorCloseBtn}
+								onClick={(e) => {
+									e.stopPropagation();
+									setSelectedStationId(null);
+									setHoveredStationId(null);
+								}}
+								aria-label={i18n._("Close inspector")}
+							>
+								×
+							</button>
+						</div>
 					</div>
 					<div className={styles.inspectorDesc}>
 						{activeStation.description}

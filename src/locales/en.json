@@ -109,6 +109,7 @@
 	"SshExecutor: connected (host key SHA256 verified)": "SshExecutor: connected (host key SHA256 verified)",
 	"Generated 40-char DB passwords & ES256 auth keys": "Generated 40-char DB passwords & ES256 auth keys",
 	"Postgres 16, Kong, GoTrue, Realtime, Studio healthy": "Postgres 16, Kong, GoTrue, Realtime, Studio healthy",
+	"Close inspector": "Close inspector",
 	"Click to simulate full deployment workflow": "Click to simulate full deployment workflow",
 	"Simulating...": "Simulating...",
 	"Simulate": "Simulate",
