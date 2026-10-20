@@ -82,29 +82,6 @@
 	gap: 16px;
 }
 
-.signInBtn {
-	color: var(--text-primary);
-	font-weight: var(--btn-font-weight);
-	font-size: 14px;
-	line-height: 20px;
-	background: transparent;
-	border: 1px solid transparent;
-	cursor: pointer;
-	padding: 8px 16px;
-	border-radius: var(--btn-radius);
-	transition: var(--btn-transition);
-	text-decoration: none;
-}
-
-.signInBtn:hover {
-	background-color: var(--state-hover);
-	transform: translateY(-0.5px);
-}
-
-.signInBtn:active {
-	transform: translateY(0.5px);
-}
-
 .primaryBtn {
 	background: var(--btn-primary-bg);
 	color: var(--btn-primary-text);
