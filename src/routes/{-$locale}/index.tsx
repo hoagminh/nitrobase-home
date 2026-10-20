@@ -19,10 +19,11 @@ export const Route = createFileRoute("/{-$locale}/")({
 		const globalSeoData = context.globalSeoData;
 
 		const title =
-			globalSeoData?.title || "SaasBase - Self-host Supabase, Simplified";
+			globalSeoData?.title ||
+			"SaaSBase - Self-Host Supabase & Modern Backends on Any VPS";
 		const description =
 			globalSeoData?.description ||
-			"Deploy and manage open-source Supabase infrastructure on your own VPS automatically, securely, and without DevOps complexity.";
+			"Open-source self-hosted PaaS & BaaS deployer. Connect any Ubuntu VPS, bootstrap Docker & Traefik in 1 click, and deploy Supabase full-stack, PocketBase, and apps with encrypted backups and cloud sync.";
 
 		const canonicalUrl =
 			locale === "en" ? "https://saasbase.dev/" : "https://saasbase.dev/vi/";
@@ -32,7 +33,7 @@ export const Route = createFileRoute("/{-$locale}/")({
 			description,
 			keywords: globalSeoData?.keywords,
 			imageUrl: globalSeoData?.image || "/assets/landing/hero-preview.png",
-			siteName: globalSeoData?.site_name || "SaaS Base",
+			siteName: globalSeoData?.site_name || "SaaSBase",
 			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
 			canonicalUrl,
 			locale,

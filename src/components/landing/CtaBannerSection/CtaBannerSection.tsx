@@ -20,16 +20,18 @@ export function CtaBannerSection() {
 
 				<Group gap={8} className={styles.badgePill}>
 					<Box component="span" className={styles.pulseDot} />
-					<Text component="span">{i18n._("Ready to get started?")}</Text>
+					<Text component="span">
+						{i18n._("Ready to own your infrastructure?")}
+					</Text>
 				</Group>
 
 				<Stack align="center" gap={12} className={styles.titleGroup}>
 					<Title order={2} className={styles.title}>
-						{i18n._("Your backend. Your server. Your control.")}
+						{i18n._("Your backend. Your server. Total data sovereignty.")}
 					</Title>
 					<Text className={styles.description}>
 						{i18n._(
-							"Deploy and manage your own Supabase infrastructure - easily, automatically, and securely.",
+							"Deploy Supabase, PocketBase, and full-stack apps on your own VPS with automated Docker bootstrap, encrypted backups, and zero-downtime migrations.",
 						)}
 					</Text>
 				</Stack>
@@ -43,10 +45,12 @@ export function CtaBannerSection() {
 						className={styles.ctaBtn}
 						rightSection={<MoveRight size={16} />}
 					>
-						{i18n._("Get Started for Free")}
+						{i18n._("Get Started Free")}
 					</Button>
 					<Text component="span" className={styles.subText}>
-						{i18n._("No credit card required")}
+						{i18n._(
+							"Open Source • Free & Self-Hosted • No Credit Card Required",
+						)}
 					</Text>
 				</Stack>
 			</Stack>

@@ -27,14 +27,14 @@ export function HowItWorksSection() {
 						{i18n._("HOW IT WORKS")}
 					</Text>
 					<Title order={2} className={styles.title}>
-						{i18n._("From a fresh VPS")}
+						{i18n._("From a fresh VPS")}&nbsp;
 						<span className={styles.highlightText}>
-							{i18n._("to your own backend.")}
+							{i18n._("to a production backend in minutes.")}
 						</span>
 					</Title>
 					<Text className={styles.description}>
 						{i18n._(
-							"No complex setup. No terminal gymnastics. Just a few simple steps and SaaS Base handles the rest - automatically.",
+							"No complex Kubernetes YAML. No terminal gymnastics. Connect your server, pick your stack, and let SaaSBase automate Docker, Traefik, SSL, and secrets.",
 						)}
 					</Text>
 				</Stack>
@@ -52,19 +52,25 @@ export function HowItWorksSection() {
 						<Group gap={8} wrap="nowrap" className={styles.checkItem}>
 							<CircleCheckBig size={16} className={styles.checkIcon} />
 							<Text component="span">
-								{i18n._("Automated setup and configuration")}
+								{i18n._(
+									"Automated SSH TOFU verification & Docker 27 bootstrap",
+								)}
 							</Text>
 						</Group>
 						<Group gap={8} wrap="nowrap" className={styles.checkItem}>
 							<CircleCheckBig size={16} className={styles.checkIcon} />
 							<Text component="span">
-								{i18n._("Secure and reliable infrastructure")}
+								{i18n._(
+									"Production Supabase cluster with Postgres 16, pgvector & Studio",
+								)}
 							</Text>
 						</Group>
 						<Group gap={8} wrap="nowrap" className={styles.checkItem}>
 							<CircleCheckBig size={16} className={styles.checkIcon} />
 							<Text component="span">
-								{i18n._("Full control from one dashboard")}
+								{i18n._(
+									"Automated AES-256 encrypted backups to Cloudflare R2 / S3",
+								)}
 							</Text>
 						</Group>
 					</Stack>

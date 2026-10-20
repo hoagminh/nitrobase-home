@@ -8,7 +8,15 @@ import {
 	ThemeIcon,
 	Title,
 } from "@mantine/core";
-import { Database, Grid2x2, MoveRight, ShieldCheck, Zap } from "lucide-react";
+import {
+	Database,
+	Grid2x2,
+	MoveRight,
+	RefreshCw,
+	Server,
+	ShieldCheck,
+	Zap,
+} from "lucide-react";
 import { BENEFIT_ITEMS } from "#/constants/landing";
 import styles from "./FeaturesSection.module.css";
 
@@ -19,10 +27,14 @@ export function FeaturesSection() {
 		switch (name) {
 			case "zap":
 				return <Zap size={20} />;
+			case "server":
+				return <Server size={20} />;
 			case "database":
 				return <Database size={20} />;
 			case "grid-2x2":
 				return <Grid2x2 size={20} />;
+			case "refresh-cw":
+				return <RefreshCw size={20} />;
 			case "shield-check":
 				return <ShieldCheck size={20} />;
 			default:
@@ -34,23 +46,23 @@ export function FeaturesSection() {
 		<Box component="section" id="features" className={styles.section}>
 			<Stack gap={16} align="center" className={styles.header}>
 				<Text component="span" className={styles.tag}>
-					{i18n._("BENEFITS")}
+					{i18n._("ARCHITECTURE & CAPABILITIES")}
 				</Text>
 				<Title order={2} className={styles.title}>
-					{i18n._("Less setup.")}
+					{i18n._("Enterprise power.")}
 					<br />
 					<span className={styles.highlightText}>
-						{i18n._("More building.")}
+						{i18n._("Zero cloud lock-in.")}
 					</span>
 				</Title>
 				<Text className={styles.description}>
 					{i18n._(
-						"SaaS Base removes the complexity of self-hosting, so you can focus on what matters most - building your product, not managing infrastructure.",
+						"Say goodbye to unpredictable cloud bills. SaaSBase provides the complete developer experience of hosted platforms, running entirely on your own private infrastructure.",
 					)}
 				</Text>
 			</Stack>
 
-			<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }} spacing={24}>
+			<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }}>
 				{BENEFIT_ITEMS.map((item) => (
 					<Stack key={item.id} justify="space-between" className={styles.card}>
 						<Stack gap={12}>
@@ -69,9 +81,9 @@ export function FeaturesSection() {
 						</Stack>
 
 						<a href="#how-it-works" className={styles.cardAction}>
-							<Group gap={6}>
+							<Group gap={6} wrap="nowrap" className={styles.actionRow}>
 								<Text component="span">{i18n._(item.action)}</Text>
-								<MoveRight size={14} />
+								<MoveRight size={14} style={{ flexShrink: 0 }} />
 							</Group>
 						</a>
 					</Stack>

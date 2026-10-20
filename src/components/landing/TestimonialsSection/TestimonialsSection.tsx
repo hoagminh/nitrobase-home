@@ -22,18 +22,18 @@ export function TestimonialsSection() {
 			<Group justify="space-between" align="flex-end" className={styles.header}>
 				<Stack gap={16} className={styles.titleArea}>
 					<Text component="span" className={styles.tag}>
-						{i18n._("TESTIMONIALS")}
+						{i18n._("DEVELOPER REVIEWS")}
 					</Text>
 					<Title order={2} className={styles.title}>
-						{i18n._("Built for developers")}
+						{i18n._("Built for teams")}
 						<br />
 						<span className={styles.highlightText}>
-							{i18n._("who value control.")}
+							{i18n._("who demand data sovereignty.")}
 						</span>
 					</Title>
 					<Text className={styles.description}>
 						{i18n._(
-							"See what early users and teams are saying about their experience with SaaS Base - from faster deployments to simpler infrastructure management.",
+							"See why solo developers, CTOs, and fast-moving teams choose SaaSBase to run production Supabase clusters and backends on their own hardware.",
 						)}
 					</Text>
 				</Stack>
@@ -65,7 +65,7 @@ export function TestimonialsSection() {
 								{i18n._("Trusted by 1,000+ developers")}
 							</Text>
 							<Text className={styles.trustSubtitle}>
-								{i18n._("From indie hackers to growing teams,")}
+								{i18n._("From indie hackers to production teams")}
 							</Text>
 						</Stack>
 					</Group>
@@ -84,7 +84,7 @@ export function TestimonialsSection() {
 							</Text>
 						</Group>
 						<Text className={styles.ratingCaption}>
-							{i18n._("Based on real user feedback.")}
+							{i18n._("Based on real community feedback.")}
 						</Text>
 					</Stack>
 				</Group>

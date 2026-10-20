@@ -15,8 +15,9 @@ export const NAV_LINKS: INavLink[] = [
 		label: msg({ id: "How It Works" }),
 		href: "#how-it-works",
 	},
+	{ id: "features", label: msg({ id: "Features" }), href: "#features" },
+	{ id: "faq", label: msg({ id: "FAQ" }), href: "#faq" },
 	{ id: "docs", label: msg({ id: "Docs" }), href: "#" },
-	{ id: "features", label: msg({ id: "Product" }), href: "#features" },
 ];
 
 export const TECH_PARTNERS: ITechPartner[] = [
@@ -40,27 +41,27 @@ export const WORKFLOW_STEPS: IWorkflowStep[] = [
 	{
 		step: 1,
 		badgeKey: "01",
-		title: msg({ id: "Connect Your VPS" }),
+		title: msg({ id: "Connect VPS & Bootstrap" }),
 		desc: msg({
-			id: "Add your server using IP, SSH key or your preferred authentication method. SaaS Base will verify the connection and check your environment.",
+			id: "Connect any fresh Ubuntu or Debian server over SSH with TOFU host key verification. SaaSBase automatically provisions Docker Engine 27, Traefik v3 reverse proxy, and configures TLS 1.3 Let's Encrypt certificates.",
 		}),
 		imageUrl: "/assets/landing/step-1.png",
 	},
 	{
 		step: 2,
 		badgeKey: "02",
-		title: msg({ id: "Deploy Supabase" }),
+		title: msg({ id: "Deploy Supabase & Backends" }),
 		desc: msg({
-			id: "Choose your configuration and let SaaS Base automatically install and set up Supabase - including Docker, networking, SSL and more. No manual setup required.",
+			id: "Launch full-stack Supabase (Postgres 16, pgvector, GoTrue Auth, Kong Gateway, Studio), PocketBase, Appwrite, or import your entire database directly from Supabase Cloud with automatic credential generation.",
 		}),
 		imageUrl: "/assets/landing/step-2.png",
 	},
 	{
 		step: 3,
 		badgeKey: "03",
-		title: msg({ id: "Manage Your Backend" }),
+		title: msg({ id: "Backups & Zero-Downtime Migration" }),
 		desc: msg({
-			id: "Once deployed, you can manage your database, monitor system health, view logs and handle backups - all from a single, easy-to-use dashboard.",
+			id: "Automate AES-256-CBC encrypted backups streamed offsite to Cloudflare R2, AWS S3, or B2. Move apps between servers seamlessly with automated health verification, instant rollback, and real-time telemetry.",
 		}),
 		imageUrl: "/assets/landing/step-3.png",
 	},
@@ -68,40 +69,40 @@ export const WORKFLOW_STEPS: IWorkflowStep[] = [
 
 export const BENEFIT_ITEMS: IBenefitItem[] = [
 	{
-		id: "less-manual-setup",
-		iconName: "zap",
-		title: msg({ id: "Less Manual Setup" }),
+		id: "vps-bootstrap",
+		iconName: "server",
+		title: msg({ id: "1-Click VPS & Docker Bootstrap" }),
 		desc: msg({
-			id: "Skip the complex installation and configuration. Our guided setup gets your Supabase environment running in minutes, not hours.",
+			id: "Connect any Ubuntu or Debian VPS via SSH. SaaSBase bootstraps Docker 27, Traefik v3 reverse proxy, and SSL certificates automatically, or publishes securely through Cloudflare Tunnel without opening ports 80/443.",
 		}),
-		action: msg({ id: "Save time" }),
+		action: msg({ id: "View architecture" }),
 	},
 	{
-		id: "cost-control",
+		id: "supabase-full-stack",
 		iconName: "database",
-		title: msg({ id: "Cost Control" }),
+		title: msg({ id: "Production Supabase Full-Stack" }),
 		desc: msg({
-			id: "Host on your own VPS and avoid rising cloud costs. You're in control of your infrastructure and budget.",
+			id: "Deploy the full Supabase ecosystem: PostgreSQL 16 with pgvector for AI, Supavisor connection pooler, GoTrue Auth, Realtime WebSockets, Kong Gateway, and Supabase Studio with auto-generated secure credentials.",
 		}),
-		action: msg({ id: "See pricing" }),
+		action: msg({ id: "Explore stack" }),
 	},
 	{
-		id: "one-dashboard",
-		iconName: "grid-2x2",
-		title: msg({ id: "One Dashboard" }),
+		id: "cloud-sync-migration",
+		iconName: "refresh-cw",
+		title: msg({ id: "Cloud Sync & Atomic Migration" }),
 		desc: msg({
-			id: "Manage your VPS, Supabase, databases, keys, backups and more - all in one place. No more switching between multiple tools.",
+			id: "Import directly from Supabase Cloud - pulling database schemas, data, storage files, and edge functions to your VPS. Move running apps between servers with automated health verification and zero-downtime rollback.",
 		}),
-		action: msg({ id: "Explore features" }),
+		action: msg({ id: "Cloud sync" }),
 	},
 	{
-		id: "simplified-operations",
+		id: "enterprise-security",
 		iconName: "shield-check",
-		title: msg({ id: "Simplified Operations" }),
+		title: msg({ id: "Encrypted Backups & Security" }),
 		desc: msg({
-			id: "Monitor performance, get real-time alerts, and handle issues with clear guidance - not just raw logs.",
+			id: "Enterprise-grade security with HKDF-derived versioned secrets, zero-downtime key rotation, AES-256-CBC encrypted backups streamed to Cloudflare R2/S3, one-time SETUP_TOKEN protection, 2FA, and full audit logs.",
 		}),
-		action: msg({ id: "Learn more" }),
+		action: msg({ id: "Security specs" }),
 	},
 ];
 
@@ -111,7 +112,7 @@ export const TESTIMONIALS: ITestimonial[] = [
 		name: "Alex Carter",
 		role: msg({ id: "Full-stack Developer" }),
 		quote: msg({
-			id: "SaaS Base made it incredibly easy to get Supabase running on my own VPS. What used to take hours of manual setup now takes just a few clicks. The dashboard is clean, and the whole process feels really smooth.",
+			id: "SaaSBase made self-hosting Supabase completely effortless. What used to take hours of manual Docker Compose configuration, Traefik routing, and SSL renewals now happens in one click. Our production cluster runs like a dream.",
 		}),
 		avatarUrl: "/assets/landing/avatar-alex.png",
 	},
@@ -120,7 +121,7 @@ export const TESTIMONIALS: ITestimonial[] = [
 		name: "Sophia Kim",
 		role: msg({ id: "Indie Hacker" }),
 		quote: msg({
-			id: "I love how simple the deployment process is. As a solo developer, I don't have time to deal with Docker, configs, or SSL. SaaS Base handles it all, and I can finally focus on building my product instead of managing infrastructure.",
+			id: "Moving from hosted Supabase Cloud to my own $10 Hetzner VPS slashed my monthly infrastructure bill by 80%. The 1-click Cloud Sync pulled my entire database and storage buckets across without any friction.",
 		}),
 		avatarUrl: "/assets/landing/avatar-sophia.png",
 	},
@@ -129,16 +130,16 @@ export const TESTIMONIALS: ITestimonial[] = [
 		name: "Daniel Ruiz",
 		role: msg({ id: "CTO & Co-founder" }),
 		quote: msg({
-			id: "The best part is the balance between automation and control. I can manage my database, monitor resources, and handle backups - all in one place. It's exactly what I needed for my startup.",
+			id: "The zero-downtime server migration and AES-256 encrypted offsite backups to Cloudflare R2 give our engineering team enterprise resilience. We own our data 100% with zero vendor lock-in.",
 		}),
 		avatarUrl: "/assets/landing/avatar-daniel.png",
 	},
 	{
-		id: "alex-ruiz",
-		name: "Alex Ruiz",
-		role: msg({ id: "Fullstack Engineer" }),
+		id: "marcus-vance",
+		name: "Marcus Vance",
+		role: msg({ id: "Lead DevOps Engineer" }),
 		quote: msg({
-			id: "I cut our cloud database bill by 70% by moving to our own VPS with SaaS Base. The automated backups and health alerts give us total peace of mind.",
+			id: "Publishing backends through Cloudflare Tunnel without opening ports 80/443 on our VPS is brilliant. The SSH TOFU verification, scoped API tokens, and multi-channel alerts fit seamlessly into our team's workflow.",
 		}),
 		avatarUrl: "/assets/landing/avatar-alex.png",
 	},
@@ -147,53 +148,65 @@ export const TESTIMONIALS: ITestimonial[] = [
 export const FAQ_ITEMS: IFaqItem[] = [
 	{
 		id: "faq-1",
-		question: msg({ id: "Is SaaS Base free to use?" }),
+		question: msg({
+			id: "What is SaaSBase and how does it compare to Coolify or Dokploy?",
+		}),
 		answer: msg({
-			id: "SaaS Base offers a free plan to get you started. You'll get access to essential features and a limited amount of resources. For larger projects or advanced features, we offer paid plans with more capacity and support.",
+			id: "SaaSBase is an open-source, self-hosted PaaS and BaaS deployer. While general PaaS tools focus on general web apps, SaaSBase provides deep, specialized automation for modern Backend-as-a-Service platforms (especially Supabase, PocketBase, and Appwrite), including automated database clustering, connection pooling, cloud migration, and offsite disaster recovery.",
 		}),
 	},
 	{
 		id: "faq-2",
-		question: msg({ id: "Do I need a dedicated VPS?" }),
+		question: msg({
+			id: "What VPS providers and operating systems are supported?",
+		}),
 		answer: msg({
-			id: "Yes, you can use any cloud VPS from providers like DigitalOcean, Hetzner, Vultr, AWS, or your own bare metal server running Ubuntu 22.04 LTS.",
+			id: "SaaSBase runs on any fresh Ubuntu (20.04/22.04/24.04 LTS) or Debian server (amd64 or arm64 architecture) with 2 GB RAM minimum (4 GB+ recommended for full Supabase stacks). You can connect servers from Hetzner, DigitalOcean, Vultr, AWS, OVH, or your own on-premise hardware via SSH.",
 		}),
 	},
 	{
 		id: "faq-3",
-		question: msg({ id: "Do I need DevOps knowledge to use this?" }),
+		question: msg({
+			id: "What components are included in the self-hosted Supabase stack?",
+		}),
 		answer: msg({
-			id: "Not at all. SaaS Base automates Docker configuration, network setup, SSL certificates, firewall rules, and container orchestration.",
+			id: "The stack deploys the full production Supabase ecosystem: PostgreSQL 16 (with pgvector for AI embeddings), Supavisor connection pooler, Kong API Gateway, GoTrue Auth with JWT & OAuth, PostgREST for REST APIs, Realtime WebSockets (CDC), Storage, and the Supabase Studio dashboard.",
 		}),
 	},
 	{
 		id: "faq-4",
-		question: msg({ id: "How is my data and SSH key protected?" }),
+		question: msg({
+			id: "How does Cloud Sync from Supabase Cloud work?",
+		}),
 		answer: msg({
-			id: "Your SSH keys are encrypted using AES-256-GCM. We never store private database data on our servers; your backend runs entirely on your own infrastructure.",
+			id: "SaaSBase securely connects to your hosted Supabase Cloud project via encrypted credentials and session pooler, then automatically replicates your database schema, table data, storage bucket files, and edge functions to your private VPS, eliminating prohibitive egress bandwidth fees.",
 		}),
 	},
 	{
 		id: "faq-5",
-		question: msg({ id: "Is there a backup and restore feature?" }),
+		question: msg({
+			id: "How does SaaSBase secure secrets, keys, and backups?",
+		}),
 		answer: msg({
-			id: "Yes! Automated daily backups can be configured to store encrypted dumps directly to AWS S3, Cloudflare R2, or local storage with 1-click restore.",
+			id: "All secrets, passwords, and SSH keys are stored in a versioned format (v2:) using HKDF key derivation. Database backups are encrypted with AES-256-CBC and streamed offsite to Cloudflare R2, AWS S3, or Backblaze B2. Furthermore, a one-time SETUP_TOKEN prevents unauthorized instance takeovers during initialization.",
 		}),
 	},
 	{
 		id: "faq-6",
-		question: msg({ id: "Can I switch to another VPS later?" }),
+		question: msg({
+			id: "Can I publish apps securely without opening public firewall ports?",
+		}),
 		answer: msg({
-			id: "Yes, you can easily export your database dumps and volume snapshots to migrate to a new server with minimal downtime.",
+			id: "Yes! SaaSBase natively integrates Cloudflare Tunnel (Zero Trust). You can publish your applications and dashboards to the web using an outbound tunnel connector token, keeping ports 80 and 443 closed on your VPS firewall.",
 		}),
 	},
 	{
 		id: "faq-7",
 		question: msg({
-			id: "What happens if I run into an issue during deployment?",
+			id: "How does zero-downtime server migration work?",
 		}),
 		answer: msg({
-			id: "Our system includes built-in diagnostics and automatic rollbacks. You can also contact our support team directly from your dashboard.",
+			id: "When moving an app to another server, SaaSBase takes an atomic backup, streams it via S3/R2 storage, restores and health-checks all containers on the target machine, updates DNS records, and only removes source resources once health is 100% verified. If any step fails, it automatically rolls back.",
 		}),
 	},
 ];
@@ -208,7 +221,8 @@ export const FOOTER_SECTIONS: IFooterSection[] = [
 				label: msg({ id: "How It Works" }),
 				href: "#how-it-works",
 			},
-			{ id: "pricing", label: msg({ id: "Pricing" }), href: "#pricing" },
+			{ id: "features", label: msg({ id: "Features" }), href: "#features" },
+			{ id: "faq", label: msg({ id: "FAQ" }), href: "#faq" },
 			{
 				id: "documentation",
 				label: msg({ id: "Documentation" }),

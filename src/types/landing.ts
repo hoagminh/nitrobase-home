@@ -22,7 +22,13 @@ export interface IWorkflowStep {
 
 export interface IBenefitItem {
 	id: string;
-	iconName: "zap" | "database" | "grid-2x2" | "shield-check";
+	iconName:
+		| "zap"
+		| "database"
+		| "grid-2x2"
+		| "shield-check"
+		| "server"
+		| "refresh-cw";
 	title: MessageDescriptor;
 	desc: MessageDescriptor;
 	action: MessageDescriptor;

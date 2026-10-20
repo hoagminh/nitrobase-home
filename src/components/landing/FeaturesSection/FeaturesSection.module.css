@@ -1,5 +1,5 @@
 .section {
-	padding: 64px 130px;
+	padding: 64px;
 	max-width: 1440px;
 	margin: 0 auto;
 	width: 100%;
@@ -91,11 +91,18 @@
 .cardAction {
 	text-decoration: none;
 	color: var(--text-primary);
-	font-size: 12px;
-	line-height: 16px;
+	font-size: 13px;
+	line-height: 18px;
 	font-weight: 500;
 	width: fit-content;
+	max-width: 100%;
+	white-space: nowrap;
 	transition: transform 0.15s ease;
+}
+
+.actionRow {
+	flex-wrap: nowrap;
+	white-space: nowrap;
 }
 
 .cardAction:hover {

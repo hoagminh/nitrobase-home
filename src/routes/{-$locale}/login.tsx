@@ -7,9 +7,9 @@ export const Route = createFileRoute("/{-$locale}/login")({
 	loader: ({ context }) => {
 		const locale = (context.i18n.locale as Locale) || "en";
 		const globalSeoData = context.globalSeoData;
-		const title = `SaaS Base · ${context.i18n._("Sign in")}`;
+		const title = `SaaSBase · ${context.i18n._("Sign in")}`;
 		const description = context.i18n._(
-			"Sign in to your SaaS Base account to deploy and manage Supabase backend instances.",
+			"Sign in to your SaaSBase account to deploy and manage Supabase and backend instances.",
 		);
 
 		const canonicalUrl =
@@ -22,7 +22,7 @@ export const Route = createFileRoute("/{-$locale}/login")({
 			description,
 			canonicalUrl,
 			locale,
-			siteName: globalSeoData?.site_name || "SaaS Base",
+			siteName: globalSeoData?.site_name || "SaaSBase",
 			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
 			imageUrl: "/assets/auth/login-bg.png",
 			alternates: [

@@ -46,17 +46,17 @@ export function Footer() {
 						className={styles.logoImg}
 					/>
 					<Title order={3} className={styles.brandHeadline}>
-						{i18n._("Self-host Supabase, without\nthe complexity.")}
+						{i18n._("Self-host Supabase & BaaS, without the complexity.")}
 					</Title>
 					<Text className={styles.brandDesc} maw={350}>
 						{i18n._(
-							"SaasBase helps you deploy and manage your own Supabase infrastructure on VPS - automatically,\nsecurely, and without the DevOps headache.",
+							"SaaSBase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS, deploy Supabase full-stack or templates in minutes, and own your infrastructure 100%.",
 						)}
 					</Text>
 
 					<Group gap={12} className={styles.socialRow}>
 						<a
-							href="https://github.com"
+							href="https://github.com/hoagminh/saasbase-landing"
 							target="_blank"
 							rel="noreferrer"
 							className={styles.socialBox}

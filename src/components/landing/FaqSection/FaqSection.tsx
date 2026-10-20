@@ -82,17 +82,15 @@ export function FaqSection() {
 							{i18n._("FAQ")}
 						</Text>
 						<Title order={2} className={styles.title}>
-							{i18n._("Everything you need")}
+							{i18n._("Everything you need to know")}
 							<br />
-							{i18n._("to know")}
 							<span className={styles.highlightText}>
-								{" "}
-								{i18n._("before deploying.")}
+								{i18n._("about self-hosting with SaaSBase.")}
 							</span>
 						</Title>
 						<Text className={styles.description}>
 							{i18n._(
-								"Find quick answers to the most common questions about SaaS Base, from pricing and setup to security and support.",
+								"Clear, technical answers to common questions about VPS requirements, Supabase Cloud sync, encrypted backups, and security architecture.",
 							)}
 						</Text>
 					</Stack>
@@ -225,15 +223,19 @@ export function FaqSection() {
 								data={[
 									{
 										value: "vps_setup",
-										label: i18n._("VPS Deployment & Setup"),
+										label: i18n._("VPS Bootstrap & SSH"),
 									},
 									{
-										value: "custom_domain",
-										label: i18n._("SSL & Custom Domain"),
+										value: "cloud_sync",
+										label: i18n._("Supabase Cloud Sync"),
 									},
 									{
-										value: "billing",
-										label: i18n._("Pricing & Licensing"),
+										value: "ssl_cloudflare",
+										label: i18n._("SSL & Cloudflare Tunnel"),
+									},
+									{
+										value: "backups_migration",
+										label: i18n._("Encrypted Backups & Migration"),
 									},
 									{
 										value: "other",

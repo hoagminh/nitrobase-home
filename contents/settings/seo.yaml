@@ -1,20 +1,21 @@
 en:
-  site_name: Saasbase
-  title: Saasbase - Self-host Supabase, Simplified
-  description: Deploy and manage open-source Supabase infrastructure on your own VPS automatically, securely, and without DevOps complexity.
-  keywords: supabase self-host, vps deployment, docker backend, postgresql hosting, cloud database alternative, saasbase
+  site_name: SaaSBase
+  title: SaaSBase - Self-Host Supabase & Modern Backends on Any VPS
+  description: Open-source self-hosted PaaS & BaaS deployer. Connect any Ubuntu VPS, bootstrap Docker & Traefik in 1 click, and deploy Supabase full-stack, PocketBase, and apps with encrypted backups and cloud sync.
+  keywords: saasbase, self-host supabase, vps deployer, coolify alternative, dokploy alternative, docker paas, traefik v3, supabase cloud sync, encrypted backups
   image: /assets/landing/hero-preview.png
-  author: Saasbase
+  author: SaaSBase
   twitter_handle: '@saasbase'
   theme_color: '#101010'
   url: https://saasbase.dev
 vi:
-  site_name: Saasbase
-  title: Saasbase - Tự lưu trữ Supabase đơn giản, bảo mật
-  description: Triển khai và vận hành hạ tầng Supabase mã nguồn mở trên máy chủ VPS riêng của bạn tự động, bảo mật và không rắc rối DevOps.
-  keywords: tự lưu trữ supabase, deploy supabase vps, hạ tầng backend docker, máy chủ riêng, saasbase
+  site_name: SaaSBase
+  title: SaaSBase - Tự lưu trữ Supabase & Backend Hiện đại trên VPS Riêng
+  description: Nền tảng PaaS & BaaS Deployer tự lưu trữ mã nguồn mở. Kết nối VPS qua SSH, bootstrap Docker & Traefik v3 1-click, triển khai cụm Supabase full-stack, PocketBase với sao lưu mã hóa và đồng bộ Cloud.
+  keywords: saasbase, tự lưu trữ supabase, deploy vps, thay thế coolify, dokploy, docker paas, traefik v3, đồng bộ supabase cloud, sao lưu mã hóa
   image: /assets/landing/hero-preview.png
-  author: Saasbase
+  author: SaaSBase
   twitter_handle: '@saasbase'
   theme_color: '#101010'
   url: https://saasbase.dev
+

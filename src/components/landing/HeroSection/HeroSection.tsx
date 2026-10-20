@@ -1,30 +1,21 @@
 import { useLingui } from "@lingui/react";
 import {
-	Badge,
 	Box,
 	Button,
 	Code,
 	CopyButton,
 	Divider,
 	Group,
-	Modal,
-	Progress,
 	SimpleGrid,
 	Stack,
-	Tabs,
 	Text,
 	Title,
 	Tooltip,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
 import {
 	Check,
-	Code2,
 	Copy,
-	Database,
-	Layers,
 	MoveRight,
-	Play,
 	Server,
 	ShieldCheck,
 	Terminal,
@@ -36,8 +27,6 @@ import styles from "./HeroSection.module.css";
 
 export function HeroSection() {
 	const { i18n } = useLingui();
-	const [demoOpened, { open: openDemo, close: closeDemo }] =
-		useDisclosure(false);
 
 	const curlSnippet = "curl -fsSL https://get.saasbase.dev | bash";
 
@@ -51,21 +40,19 @@ export function HeroSection() {
 				<Stack gap={20} className={styles.content}>
 					<Box className={styles.badgeTag}>
 						<span className={styles.badgeDot} />
-						<span>
-							{i18n._("SaaSBase v1.0 // Self-Hosted Supabase Architecture")}
-						</span>
+						<span>{i18n._("Self-Hosted PaaS & BaaS")}</span>
 					</Box>
 
 					<Title order={1} className={styles.title}>
-						{i18n._("Self-host Supabase.")}{" "}
+						{i18n._("Self-host Supabase & Modern Backends.")}&nbsp;
 						<span className={styles.gradientSubtitle}>
-							{i18n._("Without the setup headache.")}
+							{i18n._("On your own VPS without the DevOps headache.")}
 						</span>
 					</Title>
 
 					<Text className={styles.description}>
 						{i18n._(
-							"SaaSBase helps you deploy and manage Supabase on your own VPS - automatically, securely, and with a simple interface. Focus on building, not configuring.",
+							"SaaSBase is the open-source self-hosted PaaS & BaaS deployer. Connect any Ubuntu VPS over SSH, bootstrap Docker & Traefik in 1 click, and run production-grade Supabase, PocketBase, and apps with zero vendor lock-in.",
 						)}
 					</Text>
 
@@ -81,15 +68,32 @@ export function HeroSection() {
 							{i18n._("Get Started Free")}
 						</Button>
 						<Button
-							type="button"
-							onClick={openDemo}
+							component="a"
+							href="https://github.com/hoagminh/saasbase-landing"
+							target="_blank"
+							rel="noreferrer"
 							size="md"
 							radius="md"
 							variant="default"
 							className={styles.secondaryCta}
-							leftSection={<Play size={15} />}
+							leftSection={
+								<svg
+									width="16"
+									height="16"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+									<path d="M9 18c-4.51 2-5-2-7-2" />
+								</svg>
+							}
 						>
-							{i18n._("Explore Demo")}
+							{i18n._("GitHub")}
 						</Button>
 					</Group>
 
@@ -125,7 +129,7 @@ export function HeroSection() {
 						<div className={styles.valueItem}>
 							<Zap className={styles.valueIcon} />
 							<Text className={styles.valueText}>
-								{i18n._("Automated Deployment")}
+								{i18n._("1-Click VPS Bootstrap")}
 							</Text>
 						</div>
 
@@ -137,7 +141,7 @@ export function HeroSection() {
 						<div className={styles.valueItem}>
 							<ShieldCheck className={styles.valueIcon} />
 							<Text className={styles.valueText}>
-								{i18n._("End-to-End Encryption")}
+								{i18n._("AES-256 Encrypted Backups")}
 							</Text>
 						</div>
 
@@ -149,7 +153,7 @@ export function HeroSection() {
 						<div className={styles.valueItem}>
 							<Server className={styles.valueIcon} />
 							<Text className={styles.valueText}>
-								{i18n._("100% VPS Sovereignty")}
+								{i18n._("100% Data Sovereignty")}
 							</Text>
 						</div>
 					</Group>
@@ -159,234 +163,6 @@ export function HeroSection() {
 					<HeroWorkflowCanvas />
 				</Box>
 			</SimpleGrid>
-
-			<Modal
-				opened={demoOpened}
-				onClose={closeDemo}
-				title={
-					<Group gap={12}>
-						<Text fw={700} size="lg">
-							{i18n._("SaaS Base Live Interactive Demo")}
-						</Text>
-						<Badge variant="light" color="blue" size="sm">
-							{i18n._("v1.4 Preview")}
-						</Badge>
-					</Group>
-				}
-				size="xl"
-				radius="lg"
-				centered
-			>
-				<Stack gap={20}>
-					<Text size="sm" c="dimmed">
-						{i18n._(
-							"Explore how easy it is to deploy and control full Supabase instances directly on your own infrastructure.",
-						)}
-					</Text>
-
-					<Tabs defaultValue="one-click" radius="md">
-						<Tabs.List>
-							<Tabs.Tab value="one-click" leftSection={<Layers size={16} />}>
-								{i18n._("1-Click Deploy")}
-							</Tabs.Tab>
-							<Tabs.Tab value="cli" leftSection={<Terminal size={16} />}>
-								{i18n._("Terminal CLI")}
-							</Tabs.Tab>
-							<Tabs.Tab value="database" leftSection={<Database size={16} />}>
-								{i18n._("Database & Auth")}
-							</Tabs.Tab>
-						</Tabs.List>
-
-						<Tabs.Panel value="one-click" pt="md">
-							<Stack
-								gap={16}
-								p={20}
-								style={{
-									borderRadius: 12,
-									border: "1px solid var(--border-default)",
-									backgroundColor: "var(--surface-primary)",
-								}}
-							>
-								<Group justify="space-between">
-									<div>
-										<Text fw={600} size="sm">
-											{i18n._("Target VPS Server")}
-										</Text>
-										<Text size="xs" c="dimmed">
-											Hetzner Cloud / Ubuntu 24.04 LTS (159.69.120.44)
-										</Text>
-									</div>
-									<Badge color="green" variant="light">
-										{i18n._("Ready to Deploy")}
-									</Badge>
-								</Group>
-
-								<Box>
-									<Group justify="space-between" mb={6}>
-										<Text size="xs" c="dimmed">
-											{i18n._("Stack Setup Progress")}
-										</Text>
-										<Text size="xs" fw={600}>
-											100% {i18n._("Ready")}
-										</Text>
-									</Group>
-									<Progress value={100} color="blue" size="sm" radius="xl" />
-								</Box>
-
-								<SimpleGrid cols={{ base: 1, sm: 3 }} spacing={12}>
-									<Box
-										p={12}
-										style={{
-											borderRadius: 8,
-											backgroundColor: "var(--bg-secondary)",
-											border: "1px solid var(--border-default)",
-										}}
-									>
-										<Text size="xs" c="dimmed">
-											Postgres 16
-										</Text>
-										<Text fw={600} size="sm" c="green">
-											{i18n._("Configured & Tuned")}
-										</Text>
-									</Box>
-									<Box
-										p={12}
-										style={{
-											borderRadius: 8,
-											backgroundColor: "var(--bg-secondary)",
-											border: "1px solid var(--border-default)",
-										}}
-									>
-										<Text size="xs" c="dimmed">
-											GoTrue / Auth
-										</Text>
-										<Text fw={600} size="sm" c="green">
-											{i18n._("JWT & OAuth Ready")}
-										</Text>
-									</Box>
-									<Box
-										p={12}
-										style={{
-											borderRadius: 8,
-											backgroundColor: "var(--bg-secondary)",
-											border: "1px solid var(--border-default)",
-										}}
-									>
-										<Text size="xs" c="dimmed">
-											Kong API Gateway
-										</Text>
-										<Text fw={600} size="sm" c="green">
-											{i18n._("SSL Auto-Renew")}
-										</Text>
-									</Box>
-								</SimpleGrid>
-							</Stack>
-						</Tabs.Panel>
-
-						<Tabs.Panel value="cli" pt="md">
-							<Stack
-								gap={12}
-								p={20}
-								style={{
-									borderRadius: 12,
-									border: "1px solid var(--border-default)",
-									backgroundColor: "#0d1117",
-									color: "#c9d1d9",
-								}}
-							>
-								<Group justify="space-between">
-									<Group gap={8}>
-										<Code2 size={16} color="#58a6ff" />
-										<Text size="xs" fw={600} style={{ color: "#8b949e" }}>
-											bash - automated install command
-										</Text>
-									</Group>
-									<CopyButton value={curlSnippet} timeout={2000}>
-										{({ copied, copy }) => (
-											<Tooltip
-												label={copied ? i18n._("Copied!") : i18n._("Copy")}
-												withArrow
-											>
-												<Button
-													size="xs"
-													variant="default"
-													onClick={copy}
-													leftSection={
-														copied ? <Check size={14} /> : <Copy size={14} />
-													}
-												>
-													{copied ? i18n._("Copied") : i18n._("Copy Command")}
-												</Button>
-											</Tooltip>
-										)}
-									</CopyButton>
-								</Group>
-								<Code
-									block
-									style={{
-										backgroundColor: "transparent",
-										color: "#58a6ff",
-										fontSize: "14px",
-										padding: "8px 0",
-									}}
-								>
-									{`$ ${curlSnippet}`}
-								</Code>
-								<Text size="xs" style={{ color: "#8b949e" }}>
-									{i18n._(
-										"Runs automated prerequisites check, installs Docker & Supabase containers, configures firewall, and issues free SSL certificates.",
-									)}
-								</Text>
-							</Stack>
-						</Tabs.Panel>
-
-						<Tabs.Panel value="database" pt="md">
-							<Stack
-								gap={16}
-								p={20}
-								style={{
-									borderRadius: 12,
-									border: "1px solid var(--border-default)",
-									backgroundColor: "var(--surface-primary)",
-								}}
-							>
-								<Group justify="space-between">
-									<Text fw={600} size="sm">
-										{i18n._("Supabase Studio & Realtime")}
-									</Text>
-									<Badge color="cyan" variant="dot">
-										{i18n._("Zero Latency Local")}
-									</Badge>
-								</Group>
-								<Text size="xs" c="dimmed">
-									{i18n._(
-										"Access the built-in Supabase Studio web dashboard running securely on your private IP or custom domain with basic HTTP authentication or SSO.",
-									)}
-								</Text>
-							</Stack>
-						</Tabs.Panel>
-					</Tabs>
-
-					<Group justify="flex-end" gap={12} className={styles.modalActions}>
-						<Button
-							type="button"
-							variant="default"
-							onClick={closeDemo}
-							className={styles.modalCloseBtn}
-						>
-							{i18n._("Close Preview")}
-						</Button>
-						<Button
-							component={LocalizedLink}
-							to="/signup"
-							className={styles.modalPrimaryBtn}
-							rightSection={<MoveRight size={16} />}
-						>
-							{i18n._("Deploy Your Instance Now")}
-						</Button>
-					</Group>
-				</Stack>
-			</Modal>
 		</Box>
 	);
 }
