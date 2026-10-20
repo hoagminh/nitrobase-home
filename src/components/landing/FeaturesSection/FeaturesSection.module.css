@@ -11,13 +11,26 @@
 	margin: 0 auto 48px;
 }
 
-.tag {
+.badgeTag {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 12px 4px 10px;
+	border-radius: 9999px;
+	background: var(--badge-bg);
+	border: var(--badge-border);
+	box-shadow: var(--badge-shadow);
+	color: var(--badge-text);
 	font-size: 12px;
 	font-weight: 500;
 	line-height: 16px;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	color: var(--text-secondary);
+	width: fit-content;
+	user-select: none;
+}
+
+.badgeIcon {
+	color: var(--badge-icon-color);
+	flex-shrink: 0;
 }
 
 .title {

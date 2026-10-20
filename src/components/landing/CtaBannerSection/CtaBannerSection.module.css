@@ -69,23 +69,42 @@
 }
 
 .badgePill {
-	padding: 4px 16px;
-	border-radius: 99px;
-	border: 1px solid var(--border-default);
-	background-color: var(--bg-secondary);
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 4px 12px 4px 10px;
+	border-radius: 9999px;
+	background: var(--badge-bg);
+	border: var(--badge-border);
+	box-shadow: var(--badge-shadow);
 	font-size: 12px;
 	line-height: 16px;
 	font-weight: 500;
-	color: var(--text-primary);
+	color: var(--badge-text);
 	z-index: 1;
+	user-select: none;
 }
 
 .pulseDot {
-	width: 8px;
-	height: 8px;
+	width: 6px;
+	height: 6px;
 	border-radius: 50%;
-	background-color: var(--text-primary);
-	filter: blur(0.5px);
+	background: #10b981;
+	box-shadow: 0 0 6px #10b981;
+	animation: ctaBadgePulse 2s infinite ease-in-out;
+	flex-shrink: 0;
+}
+
+@keyframes ctaBadgePulse {
+	0%,
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 0.4;
+		transform: scale(0.85);
+	}
 }
 
 .titleGroup {

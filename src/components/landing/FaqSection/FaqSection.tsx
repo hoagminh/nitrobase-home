@@ -19,6 +19,7 @@ import { useDisclosure } from "@mantine/hooks";
 import {
 	CheckCircle2,
 	ChevronDown,
+	CircleHelp,
 	Mail,
 	MessageSquare,
 	MoveRight,
@@ -78,9 +79,10 @@ export function FaqSection() {
 			<Group justify="space-between" align="flex-start" className={styles.grid}>
 				<Stack gap={48} className={styles.leftColumn}>
 					<Stack gap={12}>
-						<Text component="span" className={styles.tag}>
-							{i18n._("FAQ")}
-						</Text>
+						<div className={styles.badgeTag}>
+							<CircleHelp size={13} className={styles.badgeIcon} />
+							<span>{i18n._("FAQ")}</span>
+						</div>
 						<Title order={2} className={styles.title}>
 							{i18n._("Everything you need to know")}
 							<br />

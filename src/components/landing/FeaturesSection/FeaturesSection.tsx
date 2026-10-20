@@ -9,6 +9,7 @@ import {
 	Title,
 } from "@mantine/core";
 import {
+	Boxes,
 	Database,
 	Grid2x2,
 	MoveRight,
@@ -45,9 +46,10 @@ export function FeaturesSection() {
 	return (
 		<Box component="section" id="features" className={styles.section}>
 			<Stack gap={16} align="center" className={styles.header}>
-				<Text component="span" className={styles.tag}>
-					{i18n._("ARCHITECTURE & CAPABILITIES")}
-				</Text>
+				<div className={styles.badgeTag}>
+					<Boxes size={13} className={styles.badgeIcon} />
+					<span>{i18n._("Features")}</span>
+				</div>
 				<Title order={2} className={styles.title}>
 					{i18n._("Enterprise power.")}
 					<br />

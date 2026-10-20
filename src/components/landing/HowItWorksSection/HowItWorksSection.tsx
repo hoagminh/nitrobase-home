@@ -8,7 +8,7 @@ import {
 	Text,
 	Title,
 } from "@mantine/core";
-import { CircleCheckBig, MoveRight } from "lucide-react";
+import { CircleCheckBig, MoveRight, Workflow } from "lucide-react";
 import { WORKFLOW_STEPS } from "#/constants/landing";
 import styles from "./HowItWorksSection.module.css";
 
@@ -23,9 +23,10 @@ export function HowItWorksSection() {
 				className={styles.header}
 			>
 				<Stack gap={16} className={styles.titleArea}>
-					<Text component="span" className={styles.tag}>
-						{i18n._("HOW IT WORKS")}
-					</Text>
+					<div className={styles.badgeTag}>
+						<Workflow size={13} className={styles.badgeIcon} />
+						<span>{i18n._("How It Works")}</span>
+					</div>
 					<Title order={2} className={styles.title}>
 						{i18n._("From a fresh VPS")}&nbsp;
 						<span className={styles.highlightText}>

@@ -14,6 +14,7 @@ import {
 } from "@mantine/core";
 import {
 	Check,
+	ChevronRight,
 	Copy,
 	MoveRight,
 	Server,
@@ -38,10 +39,18 @@ export function HeroSection() {
 				className={styles.grid}
 			>
 				<Stack gap={20} className={styles.content}>
-					<Box className={styles.badgeTag}>
+					<a
+						href="https://github.com/hoagminh/saasbase-landing"
+						target="_blank"
+						rel="noreferrer"
+						className={styles.badgeTag}
+					>
 						<span className={styles.badgeDot} />
-						<span>{i18n._("Self-Hosted PaaS & BaaS")}</span>
-					</Box>
+						<span className={styles.badgeText}>
+							{i18n._("SaaSBase v1.0 is live")}
+						</span>
+						<ChevronRight size={13} className={styles.badgeChevron} />
+					</a>
 
 					<Title order={1} className={styles.title}>
 						{i18n._("Self-host Supabase & Modern Backends.")}&nbsp;

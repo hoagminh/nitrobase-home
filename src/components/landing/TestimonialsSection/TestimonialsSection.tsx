@@ -10,7 +10,12 @@ import {
 	Text,
 	Title,
 } from "@mantine/core";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import {
+	ChevronLeft,
+	ChevronRight,
+	MessageSquareQuote,
+	Quote,
+} from "lucide-react";
 import { TESTIMONIALS } from "#/constants/landing";
 import styles from "./TestimonialsSection.module.css";
 
@@ -21,9 +26,10 @@ export function TestimonialsSection() {
 		<Box component="section" id="testimonials" className={styles.section}>
 			<Group justify="space-between" align="flex-end" className={styles.header}>
 				<Stack gap={16} className={styles.titleArea}>
-					<Text component="span" className={styles.tag}>
-						{i18n._("DEVELOPER REVIEWS")}
-					</Text>
+					<div className={styles.badgeTag}>
+						<MessageSquareQuote size={13} className={styles.badgeIcon} />
+						<span>{i18n._("Testimonials")}</span>
+					</div>
 					<Title order={2} className={styles.title}>
 						{i18n._("Built for teams")}
 						<br />

@@ -1,5 +1,5 @@
 import { useLingui } from "@lingui/react";
-import { Box, Button, Group, Stack, Text, Title } from "@mantine/core";
+import { Box, Button, Stack, Text, Title } from "@mantine/core";
 import { MoveRight } from "lucide-react";
 import { LocalizedLink } from "#/libs/i18n";
 import styles from "./CtaBannerSection.module.css";
@@ -18,12 +18,10 @@ export function CtaBannerSection() {
 				<Box className={styles.glowLeft} />
 				<Box className={styles.glowRight} />
 
-				<Group gap={8} className={styles.badgePill}>
-					<Box component="span" className={styles.pulseDot} />
-					<Text component="span">
-						{i18n._("Ready to own your infrastructure?")}
-					</Text>
-				</Group>
+				<div className={styles.badgePill}>
+					<span className={styles.pulseDot} />
+					<span>{i18n._("Get Started")}</span>
+				</div>
 
 				<Stack align="center" gap={12} className={styles.titleGroup}>
 					<Title order={2} className={styles.title}>
