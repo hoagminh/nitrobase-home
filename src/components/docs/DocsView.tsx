@@ -291,6 +291,8 @@ export function DocsView({ doc, currentSlug }: DocsViewProps) {
 								return (
 									<NavLink
 										key={section.id}
+										component="button"
+										type="button"
 										label={i18n._(section.title)}
 										leftSection={
 											<SectionIcon
@@ -378,7 +380,7 @@ export function DocsView({ doc, currentSlug }: DocsViewProps) {
 									>
 										<Group gap={6} mb={4}>
 											<ArrowLeft size={14} color="var(--text-secondary)" />
-											<Text size="xs" c="dimmed">
+											<Text size="xs" c="var(--text-secondary)">
 												{i18n._("Previous")}
 											</Text>
 										</Group>
@@ -397,7 +399,7 @@ export function DocsView({ doc, currentSlug }: DocsViewProps) {
 										style={{ textAlign: "right" }}
 									>
 										<Group gap={6} justify="flex-end" mb={4}>
-											<Text size="xs" c="dimmed">
+											<Text size="xs" c="var(--text-secondary)">
 												{i18n._("Next")}
 											</Text>
 											<ArrowRight size={14} color="var(--text-secondary)" />
