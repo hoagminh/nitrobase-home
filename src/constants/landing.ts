@@ -226,7 +226,7 @@ export const FOOTER_SECTIONS: IFooterSection[] = [
 			{
 				id: "documentation",
 				label: msg({ id: "Documentation" }),
-				href: "#",
+				href: "/docs",
 			},
 		],
 	},

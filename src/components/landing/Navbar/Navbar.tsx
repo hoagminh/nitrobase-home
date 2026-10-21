@@ -10,10 +10,12 @@ import {
 	Text,
 	useMantineColorScheme,
 } from "@mantine/core";
+import { useLocation } from "@tanstack/react-router";
 import { Globe, Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NAV_LINKS } from "#/constants/landing";
 import { type Locale, LocalizedLink, locales, useLocale } from "#/libs/i18n";
+import type { INavLink } from "#/types/landing";
 import styles from "./Navbar.module.css";
 
 function GithubIcon({ size = 18 }: { size?: number }) {
@@ -37,6 +39,7 @@ function GithubIcon({ size = 18 }: { size?: number }) {
 
 export function Navbar() {
 	const { i18n } = useLingui();
+	const location = useLocation();
 	const { colorScheme, toggleColorScheme, setColorScheme } =
 		useMantineColorScheme();
 	const { currentLocale, switchLocale } = useLocale();
@@ -44,6 +47,7 @@ export function Navbar() {
 	const [scrolled, setScrolled] = useState(false);
 
 	const isDark = colorScheme === "dark";
+	const isHomePage = /^\/(?:[a-z]{2}\/?)?$/.test(location.pathname);
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -52,6 +56,58 @@ export function Navbar() {
 		window.addEventListener("scroll", handleScroll, { passive: true });
 		return () => window.removeEventListener("scroll", handleScroll);
 	}, []);
+
+	const renderNavLink = (
+		link: INavLink,
+		className: string,
+		onClick?: () => void,
+	) => {
+		if (link.href.startsWith("/")) {
+			return (
+				<LocalizedLink
+					key={link.id}
+					to={link.href}
+					className={className}
+					onClick={onClick}
+				>
+					{i18n._(link.label)}
+				</LocalizedLink>
+			);
+		}
+
+		if (link.href.startsWith("#")) {
+			if (isHomePage) {
+				return (
+					<a
+						key={link.id}
+						href={link.href}
+						className={className}
+						onClick={onClick}
+					>
+						{i18n._(link.label)}
+					</a>
+				);
+			}
+
+			return (
+				<LocalizedLink
+					key={link.id}
+					to="/"
+					hash={link.href.slice(1)}
+					className={className}
+					onClick={onClick}
+				>
+					{i18n._(link.label)}
+				</LocalizedLink>
+			);
+		}
+
+		return (
+			<a key={link.id} href={link.href} className={className} onClick={onClick}>
+				{i18n._(link.label)}
+			</a>
+		);
+	};
 
 	return (
 		<header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
@@ -73,24 +129,7 @@ export function Navbar() {
 				</LocalizedLink>
 
 				<nav className={styles.navLinks} aria-label="Main Navigation">
-					{NAV_LINKS.map((link) => {
-						if (link.href.startsWith("/")) {
-							return (
-								<LocalizedLink
-									key={link.id}
-									to={link.href}
-									className={styles.navLink}
-								>
-									{i18n._(link.label)}
-								</LocalizedLink>
-							);
-						}
-						return (
-							<a key={link.id} href={link.href} className={styles.navLink}>
-								{i18n._(link.label)}
-							</a>
-						);
-					})}
+					{NAV_LINKS.map((link) => renderNavLink(link, styles.navLink))}
 				</nav>
 
 				<div className={styles.actions}>
@@ -180,30 +219,9 @@ export function Navbar() {
 			>
 				<div className={styles.drawerContent}>
 					<nav className={styles.drawerNavLinks} aria-label="Mobile Navigation">
-						{NAV_LINKS.map((link) => {
-							if (link.href.startsWith("/")) {
-								return (
-									<LocalizedLink
-										key={link.id}
-										to={link.href}
-										className={styles.drawerNavLink}
-										onClick={() => setOpened(false)}
-									>
-										{i18n._(link.label)}
-									</LocalizedLink>
-								);
-							}
-							return (
-								<a
-									key={link.id}
-									href={link.href}
-									className={styles.drawerNavLink}
-									onClick={() => setOpened(false)}
-								>
-									{i18n._(link.label)}
-								</a>
-							);
-						})}
+						{NAV_LINKS.map((link) =>
+							renderNavLink(link, styles.drawerNavLink, () => setOpened(false)),
+						)}
 					</nav>
 
 					<Stack gap={12} className={styles.drawerMetaControls}>

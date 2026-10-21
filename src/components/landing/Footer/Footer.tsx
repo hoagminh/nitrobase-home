@@ -7,6 +7,7 @@ import {
 	Title,
 	useMantineColorScheme,
 } from "@mantine/core";
+import { useLocation } from "@tanstack/react-router";
 import { ArrowRight, CheckCircle2, Mail, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 import { FOOTER_SECTIONS } from "#/constants/landing";
@@ -15,11 +16,13 @@ import styles from "./Footer.module.css";
 
 export function Footer() {
 	const { i18n } = useLingui();
+	const location = useLocation();
 	const { colorScheme } = useMantineColorScheme();
 	const [email, setEmail] = useState("");
 	const [isSubscribed, setIsSubscribed] = useState(false);
 
 	const isDark = colorScheme === "dark";
+	const isHomePage = /^\/(?:[a-z]{2}\/?)?$/.test(location.pathname);
 
 	const handleSubscribe = (e: React.FormEvent) => {
 		e.preventDefault();
@@ -159,21 +162,46 @@ export function Footer() {
 					<div key={section.id} className={styles.linksCol}>
 						<h4 className={styles.colTitle}>{i18n._(section.title)}</h4>
 						<div className={styles.linksList}>
-							{section.links.map((link) =>
-								link.href.startsWith("/") ? (
-									<LocalizedLink
-										key={link.id}
-										to={link.href}
-										className={styles.link}
-									>
-										{i18n._(link.label)}
-									</LocalizedLink>
-								) : (
+							{section.links.map((link) => {
+								if (link.href.startsWith("/")) {
+									return (
+										<LocalizedLink
+											key={link.id}
+											to={link.href}
+											className={styles.link}
+										>
+											{i18n._(link.label)}
+										</LocalizedLink>
+									);
+								}
+
+								if (link.href.startsWith("#") && link.href.length > 1) {
+									if (isHomePage) {
+										return (
+											<a key={link.id} href={link.href} className={styles.link}>
+												{i18n._(link.label)}
+											</a>
+										);
+									}
+
+									return (
+										<LocalizedLink
+											key={link.id}
+											to="/"
+											hash={link.href.slice(1)}
+											className={styles.link}
+										>
+											{i18n._(link.label)}
+										</LocalizedLink>
+									);
+								}
+
+								return (
 									<a key={link.id} href={link.href} className={styles.link}>
 										{i18n._(link.label)}
 									</a>
-								),
-							)}
+								);
+							})}
 						</div>
 					</div>
 				))}

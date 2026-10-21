@@ -1,4 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useLocation } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { CtaBannerSection } from "#/components/landing/CtaBannerSection/CtaBannerSection";
 import { FaqSection } from "#/components/landing/FaqSection/FaqSection";
 import { FeaturesSection } from "#/components/landing/FeaturesSection/FeaturesSection";
@@ -64,6 +65,18 @@ export const Route = createFileRoute("/{-$locale}/")({
 });
 
 function LandingPage() {
+	const location = useLocation();
+
+	useEffect(() => {
+		const hash = location.hash || window.location.hash.replace(/^#/, "");
+		if (hash) {
+			const element = document.getElementById(hash);
+			if (element) {
+				element.scrollIntoView({ behavior: "smooth" });
+			}
+		}
+	}, [location.hash]);
+
 	return (
 		<main className={layoutStyles.main}>
 			<Navbar />
