@@ -234,11 +234,11 @@
 .copyright {
 	font-size: 12px;
 	line-height: 18px;
-	color: var(--text-disabled);
+	color: var(--text-secondary);
 }
 
 .secureBadge {
-	color: var(--text-disabled);
+	color: var(--text-secondary);
 	font-size: 12px;
 	line-height: 18px;
 }
