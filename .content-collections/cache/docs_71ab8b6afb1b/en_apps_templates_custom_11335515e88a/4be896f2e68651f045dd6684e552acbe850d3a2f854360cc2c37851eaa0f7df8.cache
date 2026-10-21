@@ -1,0 +1,1 @@
+"<p>For complex microservices or apps that require specialized configurations, you can deploy using a custom <code>docker-compose.yml</code> file.</p>\n<p>SaaSBase automatically injects Traefik routing labels and connects the containers to <code>saasbase-network</code>.</p>"

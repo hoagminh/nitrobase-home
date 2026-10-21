@@ -94,6 +94,31 @@
 	--badge-icon-color: #a1a1aa;
 }
 
+/* ==========================================================================
+   Shiki Code Highlighting Dual-Theme
+   ========================================================================== */
+[data-mantine-color-scheme="dark"] pre.shiki {
+	background-color: #141414 !important;
+	border-color: #2c2c2c !important;
+	color: var(--shiki-dark) !important;
+}
+
+[data-mantine-color-scheme="dark"] pre.shiki code,
+[data-mantine-color-scheme="dark"] pre.shiki span {
+	color: var(--shiki-dark) !important;
+}
+
+[data-mantine-color-scheme="light"] pre.shiki {
+	background-color: #fcfcfc !important;
+	border-color: #e5e5e5 !important;
+	color: var(--shiki-light) !important;
+}
+
+[data-mantine-color-scheme="light"] pre.shiki code,
+[data-mantine-color-scheme="light"] pre.shiki span {
+	color: var(--shiki-light) !important;
+}
+
 * {
 	box-sizing: border-box;
 }

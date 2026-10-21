@@ -16,6 +16,8 @@ import { Route as Char123LocaleChar125PolicyRouteImport } from './routes/{-$loca
 import { Route as Char123LocaleChar125TermsOfServiceRouteImport } from './routes/{-$locale}/terms-of-service'
 import { Route as ApiAuthIndexRouteImport } from './routes/api/auth/index'
 import { Route as ApiAuthCallbackRouteImport } from './routes/api/auth/callback'
+import { Route as Char123LocaleChar125DocsIndexRouteImport } from './routes/{-$locale}/docs/index'
+import { Route as Char123LocaleChar125DocsSplatRouteImport } from './routes/{-$locale}/docs/$'
 
 const Char123LocaleChar125RouteRoute =
   Char123LocaleChar125RouteRouteImport.update({
@@ -57,6 +59,18 @@ const ApiAuthCallbackRoute = ApiAuthCallbackRouteImport.update({
   path: '/api/auth/callback',
   getParentRoute: () => rootRouteImport,
 } as any)
+const Char123LocaleChar125DocsIndexRoute =
+  Char123LocaleChar125DocsIndexRouteImport.update({
+    id: '/docs/',
+    path: '/docs/',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
+const Char123LocaleChar125DocsSplatRoute =
+  Char123LocaleChar125DocsSplatRouteImport.update({
+    id: '/docs/$',
+    path: '/docs/$',
+    getParentRoute: () => Char123LocaleChar125RouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/{-$locale}': typeof Char123LocaleChar125RouteRouteWithChildren
@@ -65,7 +79,9 @@ export interface FileRoutesByFullPath {
   '/{-$locale}/terms-of-service': typeof Char123LocaleChar125TermsOfServiceRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/{-$locale}/docs/$': typeof Char123LocaleChar125DocsSplatRoute
   '/api/auth/': typeof ApiAuthIndexRoute
+  '/{-$locale}/docs/': typeof Char123LocaleChar125DocsIndexRoute
 }
 export interface FileRoutesByTo {
   '/{-$locale}/login': typeof Char123LocaleChar125LoginRoute
@@ -73,7 +89,9 @@ export interface FileRoutesByTo {
   '/{-$locale}/terms-of-service': typeof Char123LocaleChar125TermsOfServiceRoute
   '/{-$locale}': typeof Char123LocaleChar125IndexRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/{-$locale}/docs/$': typeof Char123LocaleChar125DocsSplatRoute
   '/api/auth': typeof ApiAuthIndexRoute
+  '/{-$locale}/docs': typeof Char123LocaleChar125DocsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -83,7 +101,9 @@ export interface FileRoutesById {
   '/{-$locale}/terms-of-service': typeof Char123LocaleChar125TermsOfServiceRoute
   '/{-$locale}/': typeof Char123LocaleChar125IndexRoute
   '/api/auth/callback': typeof ApiAuthCallbackRoute
+  '/{-$locale}/docs/$': typeof Char123LocaleChar125DocsSplatRoute
   '/api/auth/': typeof ApiAuthIndexRoute
+  '/{-$locale}/docs/': typeof Char123LocaleChar125DocsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -94,7 +114,9 @@ export interface FileRouteTypes {
     | '/{-$locale}/terms-of-service'
     | '/{-$locale}/'
     | '/api/auth/callback'
+    | '/{-$locale}/docs/$'
     | '/api/auth/'
+    | '/{-$locale}/docs/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/{-$locale}/login'
@@ -102,7 +124,9 @@ export interface FileRouteTypes {
     | '/{-$locale}/terms-of-service'
     | '/{-$locale}'
     | '/api/auth/callback'
+    | '/{-$locale}/docs/$'
     | '/api/auth'
+    | '/{-$locale}/docs'
   id:
     | '__root__'
     | '/{-$locale}'
@@ -111,7 +135,9 @@ export interface FileRouteTypes {
     | '/{-$locale}/terms-of-service'
     | '/{-$locale}/'
     | '/api/auth/callback'
+    | '/{-$locale}/docs/$'
     | '/api/auth/'
+    | '/{-$locale}/docs/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -171,6 +197,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthCallbackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/{-$locale}/docs/': {
+      id: '/{-$locale}/docs/'
+      path: '/docs'
+      fullPath: '/{-$locale}/docs/'
+      preLoaderRoute: typeof Char123LocaleChar125DocsIndexRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
+    '/{-$locale}/docs/$': {
+      id: '/{-$locale}/docs/$'
+      path: '/docs/$'
+      fullPath: '/{-$locale}/docs/$'
+      preLoaderRoute: typeof Char123LocaleChar125DocsSplatRouteImport
+      parentRoute: typeof Char123LocaleChar125RouteRoute
+    }
   }
 }
 
@@ -179,6 +219,8 @@ interface Char123LocaleChar125RouteRouteChildren {
   Char123LocaleChar125PolicyRoute: typeof Char123LocaleChar125PolicyRoute
   Char123LocaleChar125TermsOfServiceRoute: typeof Char123LocaleChar125TermsOfServiceRoute
   Char123LocaleChar125IndexRoute: typeof Char123LocaleChar125IndexRoute
+  Char123LocaleChar125DocsSplatRoute: typeof Char123LocaleChar125DocsSplatRoute
+  Char123LocaleChar125DocsIndexRoute: typeof Char123LocaleChar125DocsIndexRoute
 }
 
 const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChildren =
@@ -188,6 +230,8 @@ const Char123LocaleChar125RouteRouteChildren: Char123LocaleChar125RouteRouteChil
     Char123LocaleChar125TermsOfServiceRoute:
       Char123LocaleChar125TermsOfServiceRoute,
     Char123LocaleChar125IndexRoute: Char123LocaleChar125IndexRoute,
+    Char123LocaleChar125DocsSplatRoute: Char123LocaleChar125DocsSplatRoute,
+    Char123LocaleChar125DocsIndexRoute: Char123LocaleChar125DocsIndexRoute,
   }
 
 const Char123LocaleChar125RouteRouteWithChildren =

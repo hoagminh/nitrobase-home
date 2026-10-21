@@ -17,7 +17,7 @@ export const NAV_LINKS: INavLink[] = [
 	},
 	{ id: "features", label: msg({ id: "Features" }), href: "#features" },
 	{ id: "faq", label: msg({ id: "FAQ" }), href: "#faq" },
-	{ id: "docs", label: msg({ id: "Docs" }), href: "#" },
+	{ id: "docs", label: msg({ id: "Docs" }), href: "/docs" },
 ];
 
 export const TECH_PARTNERS: ITechPartner[] = [

@@ -73,11 +73,24 @@ export function Navbar() {
 				</LocalizedLink>
 
 				<nav className={styles.navLinks} aria-label="Main Navigation">
-					{NAV_LINKS.map((link) => (
-						<a key={link.id} href={link.href} className={styles.navLink}>
-							{i18n._(link.label)}
-						</a>
-					))}
+					{NAV_LINKS.map((link) => {
+						if (link.href.startsWith("/")) {
+							return (
+								<LocalizedLink
+									key={link.id}
+									to={link.href}
+									className={styles.navLink}
+								>
+									{i18n._(link.label)}
+								</LocalizedLink>
+							);
+						}
+						return (
+							<a key={link.id} href={link.href} className={styles.navLink}>
+								{i18n._(link.label)}
+							</a>
+						);
+					})}
 				</nav>
 
 				<div className={styles.actions}>
@@ -167,16 +180,30 @@ export function Navbar() {
 			>
 				<div className={styles.drawerContent}>
 					<nav className={styles.drawerNavLinks} aria-label="Mobile Navigation">
-						{NAV_LINKS.map((link) => (
-							<a
-								key={link.id}
-								href={link.href}
-								className={styles.drawerNavLink}
-								onClick={() => setOpened(false)}
-							>
-								{i18n._(link.label)}
-							</a>
-						))}
+						{NAV_LINKS.map((link) => {
+							if (link.href.startsWith("/")) {
+								return (
+									<LocalizedLink
+										key={link.id}
+										to={link.href}
+										className={styles.drawerNavLink}
+										onClick={() => setOpened(false)}
+									>
+										{i18n._(link.label)}
+									</LocalizedLink>
+								);
+							}
+							return (
+								<a
+									key={link.id}
+									href={link.href}
+									className={styles.drawerNavLink}
+									onClick={() => setOpened(false)}
+								>
+									{i18n._(link.label)}
+								</a>
+							);
+						})}
 					</nav>
 
 					<Stack gap={12} className={styles.drawerMetaControls}>
