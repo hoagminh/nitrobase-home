@@ -28,7 +28,7 @@ export const Route = createFileRoute("/{-$locale}/terms-of-service")({
 			locale,
 			siteName: globalSeoData?.site_name || "SaaS Base",
 			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
-			imageUrl: globalSeoData?.image || "/assets/landing/hero-preview.png",
+			imageUrl: globalSeoData?.image || "/uploads/hero-preview.png",
 			alternates: [
 				{ hrefLang: "en", href: "https://saasbase.dev/terms-of-service" },
 				{ hrefLang: "vi", href: "https://saasbase.dev/vi/terms-of-service" },

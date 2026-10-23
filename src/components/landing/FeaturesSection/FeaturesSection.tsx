@@ -18,11 +18,12 @@ import {
 	ShieldCheck,
 	Zap,
 } from "lucide-react";
-import { BENEFIT_ITEMS } from "#/constants/landing";
+import { useLandingContent } from "#/libs/landing";
 import styles from "./FeaturesSection.module.css";
 
 export function FeaturesSection() {
 	const { i18n } = useLingui();
+	const { benefitItems } = useLandingContent();
 
 	const renderIcon = (name: string) => {
 		switch (name) {
@@ -38,6 +39,8 @@ export function FeaturesSection() {
 				return <RefreshCw size={20} />;
 			case "shield-check":
 				return <ShieldCheck size={20} />;
+			case "boxes":
+				return <Boxes size={20} />;
 			default:
 				return null;
 		}
@@ -65,7 +68,7 @@ export function FeaturesSection() {
 			</Stack>
 
 			<SimpleGrid cols={{ base: 1, sm: 2, lg: 4 }}>
-				{BENEFIT_ITEMS.map((item) => (
+				{benefitItems.map((item) => (
 					<Stack key={item.id} justify="space-between" className={styles.card}>
 						<Stack gap={12}>
 							<ThemeIcon
@@ -77,14 +80,23 @@ export function FeaturesSection() {
 								{renderIcon(item.iconName)}
 							</ThemeIcon>
 							<Title order={3} className={styles.cardTitle}>
-								{i18n._(item.title)}
+								{item.title}
 							</Title>
-							<Text className={styles.cardDesc}>{i18n._(item.desc)}</Text>
+							{item.tags && item.tags.length > 0 && (
+								<Group gap={6} wrap="wrap" className={styles.tagsGroup}>
+									{item.tags.map((tag) => (
+										<span key={tag} className={styles.tagBadge}>
+											{tag}
+										</span>
+									))}
+								</Group>
+							)}
+							<Text className={styles.cardDesc}>{item.desc}</Text>
 						</Stack>
 
 						<a href="#how-it-works" className={styles.cardAction}>
 							<Group gap={6} wrap="nowrap" className={styles.actionRow}>
-								<Text component="span">{i18n._(item.action)}</Text>
+								<Text component="span">{item.action}</Text>
 								<MoveRight size={14} style={{ flexShrink: 0 }} />
 							</Group>
 						</a>

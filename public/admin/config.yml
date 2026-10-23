@@ -91,3 +91,89 @@ collections:
           - { label: "Twitter Handle", name: "twitter_handle", widget: "string", required: false, i18n: true }
           - { label: "Theme Color", name: "theme_color", widget: "string", required: false, i18n: duplicate }
           - { label: "URL", name: "url", widget: "string", required: false, i18n: duplicate }
+
+  - name: "landing"
+    label: "Landing Page"
+    icon: "web"
+    i18n:
+      structure: single_file
+    editor:
+      preview: false
+    files:
+      - label: "Landing Content"
+        name: "landing_content"
+        i18n: true
+        file: "contents/landing/content.yaml"
+        fields:
+          - label: "Tech Partners"
+            name: "techPartners"
+            widget: "list"
+            i18n: duplicate
+            summary: "{{fields.name}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Partner Name", name: "name", widget: "string" }
+              - { label: "Logo URL", name: "logoUrl", widget: "image" }
+
+          - label: "Workflow Steps"
+            name: "workflowSteps"
+            widget: "list"
+            i18n: duplicate
+            summary: "Step {{fields.step}}: {{fields.title}}"
+            fields:
+              - { label: "Step Number", name: "step", widget: "number", value_type: "int", i18n: duplicate }
+              - { label: "Badge Key (e.g. 01)", name: "badgeKey", widget: "string", i18n: duplicate }
+              - { label: "Title", name: "title", widget: "string", i18n: true }
+              - { label: "Description", name: "desc", widget: "text", i18n: true }
+              - { label: "Image URL", name: "imageUrl", widget: "image", i18n: duplicate }
+
+          - label: "Features (Benefits)"
+            name: "benefitItems"
+            widget: "list"
+            i18n: true
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", i18n: duplicate }
+              - label: "Icon Name"
+                name: "iconName"
+                widget: "select"
+                i18n: duplicate
+                options:
+                  - { label: "Server", value: "server" }
+                  - { label: "Database", value: "database" }
+                  - { label: "Refresh (Sync)", value: "refresh-cw" }
+                  - { label: "Shield Check (Security)", value: "shield-check" }
+                  - { label: "Zap (Fast)", value: "zap" }
+                  - { label: "Grid (Apps)", value: "grid-2x2" }
+                  - { label: "Boxes", value: "boxes" }
+              - { label: "Title", name: "title", widget: "string", i18n: true }
+              - { label: "Description", name: "desc", widget: "text", i18n: true }
+              - { label: "Action Text", name: "action", widget: "string", i18n: true }
+              - label: "Tags"
+                name: "tags"
+                widget: "list"
+                required: false
+                i18n: duplicate
+                field: { label: "Tag", name: "tag", widget: "string" }
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            i18n: true
+            summary: "{{fields.name}} ({{fields.role}})"
+            fields:
+              - { label: "ID", name: "id", widget: "string", i18n: duplicate }
+              - { label: "Author Name", name: "name", widget: "string", i18n: duplicate }
+              - { label: "Role", name: "role", widget: "string", i18n: true }
+              - { label: "Quote", name: "quote", widget: "text", i18n: true }
+              - { label: "Avatar Image", name: "avatarUrl", widget: "image", i18n: duplicate }
+
+          - label: "FAQ Items"
+            name: "faqItems"
+            widget: "list"
+            i18n: true
+            summary: "{{fields.question}}"
+            fields:
+              - { label: "ID", name: "id", widget: "string", i18n: duplicate }
+              - { label: "Question", name: "question", widget: "string", i18n: true }
+              - { label: "Answer", name: "answer", widget: "text", i18n: true }

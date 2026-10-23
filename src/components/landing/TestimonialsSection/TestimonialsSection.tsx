@@ -16,11 +16,12 @@ import {
 	MessageSquareQuote,
 	Quote,
 } from "lucide-react";
-import { TESTIMONIALS } from "#/constants/landing";
+import { useLandingContent } from "#/libs/landing";
 import styles from "./TestimonialsSection.module.css";
 
 export function TestimonialsSection() {
 	const { i18n } = useLingui();
+	const { testimonials } = useLandingContent();
 
 	return (
 		<Box component="section" id="testimonials" className={styles.section}>
@@ -48,19 +49,19 @@ export function TestimonialsSection() {
 					<Group gap={12} wrap="nowrap">
 						<Avatar.Group>
 							<Avatar
-								src="/assets/landing/avatar-alex.png"
+								src="/uploads/avatar-alex.png"
 								alt="Alex"
 								radius="xl"
 								size={32}
 							/>
 							<Avatar
-								src="/assets/landing/avatar-sophia.png"
+								src="/uploads/avatar-sophia.png"
 								alt="Sophia"
 								radius="xl"
 								size={32}
 							/>
 							<Avatar
-								src="/assets/landing/avatar-daniel.png"
+								src="/uploads/avatar-daniel.png"
 								alt="Daniel"
 								radius="xl"
 								size={32}
@@ -116,7 +117,7 @@ export function TestimonialsSection() {
 					control: styles.carouselControl,
 				}}
 			>
-				{TESTIMONIALS.map((item) => (
+				{testimonials.map((item) => (
 					<Carousel.Slide key={item.id}>
 						<Stack justify="space-between" className={styles.card}>
 							<Stack gap={16} className={styles.quoteGroup}>
@@ -125,7 +126,7 @@ export function TestimonialsSection() {
 									className={styles.quoteIcon}
 									fill="currentColor"
 								/>
-								<Text className={styles.quote}>{i18n._(item.quote)}</Text>
+								<Text className={styles.quote}>{item.quote}</Text>
 							</Stack>
 
 							<Group gap={12}>
@@ -140,7 +141,7 @@ export function TestimonialsSection() {
 										{item.name}
 									</Text>
 									<Text size="xs" className={styles.authorRole}>
-										{i18n._(item.role)}
+										{item.role}
 									</Text>
 								</Stack>
 							</Group>

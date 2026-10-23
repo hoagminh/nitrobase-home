@@ -9,11 +9,12 @@ import {
 	Title,
 } from "@mantine/core";
 import { CircleCheckBig, MoveRight, Workflow } from "lucide-react";
-import { WORKFLOW_STEPS } from "#/constants/landing";
+import { useLandingContent } from "#/libs/landing";
 import styles from "./HowItWorksSection.module.css";
 
 export function HowItWorksSection() {
 	const { i18n } = useLingui();
+	const { workflowSteps } = useLandingContent();
 
 	return (
 		<Box component="section" id="how-it-works" className={styles.section}>
@@ -79,7 +80,7 @@ export function HowItWorksSection() {
 			</Group>
 
 			<SimpleGrid cols={{ base: 1, md: 3 }} spacing={24}>
-				{WORKFLOW_STEPS.map((step) => (
+				{workflowSteps.map((step) => (
 					<Box key={step.step} className={styles.stepCard}>
 						<Group gap={16} align="flex-start" wrap="nowrap">
 							<Text component="span" className={styles.stepNumber}>
@@ -88,12 +89,12 @@ export function HowItWorksSection() {
 							<Stack gap={6} className={styles.stepTextGroup}>
 								<Group gap={8} align="center" justify="space-between">
 									<Title order={3} className={styles.stepTitle}>
-										{i18n._(step.title)}
+										{step.title}
 									</Title>
 									<MoveRight size={16} className={styles.stepArrow} />
 								</Group>
 								<Text lineClamp={3} className={styles.stepDesc}>
-									{i18n._(step.desc)}
+									{step.desc}
 								</Text>
 							</Stack>
 						</Group>
@@ -101,7 +102,7 @@ export function HowItWorksSection() {
 						<Box className={styles.imageFrame}>
 							<img
 								src={step.imageUrl}
-								alt={i18n._(step.title)}
+								alt={step.title}
 								className={styles.stepImg}
 							/>
 						</Box>

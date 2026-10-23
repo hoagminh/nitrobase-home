@@ -53,7 +53,7 @@ export function HeroSection() {
 					</a>
 
 					<Title order={1} className={styles.title}>
-						{i18n._("Self-host Supabase & Modern Backends.")}&nbsp;
+						{i18n._("Self-host Modern PaaS & BaaS.")}&nbsp;
 						<span className={styles.gradientSubtitle}>
 							{i18n._("On your own VPS without the DevOps headache.")}
 						</span>
@@ -61,7 +61,7 @@ export function HeroSection() {
 
 					<Text className={styles.description}>
 						{i18n._(
-							"SaaSBase is the open-source self-hosted PaaS & BaaS deployer. Connect any Ubuntu VPS over SSH, bootstrap Docker & Traefik in 1 click, and run production-grade Supabase, PocketBase, and apps with zero vendor lock-in.",
+							"SaaSBase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS over SSH, bootstrap Docker & Traefik in 1 click, and run production-grade Supabase, PocketBase, Appwrite, n8n and more with zero vendor lock-in.",
 						)}
 					</Text>
 
@@ -134,7 +134,7 @@ export function HeroSection() {
 						</CopyButton>
 					</Box>
 
-					<Group gap={18} className={styles.valueProps}>
+					<Group gap={14} wrap="nowrap" className={styles.valueProps}>
 						<div className={styles.valueItem}>
 							<Zap className={styles.valueIcon} />
 							<Text className={styles.valueText}>

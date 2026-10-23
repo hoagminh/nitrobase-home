@@ -33,7 +33,7 @@ export const Route = createFileRoute("/{-$locale}/")({
 			title,
 			description,
 			keywords: globalSeoData?.keywords,
-			imageUrl: globalSeoData?.image || "/assets/landing/hero-preview.png",
+			imageUrl: globalSeoData?.image || "/uploads/hero-preview.png",
 			siteName: globalSeoData?.site_name || "SaaSBase",
 			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
 			canonicalUrl,

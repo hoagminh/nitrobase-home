@@ -13,4 +13,7 @@ export declare const allLegals: Array<Legal>;
 export type GlobalSeo = GetTypeByName<typeof configuration, "globalSeo">;
 export declare const globalSeo: GlobalSeo;
 
+export type LandingContent = GetTypeByName<typeof configuration, "landingContent">;
+export declare const landingContent: LandingContent;
+
 export {};

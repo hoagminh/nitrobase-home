@@ -34,7 +34,7 @@ export const Route = createFileRoute("/{-$locale}/docs/$")({
 			locale,
 			siteName: globalSeoData?.site_name || "SaaSBase",
 			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
-			imageUrl: globalSeoData?.image || "/assets/landing/hero-preview.png",
+			imageUrl: globalSeoData?.image || "/uploads/hero-preview.png",
 			alternates: [
 				{ hrefLang: "en", href: `https://saasbase.dev/docs/${doc.slug}` },
 				{ hrefLang: "vi", href: `https://saasbase.dev/vi/docs/${doc.slug}` },

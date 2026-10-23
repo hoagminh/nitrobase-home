@@ -88,18 +88,85 @@ ${body.trim()}
   }
 });
 
+// collections/landing.ts
+import { defineSingleton } from "@content-collections/core";
+import { z as z3 } from "zod";
+var techPartnerSchema = z3.object({
+  id: z3.string(),
+  name: z3.string(),
+  logoUrl: z3.string()
+});
+var workflowStepSchema = z3.object({
+  step: z3.number(),
+  badgeKey: z3.string(),
+  title: z3.string(),
+  desc: z3.string(),
+  imageUrl: z3.string()
+});
+var benefitItemSchema = z3.object({
+  id: z3.string(),
+  iconName: z3.enum([
+    "server",
+    "database",
+    "refresh-cw",
+    "shield-check",
+    "zap",
+    "grid-2x2",
+    "boxes"
+  ]),
+  title: z3.string(),
+  desc: z3.string(),
+  action: z3.string(),
+  tags: z3.array(z3.string()).optional()
+});
+var testimonialSchema = z3.object({
+  id: z3.string(),
+  name: z3.string(),
+  role: z3.string(),
+  quote: z3.string(),
+  avatarUrl: z3.string()
+});
+var faqItemSchema = z3.object({
+  id: z3.string(),
+  question: z3.string(),
+  answer: z3.string()
+});
+var landingSchema = z3.object({
+  techPartners: z3.array(techPartnerSchema),
+  workflowSteps: z3.array(workflowStepSchema),
+  benefitItems: z3.array(benefitItemSchema),
+  testimonials: z3.array(testimonialSchema),
+  faqItems: z3.array(faqItemSchema)
+});
+var landingContent = defineSingleton({
+  name: "landingContent",
+  filePath: "contents/landing/content.yaml",
+  parser: "yaml",
+  schema: z3.record(z3.string(), landingSchema),
+  transform: (doc) => {
+    const { _meta, ...locales } = doc;
+    return Object.entries(locales).reduce(
+      (acc, [key, value]) => {
+        acc[key] = landingSchema.parse(value);
+        return acc;
+      },
+      {}
+    );
+  }
+});
+
 // collections/legal.ts
 import { defineCollection as defineCollection3 } from "@content-collections/core";
 import { compileMarkdown as compileMarkdown2 } from "@content-collections/markdown";
-import { z as z3 } from "zod";
+import { z as z4 } from "zod";
 var legals = defineCollection3({
   name: "legals",
   directory: "contents/legal",
   include: "**/*.md",
-  schema: z3.object({
-    title: z3.string(),
-    description: z3.string().optional(),
-    lastUpdated: z3.union([z3.string(), z3.date()]).transform(
+  schema: z4.object({
+    title: z4.string(),
+    description: z4.string().optional(),
+    lastUpdated: z4.union([z4.string(), z4.date()]).transform(
       (v) => typeof v === "string" ? v : v.toISOString().slice(0, 10)
     ).optional()
   }),
@@ -126,24 +193,24 @@ var legals = defineCollection3({
 });
 
 // collections/settings.ts
-import { defineSingleton } from "@content-collections/core";
-import z4 from "zod";
-var globalSeoSchema = z4.object({
-  site_name: z4.string().optional(),
-  title: z4.string().optional(),
-  description: z4.string().optional(),
-  keywords: z4.string().optional(),
-  image: z4.string().optional(),
-  author: z4.string().optional(),
-  twitter_handle: z4.string().optional(),
-  theme_color: z4.string().optional(),
-  url: z4.string().optional()
+import { defineSingleton as defineSingleton2 } from "@content-collections/core";
+import z5 from "zod";
+var globalSeoSchema = z5.object({
+  site_name: z5.string().optional(),
+  title: z5.string().optional(),
+  description: z5.string().optional(),
+  keywords: z5.string().optional(),
+  image: z5.string().optional(),
+  author: z5.string().optional(),
+  twitter_handle: z5.string().optional(),
+  theme_color: z5.string().optional(),
+  url: z5.string().optional()
 });
-var globalSeo = defineSingleton({
+var globalSeo = defineSingleton2({
   name: "globalSeo",
   filePath: "contents/settings/seo.yaml",
   parser: "yaml",
-  schema: z4.record(z4.string(), globalSeoSchema),
+  schema: z5.record(z5.string(), globalSeoSchema),
   transform: (doc) => {
     const { _meta, ...locales } = doc;
     return Object.entries(locales).reduce(
@@ -158,7 +225,7 @@ var globalSeo = defineSingleton({
 
 // content-collections.ts
 var content_collections_default = defineConfig({
-  content: [authors, docs, legals, globalSeo]
+  content: [authors, docs, legals, globalSeo, landingContent]
 });
 export {
   content_collections_default as default

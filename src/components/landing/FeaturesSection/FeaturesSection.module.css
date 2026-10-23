@@ -94,6 +94,33 @@
 	color: var(--text-primary);
 }
 
+.tagsGroup {
+	gap: 6px;
+	margin-top: -2px;
+	margin-bottom: 2px;
+}
+
+.tagBadge {
+	display: inline-flex;
+	align-items: center;
+	padding: 2px 7px;
+	border-radius: 6px;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 14px;
+	background: var(--badge-bg);
+	border: var(--badge-border);
+	color: var(--text-secondary);
+	letter-spacing: -0.01em;
+	user-select: none;
+}
+
+[data-mantine-color-scheme="dark"] .tagBadge {
+	background: rgba(255, 255, 255, 0.04);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	color: #d4d4d8;
+}
+
 .cardDesc {
 	font-size: 14px;
 	line-height: 20px;

@@ -27,7 +27,7 @@ import {
 	ShieldCheck,
 } from "lucide-react";
 import { useState } from "react";
-import { FAQ_ITEMS } from "#/constants/landing";
+import { useLandingContent } from "#/libs/landing";
 import styles from "./FaqSection.module.css";
 
 interface ISupportForm {
@@ -39,6 +39,7 @@ interface ISupportForm {
 
 export function FaqSection() {
 	const { i18n } = useLingui();
+	const { faqItems } = useLandingContent();
 	const [contactOpened, { open: openContact, close: closeContact }] =
 		useDisclosure(false);
 
@@ -149,10 +150,10 @@ export function FaqSection() {
 							content: styles.accordionContent,
 						}}
 					>
-						{FAQ_ITEMS.map((item) => (
+						{faqItems.map((item) => (
 							<Accordion.Item key={item.id} value={item.id}>
-								<Accordion.Control>{i18n._(item.question)}</Accordion.Control>
-								<Accordion.Panel>{i18n._(item.answer)}</Accordion.Panel>
+								<Accordion.Control>{item.question}</Accordion.Control>
+								<Accordion.Panel>{item.answer}</Accordion.Panel>
 							</Accordion.Item>
 						))}
 					</Accordion>
