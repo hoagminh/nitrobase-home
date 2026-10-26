@@ -1,0 +1,109 @@
+
+export default {
+  "en": {
+    "benefitItems": [
+      {
+        "id": "vps-bootstrap",
+        "iconName": "server",
+        "title": "1-Click VPS & Docker Bootstrap",
+        "desc": "Connect any Ubuntu or Debian VPS via SSH. Nitrobase bootstraps Docker 27, Traefik v3 reverse proxy, and SSL certificates automatically, or publishes securely through Cloudflare Tunnel without opening ports 80/443.",
+        "action": "View architecture",
+        "tags": [
+          "Ubuntu / Debian",
+          "Docker 27",
+          "Traefik v3"
+        ]
+      },
+      {
+        "id": "supabase-full-stack",
+        "iconName": "database",
+        "title": "Supabase, PocketBase, Appwrite & n8n",
+        "desc": "Deploy full-stack Supabase (Postgres 16, pgvector, Auth, Studio), PocketBase, Appwrite, or workflow automation with n8n in 1 click with auto-generated credentials.",
+        "action": "Explore stacks",
+        "tags": [
+          "Supabase",
+          "PocketBase",
+          "Appwrite",
+          "n8n"
+        ]
+      },
+      {
+        "id": "cloud-sync-migration",
+        "iconName": "refresh-cw",
+        "title": "Cloud Sync & Atomic Migration",
+        "desc": "Import directly from Supabase Cloud - pulling database schemas, data, storage files, and edge functions to your VPS. Move running apps between servers with automated health verification and zero-downtime rollback.",
+        "action": "Cloud sync",
+        "tags": [
+          "Supabase Cloud",
+          "Zero-Downtime",
+          "Rollback"
+        ]
+      },
+      {
+        "id": "enterprise-security",
+        "iconName": "shield-check",
+        "title": "Encrypted Backups & Security",
+        "desc": "Enterprise-grade security with HKDF-derived versioned secrets, zero-downtime key rotation, AES-256-CBC encrypted backups streamed to Cloudflare R2/S3, one-time SETUP_TOKEN protection, 2FA, and full audit logs.",
+        "action": "Security specs",
+        "tags": [
+          "AES-256-CBC",
+          "Cloudflare R2 / S3",
+          "HKDF v2"
+        ]
+      }
+    ]
+  },
+  "vi": {
+    "benefitItems": [
+      {
+        "id": "vps-bootstrap",
+        "iconName": "server",
+        "title": "Khởi tạo VPS & Docker 1-Click",
+        "desc": "Kết nối bất kỳ VPS Ubuntu hoặc Debian nào qua SSH. Nitrobase tự động cài đặt Docker 27, Traefik v3 và chứng chỉ SSL, hoặc xuất bản an toàn qua Cloudflare Tunnel mà không cần mở cổng 80/443.",
+        "action": "Xem kiến trúc",
+        "tags": [
+          "Ubuntu / Debian",
+          "Docker 27",
+          "Traefik v3"
+        ]
+      },
+      {
+        "id": "supabase-full-stack",
+        "iconName": "database",
+        "title": "Supabase, PocketBase, Appwrite & n8n",
+        "desc": "Triển khai cụm Supabase đầy đủ (Postgres 16, pgvector, Auth, Studio), PocketBase, Appwrite hoặc nền tảng tự động hóa quy trình n8n chỉ trong 1 cú nhấp chuột với thông tin xác thực được tạo tự động.",
+        "action": "Khám phá các stack",
+        "tags": [
+          "Supabase",
+          "PocketBase",
+          "Appwrite",
+          "n8n"
+        ]
+      },
+      {
+        "id": "cloud-sync-migration",
+        "iconName": "refresh-cw",
+        "title": "Đồng bộ Đám mây & Di chuyển An toàn",
+        "desc": "Nhập trực tiếp từ Supabase Cloud - đồng bộ schema database, dữ liệu bảng, tệp storage và edge functions về VPS của bạn. Di chuyển ứng dụng giữa các máy chủ với xác thực sức khỏe tự động và hoàn tác không gián đoạn.",
+        "action": "Đồng bộ Cloud",
+        "tags": [
+          "Supabase Cloud",
+          "Zero-Downtime",
+          "Rollback"
+        ]
+      },
+      {
+        "id": "enterprise-security",
+        "iconName": "shield-check",
+        "title": "Sao lưu Mã hóa & Bảo mật Doanh nghiệp",
+        "desc": "Bảo mật chuẩn doanh nghiệp với mã hóa bí mật định dạng v2 bằng HKDF, xoay vòng khóa không gián đoạn, sao lưu mã hóa AES-256-CBC truyền lên Cloudflare R2/S3, mã SETUP_TOKEN chống chiếm quyền, 2FA và nhật ký kiểm toán toàn diện.",
+        "action": "Thông số bảo mật",
+        "tags": [
+          "AES-256-CBC",
+          "Cloudflare R2 / S3",
+          "HKDF v2"
+        ]
+      }
+    ]
+  }
+}

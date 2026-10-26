@@ -1,11 +1,28 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { useLingui } from "@lingui/react";
-import { landingContent } from "content-collections";
+import {
+	landingFaq,
+	landingFeature,
+	landingTechPartner,
+	landingTestimonial,
+	landingWorkflowStep,
+} from "content-collections";
 import type { Locale } from "#/libs/i18n";
 import type { LandingContentData } from "../../collections/landing";
 
 export function getLandingContent(locale: Locale = "en"): LandingContentData {
-	return landingContent[locale] || landingContent.en;
+	return {
+		techPartners:
+			(landingTechPartner[locale] || landingTechPartner.en)?.techPartners || [],
+		workflowSteps:
+			(landingWorkflowStep[locale] || landingWorkflowStep.en)?.workflowSteps ||
+			[],
+		benefitItems:
+			(landingFeature[locale] || landingFeature.en)?.benefitItems || [],
+		testimonials:
+			(landingTestimonial[locale] || landingTestimonial.en)?.testimonials || [],
+		faqItems: (landingFaq[locale] || landingFaq.en)?.faqItems || [],
+	};
 }
 
 export function useLandingContent(): LandingContentData {

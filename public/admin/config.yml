@@ -148,10 +148,10 @@ collections:
     editor:
       preview: false
     files:
-      - label: "Landing Content"
-        name: "landing_content"
+      - label: "Tech Stack & Partners"
+        name: "tech_partners"
+        file: "contents/landing/tech-partners.yaml"
         i18n: true
-        file: "contents/landing/content.yaml"
         fields:
           - label: "Tech Partners"
             name: "techPartners"
@@ -163,6 +163,11 @@ collections:
               - { label: "Partner Name", name: "name", widget: "string" }
               - { label: "Logo URL", name: "logoUrl", widget: "image" }
 
+      - label: "Workflow (How It Works)"
+        name: "workflow_steps"
+        file: "contents/landing/workflow-steps.yaml"
+        i18n: true
+        fields:
           - label: "Workflow Steps"
             name: "workflowSteps"
             widget: "list"
@@ -175,6 +180,11 @@ collections:
               - { label: "Description", name: "desc", widget: "text", i18n: true }
               - { label: "Image URL", name: "imageUrl", widget: "image", i18n: duplicate }
 
+      - label: "Features & Benefits"
+        name: "features"
+        file: "contents/landing/features.yaml"
+        i18n: true
+        fields:
           - label: "Features (Benefits)"
             name: "benefitItems"
             widget: "list"
@@ -204,6 +214,11 @@ collections:
                 i18n: duplicate
                 field: { label: "Tag", name: "tag", widget: "string" }
 
+      - label: "Testimonials"
+        name: "testimonials"
+        file: "contents/landing/testimonials.yaml"
+        i18n: true
+        fields:
           - label: "Testimonials"
             name: "testimonials"
             widget: "list"
@@ -216,6 +231,11 @@ collections:
               - { label: "Quote", name: "quote", widget: "text", i18n: true }
               - { label: "Avatar Image", name: "avatarUrl", widget: "image", i18n: duplicate }
 
+      - label: "FAQ Items"
+        name: "faq"
+        file: "contents/landing/faq.yaml"
+        i18n: true
+        fields:
           - label: "FAQ Items"
             name: "faqItems"
             widget: "list"

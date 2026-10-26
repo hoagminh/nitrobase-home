@@ -138,16 +138,92 @@ var landingSchema = z3.object({
   testimonials: z3.array(testimonialSchema),
   faqItems: z3.array(faqItemSchema)
 });
-var landingContent = defineSingleton({
-  name: "landingContent",
-  filePath: "contents/landing/content.yaml",
+var landingTechPartners = defineSingleton({
+  name: "landingTechPartners",
+  filePath: "contents/landing/tech-partners.yaml",
   parser: "yaml",
-  schema: z3.record(z3.string(), landingSchema),
+  schema: z3.record(
+    z3.string(),
+    z3.object({ techPartners: z3.array(techPartnerSchema) })
+  ),
   transform: (doc) => {
     const { _meta, ...locales } = doc;
     return Object.entries(locales).reduce(
       (acc, [key, value]) => {
-        acc[key] = landingSchema.parse(value);
+        acc[key] = value;
+        return acc;
+      },
+      {}
+    );
+  }
+});
+var landingWorkflowSteps = defineSingleton({
+  name: "landingWorkflowSteps",
+  filePath: "contents/landing/workflow-steps.yaml",
+  parser: "yaml",
+  schema: z3.record(
+    z3.string(),
+    z3.object({ workflowSteps: z3.array(workflowStepSchema) })
+  ),
+  transform: (doc) => {
+    const { _meta, ...locales } = doc;
+    return Object.entries(locales).reduce(
+      (acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      },
+      {}
+    );
+  }
+});
+var landingFeatures = defineSingleton({
+  name: "landingFeatures",
+  filePath: "contents/landing/features.yaml",
+  parser: "yaml",
+  schema: z3.record(
+    z3.string(),
+    z3.object({ benefitItems: z3.array(benefitItemSchema) })
+  ),
+  transform: (doc) => {
+    const { _meta, ...locales } = doc;
+    return Object.entries(locales).reduce(
+      (acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      },
+      {}
+    );
+  }
+});
+var landingTestimonials = defineSingleton({
+  name: "landingTestimonials",
+  filePath: "contents/landing/testimonials.yaml",
+  parser: "yaml",
+  schema: z3.record(
+    z3.string(),
+    z3.object({ testimonials: z3.array(testimonialSchema) })
+  ),
+  transform: (doc) => {
+    const { _meta, ...locales } = doc;
+    return Object.entries(locales).reduce(
+      (acc, [key, value]) => {
+        acc[key] = value;
+        return acc;
+      },
+      {}
+    );
+  }
+});
+var landingFaq = defineSingleton({
+  name: "landingFaq",
+  filePath: "contents/landing/faq.yaml",
+  parser: "yaml",
+  schema: z3.record(z3.string(), z3.object({ faqItems: z3.array(faqItemSchema) })),
+  transform: (doc) => {
+    const { _meta, ...locales } = doc;
+    return Object.entries(locales).reduce(
+      (acc, [key, value]) => {
+        acc[key] = value;
         return acc;
       },
       {}
@@ -225,7 +301,17 @@ var globalSeo = defineSingleton2({
 
 // content-collections.ts
 var content_collections_default = defineConfig({
-  content: [authors, docs, legals, globalSeo, landingContent]
+  content: [
+    authors,
+    docs,
+    legals,
+    globalSeo,
+    landingTechPartners,
+    landingWorkflowSteps,
+    landingFeatures,
+    landingTestimonials,
+    landingFaq
+  ]
 });
 export {
   content_collections_default as default

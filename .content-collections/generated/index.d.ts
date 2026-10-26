@@ -13,7 +13,19 @@ export declare const allLegals: Array<Legal>;
 export type GlobalSeo = GetTypeByName<typeof configuration, "globalSeo">;
 export declare const globalSeo: GlobalSeo;
 
-export type LandingContent = GetTypeByName<typeof configuration, "landingContent">;
-export declare const landingContent: LandingContent;
+export type LandingTechPartner = GetTypeByName<typeof configuration, "landingTechPartners">;
+export declare const landingTechPartner: LandingTechPartner;
+
+export type LandingWorkflowStep = GetTypeByName<typeof configuration, "landingWorkflowSteps">;
+export declare const landingWorkflowStep: LandingWorkflowStep;
+
+export type LandingFeature = GetTypeByName<typeof configuration, "landingFeatures">;
+export declare const landingFeature: LandingFeature;
+
+export type LandingTestimonial = GetTypeByName<typeof configuration, "landingTestimonials">;
+export declare const landingTestimonial: LandingTestimonial;
+
+export type LandingFaq = GetTypeByName<typeof configuration, "landingFaq">;
+export declare const landingFaq: LandingFaq;
 
 export {};
