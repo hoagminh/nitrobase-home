@@ -36,7 +36,8 @@ collections:
     description: "Nitrobase technical documentation and user guides"
     folder: "contents/docs"
     slug: "{{slug}}"
-    create: true
+    create: false
+    delete: false
     extension: md
     format: frontmatter
     i18n: true
