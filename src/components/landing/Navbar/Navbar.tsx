@@ -115,7 +115,7 @@ export function Navbar() {
 				<LocalizedLink
 					to="/"
 					className={styles.logoWrapper}
-					aria-label="SaaS Base Home"
+					aria-label="Nitrobase Home"
 				>
 					<img
 						src={
@@ -123,7 +123,7 @@ export function Navbar() {
 								? "/assets/landing/logo-dark.png"
 								: "/assets/landing/logo-light.png"
 						}
-						alt="SaaS Base Logo"
+						alt="Nitrobase Logo"
 						className={styles.logoImage}
 					/>
 				</LocalizedLink>

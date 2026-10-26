@@ -45,7 +45,7 @@ export function Footer() {
 								? "/assets/landing/logo-dark.png"
 								: "/assets/landing/logo-light.png"
 						}
-						alt="SaaS Base"
+						alt="Nitrobase"
 						className={styles.logoImg}
 					/>
 					<Title order={3} className={styles.brandHeadline}>
