@@ -3,7 +3,7 @@ title: Deploying Apps from Marketplace
 description: Browse the built-in marketplace and deploy one-click open-source templates.
 ---
 
-SaaSBase includes a curated marketplace of open-source services ready to be deployed with one click:
+Nitrobase includes a curated marketplace of open-source services ready to be deployed with one click:
 * **Supabase:** Full BaaS suite with PostgreSQL, GoTrue Auth, Storage, and Studio.
 * **PocketBase:** Lightweight all-in-one Go backend with SQLite.
 * **Appwrite:** Complete backend solution for web & mobile apps.
@@ -14,4 +14,4 @@ SaaSBase includes a curated marketplace of open-source services ready to be depl
 1. Go to **Apps -> New App -> From Template**.
 2. Choose your desired template.
 3. Configure your server destination, service name, and customizable environment variables.
-4. Click **Deploy**. SaaSBase pulls the pinned container images, creates isolated volumes, configures Traefik routes, and runs health checks.
+4. Click **Deploy**. Nitrobase pulls the pinned container images, creates isolated volumes, configures Traefik routes, and runs health checks.

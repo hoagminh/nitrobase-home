@@ -7,8 +7,8 @@ description: How to clone the repo, run PostgreSQL on port 5443, apply migration
 
 1. Clone the repository and install dependencies:
 ```bash
-git clone https://github.com/saasbase/saasbase.git
-cd saasbase
+git clone https://github.com/nitrobase/nitrobase.git
+cd nitrobase
 bun install
 ```
 

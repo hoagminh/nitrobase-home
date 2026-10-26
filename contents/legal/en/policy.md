@@ -1,12 +1,12 @@
 ---
 title: "Privacy Policy"
-description: "Learn how SaaS Base collects, protects, and manages your data when using our self-hosted infrastructure platform."
+description: "Learn how Nitrobase collects, protects, and manages your data when using our self-hosted infrastructure platform."
 lastUpdated: "2026-10-15"
 ---
 
 ## 1. Introduction
 
-Welcome to **SaaS Base** ("we", "our", or "us"). We are committed to protecting your privacy and ensuring you have complete control over your data. Because SaaS Base is built specifically for self-hosting Supabase and related backend infrastructure on your own servers, your core database records and sensitive application data remain exclusively under your control.
+Welcome to **Nitrobase** ("we", "our", or "us"). We are committed to protecting your privacy and ensuring you have complete control over your data. Because Nitrobase is built specifically for self-hosting Supabase and related backend infrastructure on your own servers, your core database records and sensitive application data remain exclusively under your control.
 
 This Privacy Policy explains what information we collect, how we use it, and the choices available to you when you use our website, deployment dashboard, and associated services.
 
@@ -21,7 +21,7 @@ Unlike closed proprietary Cloud DB providers:
 ## 3. Information We Collect
 
 ### A. Account & Authentication Information
-When you create an account or sign in to SaaS Base, we collect:
+When you create an account or sign in to Nitrobase, we collect:
 - Your email address.
 - Your authentication credentials or third-party OAuth IDs (e.g., GitHub or Google profile identifiers).
 - Your workspace and user profile settings.
@@ -49,7 +49,7 @@ We use the collected information for the following purposes:
 ## 5. Data Security & Retention
 
 We implement modern industry-standard security safeguards:
-- **Encryption at Rest & in Transit:** All communications with SaaS Base are secured via TLS 1.3. Server keys are stored using hardware-level encryption mechanisms.
+- **Encryption at Rest & in Transit:** All communications with Nitrobase are secured via TLS 1.3. Server keys are stored using hardware-level encryption mechanisms.
 - **Zero Third-Party Data Selling:** We do not sell, rent, or monetize your personal or infrastructure information.
 - **Account Deletion:** You can request account deletion at any time. Upon deletion, all associated configuration tokens and deployment profiles are permanently purged.
 
@@ -65,6 +65,6 @@ Depending on your jurisdiction (such as GDPR in the EU or CCPA in California), y
 
 If you have any questions or concerns regarding this Privacy Policy or our security practices, please contact our privacy team at:
 
-- **Email:** privacy@saasbase.dev
+- **Email:** privacy@nitrobase.dev
 - **Discord Community:** https://discord.com
-- **Website:** https://saasbase.dev
+- **Website:** https://nitrobase.dev

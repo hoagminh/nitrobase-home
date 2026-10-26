@@ -11,4 +11,4 @@ description: Set up automated backup schedules for applications and databases wi
 5. Specify **Retention Count** (e.g. keep the last 7 daily backups).
 
 ## Backup Catch-Up (BACKUP_CATCH_UP)
-If your server was offline or rebooting when a scheduled backup was supposed to run, SaaSBase detects the missed schedule and runs a single catch-up backup immediately upon startup.
+If your server was offline or rebooting when a scheduled backup was supposed to run, Nitrobase detects the missed schedule and runs a single catch-up backup immediately upon startup.

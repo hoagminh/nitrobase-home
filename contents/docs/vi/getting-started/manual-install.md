@@ -1,9 +1,9 @@
 ---
 title: Cài đặt thủ công bằng Docker Compose
-description: Cách cài đặt SaaSBase thủ công bằng Git và Docker Compose dành cho môi trường tùy biến.
+description: Cách cài đặt Nitrobase thủ công bằng Git và Docker Compose dành cho môi trường tùy biến.
 ---
 
-Nếu bạn muốn toàn quyền kiểm soát môi trường triển khai, chạy SaaSBase đằng sau một hệ thống proxy có sẵn hoặc dựng môi trường phát triển, bạn có thể cài đặt thủ công qua Git và Docker Compose.
+Nếu bạn muốn toàn quyền kiểm soát môi trường triển khai, chạy Nitrobase đằng sau một hệ thống proxy có sẵn hoặc dựng môi trường phát triển, bạn có thể cài đặt thủ công qua Git và Docker Compose.
 
 ## Điều kiện tiên quyết
 * Đã cài đặt Docker 24.0+ và Docker Compose v2.24+ trên máy chủ.
@@ -13,8 +13,8 @@ Nếu bạn muốn toàn quyền kiểm soát môi trường triển khai, chạ
 
 ### 1. Clone mã nguồn
 ```bash
-git clone https://github.com/saasbase/saasbase.git saasbase
-cd saasbase
+git clone https://github.com/nitrobase/nitrobase.git nitrobase
+cd nitrobase
 ```
 
 ### 2. Thiết lập biến môi trường
@@ -28,8 +28,8 @@ Sinh các khóa bảo mật 32-byte ngẫu nhiên:
 sed -i "s|^ENCRYPTION_KEY=.*|ENCRYPTION_KEY=$(openssl rand -hex 32)|" .env
 sed -i "s|^SESSION_SECRET=.*|SESSION_SECRET=$(openssl rand -hex 32)|" .env
 sed -i "s|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=$(openssl rand -hex 32)|" .env
-echo "SAASBASE_IMAGE=saasbase" >> .env
-echo "SAASBASE_VERSION=local" >> .env
+echo "NITROBASE_IMAGE=nitrobase" >> .env
+echo "NITROBASE_VERSION=local" >> .env
 chmod 600 .env
 ```
 
@@ -53,7 +53,7 @@ docker compose -f docker-compose.prod.yml up -d
 
 | Biến | Bắt buộc | Mô tả |
 | :--- | :--- | :--- |
-| `DATABASE_URL` | **Có** | Chuỗi kết nối Postgres nội bộ (ví dụ: `postgresql://saasbase:pass@postgres:5432/saasbase`). |
+| `DATABASE_URL` | **Có** | Chuỗi kết nối Postgres nội bộ (ví dụ: `postgresql://nitrobase:pass@postgres:5432/nitrobase`). |
 | `ENCRYPTION_KEY` | **Có** | Chuỗi bí mật tối thiểu 32 ký tự để mã hóa dữ liệu nhạy cảm bằng chuẩn HKDF. |
 | `SESSION_SECRET` | **Có** | Chuỗi bí mật tối thiểu 32 ký tự để ký và bảo vệ cookie phiên đăng nhập. |
 | `APP_URL` | Không | Địa chỉ URL công khai của panel. Nếu bắt đầu bằng `https://`, cookie sẽ tự động có cờ `Secure`. |

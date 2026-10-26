@@ -1,9 +1,9 @@
 ---
-title: Upgrading SaaSBase
+title: Upgrading Nitrobase
 description: Zero-downtime upgrades via short-lived updater container and automatic health check rollbacks.
 ---
 
-SaaSBase includes an automated in-place upgrade mechanism under **Settings -> Instance -> Upgrade to vX**.
+Nitrobase includes an automated in-place upgrade mechanism under **Settings -> Instance -> Upgrade to vX**.
 
 ## How In-Place Upgrades Work
 1. The panel takes an automatic self-backup before starting.

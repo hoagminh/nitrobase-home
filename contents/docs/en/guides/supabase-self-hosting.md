@@ -1,9 +1,9 @@
 ---
 title: "Deep Dive: Self-Hosting Supabase"
-description: Complete guide to self-hosting the full Supabase stack on your private VPS with SaaSBase.
+description: Complete guide to self-hosting the full Supabase stack on your private VPS with Nitrobase.
 ---
 
-SaaSBase offers first-class support for the entire Supabase ecosystem:
+Nitrobase offers first-class support for the entire Supabase ecosystem:
 * **PostgreSQL with pgvector:** AI embeddings and transactional data.
 * **GoTrue Auth:** Email/password, OAuth, and magic link authentication.
 * **PostgREST:** Instant RESTful APIs from database tables.

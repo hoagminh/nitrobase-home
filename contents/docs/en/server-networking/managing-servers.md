@@ -15,8 +15,8 @@ description: How to add a new VPS node, perform server bootstrap, and monitor se
 4. Click **Connect & Test**.
 
 ## Server Bootstrap
-Once connected, click **Bootstrap Server**. SaaSBase will preview the actions it plans to execute:
+Once connected, click **Bootstrap Server**. Nitrobase will preview the actions it plans to execute:
 * Install Docker CE (if not installed).
-* Create the shared internal Docker network (`saasbase-network`).
+* Create the shared internal Docker network (`nitrobase-network`).
 * Deploy the **Traefik v3** reverse proxy container.
 * Configure firewall rules and prepare storage paths.

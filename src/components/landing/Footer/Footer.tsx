@@ -53,13 +53,13 @@ export function Footer() {
 					</Title>
 					<Text className={styles.brandDesc} maw={350}>
 						{i18n._(
-							"SaaSBase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS, deploy Supabase full-stack or templates in minutes, and own your infrastructure 100%.",
+							"Nitrobase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS, deploy Supabase full-stack or templates in minutes, and own your infrastructure 100%.",
 						)}
 					</Text>
 
 					<Group gap={12} className={styles.socialRow}>
 						<a
-							href="https://github.com/hoagminh/saasbase-landing"
+							href="https://github.com/hoagminh/nitrobase-landing"
 							target="_blank"
 							rel="noreferrer"
 							className={styles.socialBox}
@@ -257,7 +257,7 @@ export function Footer() {
 				className={styles.bottomRow}
 			>
 				<Text component="span" className={styles.copyright}>
-					{i18n._("@2025 SaaS Base. All rights reserved.")}
+					{i18n._("@2025 Nitrobase. All rights reserved.")}
 				</Text>
 				<Group gap={8} align="center" className={styles.secureBadge}>
 					<ShieldCheck size={16} />

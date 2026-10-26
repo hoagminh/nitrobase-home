@@ -1,9 +1,9 @@
 ---
-title: Nâng cấp phiên bản SaaSBase
+title: Nâng cấp phiên bản Nitrobase
 description: Quy trình tự động nâng cấp an toàn qua container trung gian và tự động rollback khi có lỗi.
 ---
 
-SaaSBase cung cấp cơ chế tự nâng cấp trực tiếp ngay trên giao diện web tại **Settings -> Instance -> Upgrade to vX**.
+Nitrobase cung cấp cơ chế tự nâng cấp trực tiếp ngay trên giao diện web tại **Settings -> Instance -> Upgrade to vX**.
 
 ## Quy trình tự nâng cấp hoạt động ra sao
 1. Bảng điều khiển tự động chụp 1 bản sao lưu dự phòng (Self-backup) trước khi chạy.

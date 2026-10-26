@@ -1,9 +1,9 @@
 ---
 title: Teams & Role-Based Access Control (RBAC)
-description: Multi-tenancy, team collaboration, permissions, and member invite links in SaaSBase.
+description: Multi-tenancy, team collaboration, permissions, and member invite links in Nitrobase.
 ---
 
-SaaSBase is built from the ground up with native multi-tenancy. Every server, app, domain, destination, and backup schedule belongs to a **Team**.
+Nitrobase is built from the ground up with native multi-tenancy. Every server, app, domain, destination, and backup schedule belongs to a **Team**.
 
 ## RBAC Roles & Capabilities
 

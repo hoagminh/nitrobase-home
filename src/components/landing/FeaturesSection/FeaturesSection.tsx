@@ -62,7 +62,7 @@ export function FeaturesSection() {
 				</Title>
 				<Text className={styles.description}>
 					{i18n._(
-						"Say goodbye to unpredictable cloud bills. SaaSBase provides the complete developer experience of hosted platforms, running entirely on your own private infrastructure.",
+						"Say goodbye to unpredictable cloud bills. Nitrobase provides the complete developer experience of hosted platforms, running entirely on your own private infrastructure.",
 					)}
 				</Text>
 			</Stack>

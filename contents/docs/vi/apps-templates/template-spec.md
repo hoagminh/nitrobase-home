@@ -1,9 +1,9 @@
 ---
 title: Đặc tả Template (template.toml)
-description: Hướng dẫn định dạng file template.toml để đóng góp template mới vào kho ứng dụng SaaSBase.
+description: Hướng dẫn định dạng file template.toml để đóng góp template mới vào kho ứng dụng Nitrobase.
 ---
 
-Mỗi ứng dụng trong marketplace của SaaSBase được định nghĩa thông qua một file `template.toml` nằm trong thư mục `templates/`.
+Mỗi ứng dụng trong marketplace của Nitrobase được định nghĩa thông qua một file `template.toml` nằm trong thư mục `templates/`.
 
 ```toml
 [meta]

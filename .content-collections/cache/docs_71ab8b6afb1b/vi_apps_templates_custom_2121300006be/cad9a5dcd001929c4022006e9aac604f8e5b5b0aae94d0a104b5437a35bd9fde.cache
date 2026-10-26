@@ -1,0 +1,1 @@
+"<p>Đối với các ứng dụng phức tạp gồm nhiều microservices, bạn có thể triển khai trực tiếp bằng file <code>docker-compose.yml</code>.</p>\n<p>Nitrobase sẽ tự động gắn các nhãn (labels) định tuyến Traefik và kết nối container vào mạng <code>nitrobase-network</code>.</p>"

@@ -40,7 +40,7 @@ export function TestimonialsSection() {
 					</Title>
 					<Text className={styles.description}>
 						{i18n._(
-							"See why solo developers, CTOs, and fast-moving teams choose SaaSBase to run production Supabase clusters and backends on their own hardware.",
+							"See why solo developers, CTOs, and fast-moving teams choose Nitrobase to run production Supabase clusters and backends on their own hardware.",
 						)}
 					</Text>
 				</Stack>

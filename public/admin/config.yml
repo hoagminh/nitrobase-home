@@ -1,13 +1,13 @@
 # yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
 backend:
   name: github
-  repo: hoagminh/saasbase-landing
+  repo: hoagminh/nitrobase-landing
   branch: main
   auth_endpoint: /api/auth
   commit_messages:
     openAuthoring: '{{message}} (by {{author-login}})'
 
-app_title: SaasBase Admin
+app_title: Nitrobase Admin
 publish_mode: editorial_workflow
 media_folder: public/uploads
 public_folder: /uploads

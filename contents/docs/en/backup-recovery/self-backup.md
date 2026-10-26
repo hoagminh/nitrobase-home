@@ -1,9 +1,9 @@
 ---
-title: SaaSBase Self-Backup
+title: Nitrobase Self-Backup
 description: Complete panel database backup, manifest archives, and OpenSSL encryption.
 ---
 
-SaaSBase can take a self-backup of its own PostgreSQL database under **Data -> Backups -> Take Self-Backup**.
+Nitrobase can take a self-backup of its own PostgreSQL database under **Data -> Backups -> Take Self-Backup**.
 
 The backup bundle contains:
 1. Complete PostgreSQL database dump via `pg_dump`.

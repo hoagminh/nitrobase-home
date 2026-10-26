@@ -65,7 +65,7 @@ export function HeroWorkflowCanvas() {
 		activeStageRef.current = activeStageIndex;
 	}, [activeStageIndex]);
 
-	// Authentic SaaSBase Pipeline Stations
+	// Authentic Nitrobase Pipeline Stations
 	const stations: WorkflowStation[] = useMemo(
 		() => [
 			{
@@ -101,7 +101,7 @@ export function HeroWorkflowCanvas() {
 				specs: [
 					i18n._("Auto 40-char DB Password & JWT Secret"),
 					i18n._("overlay-api-keys.yml (Asymmetric ES256)"),
-					i18n._("Transformed /etc/saasbase/apps Isolation"),
+					i18n._("Transformed /etc/nitrobase/apps Isolation"),
 				],
 			},
 			{
@@ -407,7 +407,7 @@ export function HeroWorkflowCanvas() {
 		canvas.addEventListener("touchstart", onTouchStart, { passive: true });
 
 		// =========================================================================
-		// 3. 90° ORTHOGONAL CIRCUIT CONDUITS (Strict SaaSBase Workflow Pipeline)
+		// 3. 90° ORTHOGONAL CIRCUIT CONDUITS (Strict Nitrobase Workflow Pipeline)
 		// =========================================================================
 		const conduits: {
 			fromStation: string;

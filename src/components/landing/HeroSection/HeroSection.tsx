@@ -29,7 +29,7 @@ import styles from "./HeroSection.module.css";
 export function HeroSection() {
 	const { i18n } = useLingui();
 
-	const curlSnippet = "curl -fsSL https://get.saasbase.dev | bash";
+	const curlSnippet = "curl -fsSL https://get.nitrobase.dev | bash";
 
 	return (
 		<Box component="section" className={styles.section}>
@@ -40,14 +40,14 @@ export function HeroSection() {
 			>
 				<Stack gap={20} className={styles.content}>
 					<a
-						href="https://github.com/hoagminh/saasbase-landing"
+						href="https://github.com/hoagminh/nitrobase-landing"
 						target="_blank"
 						rel="noreferrer"
 						className={styles.badgeTag}
 					>
 						<span className={styles.badgeDot} />
 						<span className={styles.badgeText}>
-							{i18n._("SaaSBase v1.0 is live")}
+							{i18n._("Nitrobase v1.0 is live")}
 						</span>
 						<ChevronRight size={13} className={styles.badgeChevron} />
 					</a>
@@ -61,7 +61,7 @@ export function HeroSection() {
 
 					<Text className={styles.description}>
 						{i18n._(
-							"SaaSBase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS over SSH, bootstrap Docker & Traefik in 1 click, and run production-grade Supabase, PocketBase, Appwrite, n8n and more with zero vendor lock-in.",
+							"Nitrobase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS over SSH, bootstrap Docker & Traefik in 1 click, and run production-grade Supabase, PocketBase, Appwrite, n8n and more with zero vendor lock-in.",
 						)}
 					</Text>
 
@@ -78,7 +78,7 @@ export function HeroSection() {
 						</Button>
 						<Button
 							component="a"
-							href="https://github.com/hoagminh/saasbase-landing"
+							href="https://github.com/hoagminh/nitrobase-landing"
 							target="_blank"
 							rel="noreferrer"
 							size="md"

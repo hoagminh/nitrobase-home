@@ -1,15 +1,15 @@
 ---
 title: Architecture Overview
-description: High-level overview of the SaaSBase system architecture, internal services, and data flows.
+description: High-level overview of the Nitrobase system architecture, internal services, and data flows.
 ---
 
-SaaSBase is engineered with an efficient, monolithic control plane that communicates with managed VPS nodes via lightweight, secure protocols.
+Nitrobase is engineered with an efficient, monolithic control plane that communicates with managed VPS nodes via lightweight, secure protocols.
 
 ## High-Level Topology
 
 ```mermaid
 flowchart TB
-  subgraph Panel["SaaSBase Control Panel (Host / VPS)"]
+  subgraph Panel["Nitrobase Control Panel (Host / VPS)"]
     direction LR
     UI["Web UI (Mantine 9 + TanStack Router)"] <--> Nitro["Nitro Server (React 19, Bun)<br/>• Drizzle ORM + PostgreSQL<br/>• Job Queue & Cron Scheduler<br/>• WebSocket xterm.js Web PTY"]
   end
@@ -27,7 +27,7 @@ flowchart TB
   subgraph Local["Localhost (Self-Host Node)"]
     direction TB
     TL["Traefik v3 (Reverse Proxy + ACME SSL)"]
-    TL --> App["SaaSBase App Container"]
+    TL --> App["Nitrobase App Container"]
     TL --> DB["PostgreSQL 16 Engine"]
   end
 ```
@@ -35,5 +35,5 @@ flowchart TB
 ## Key Architectural Principles
 
 1. **In-Process Single-Instance Core:** Background jobs, cron schedulers, and server locking mechanisms execute directly in-process for predictable memory consumption and instant synchronization.
-2. **Stateless Node Management:** Remote nodes run standard Docker and Traefik containers. SaaSBase leaves no heavy monitoring agents or resident daemons on your target servers.
+2. **Stateless Node Management:** Remote nodes run standard Docker and Traefik containers. Nitrobase leaves no heavy monitoring agents or resident daemons on your target servers.
 3. **End-to-End Type Safety:** Fully unified TypeScript codebase leveraging Drizzle ORM, Zod validation schemas, and TanStack React Start.

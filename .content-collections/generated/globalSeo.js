@@ -1,25 +1,25 @@
 
 export default {
   "en": {
-    "site_name": "SaaSBase",
-    "title": "SaaSBase - Self-Host Supabase & Modern Backends on Any VPS",
+    "site_name": "Nitrobase",
+    "title": "Nitrobase - Self-Host Supabase & Modern Backends on Any VPS",
     "description": "Open-source self-hosted PaaS & BaaS deployer. Connect any Ubuntu VPS, bootstrap Docker & Traefik in 1 click, and deploy Supabase full-stack, PocketBase, and apps with encrypted backups and cloud sync.",
-    "keywords": "saasbase, self-host supabase, vps deployer, coolify alternative, dokploy alternative, docker paas, traefik v3, supabase cloud sync, encrypted backups",
+    "keywords": "nitrobase, self-host supabase, vps deployer, coolify alternative, dokploy alternative, docker paas, traefik v3, supabase cloud sync, encrypted backups",
     "image": "/uploads/hero-preview.png",
-    "author": "SaaSBase",
-    "twitter_handle": "@saasbase",
+    "author": "Nitrobase",
+    "twitter_handle": "@nitrobase",
     "theme_color": "#101010",
-    "url": "https://saasbase.dev"
+    "url": "https://nitrobase.dev"
   },
   "vi": {
-    "site_name": "SaaSBase",
-    "title": "SaaSBase - Tự lưu trữ Supabase & Backend Hiện đại trên VPS Riêng",
+    "site_name": "Nitrobase",
+    "title": "Nitrobase - Tự lưu trữ Supabase & Backend Hiện đại trên VPS Riêng",
     "description": "Nền tảng PaaS & BaaS Deployer tự lưu trữ mã nguồn mở. Kết nối VPS qua SSH, bootstrap Docker & Traefik v3 1-click, triển khai cụm Supabase full-stack, PocketBase với sao lưu mã hóa và đồng bộ Cloud.",
-    "keywords": "saasbase, tự lưu trữ supabase, deploy vps, thay thế coolify, dokploy, docker paas, traefik v3, đồng bộ supabase cloud, sao lưu mã hóa",
+    "keywords": "nitrobase, tự lưu trữ supabase, deploy vps, thay thế coolify, dokploy, docker paas, traefik v3, đồng bộ supabase cloud, sao lưu mã hóa",
     "image": "/uploads/hero-preview.png",
-    "author": "SaaSBase",
-    "twitter_handle": "@saasbase",
+    "author": "Nitrobase",
+    "twitter_handle": "@nitrobase",
     "theme_color": "#101010",
-    "url": "https://saasbase.dev"
+    "url": "https://nitrobase.dev"
   }
 }

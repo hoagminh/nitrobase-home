@@ -1,9 +1,9 @@
 ---
 title: Manual Docker Compose Installation
-description: How to install SaaSBase manually using Git and Docker Compose for custom environments.
+description: How to install Nitrobase manually using Git and Docker Compose for custom environments.
 ---
 
-If you prefer full control over your environment, want to run SaaSBase behind an existing reverse proxy, or are developing locally, you can install SaaSBase manually using Git and Docker Compose.
+If you prefer full control over your environment, want to run Nitrobase behind an existing reverse proxy, or are developing locally, you can install Nitrobase manually using Git and Docker Compose.
 
 ## Prerequisites
 * Docker 24.0+ and Docker Compose v2.24+ installed on the host.
@@ -14,8 +14,8 @@ If you prefer full control over your environment, want to run SaaSBase behind an
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/saasbase/saasbase.git saasbase
-cd saasbase
+git clone https://github.com/nitrobase/nitrobase.git nitrobase
+cd nitrobase
 ```
 
 ### 2. Configure Environment Variables
@@ -29,8 +29,8 @@ Generate cryptographically secure 32-byte hex keys:
 sed -i "s|^ENCRYPTION_KEY=.*|ENCRYPTION_KEY=$(openssl rand -hex 32)|" .env
 sed -i "s|^SESSION_SECRET=.*|SESSION_SECRET=$(openssl rand -hex 32)|" .env
 sed -i "s|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=$(openssl rand -hex 32)|" .env
-echo "SAASBASE_IMAGE=saasbase" >> .env
-echo "SAASBASE_VERSION=local" >> .env
+echo "NITROBASE_IMAGE=nitrobase" >> .env
+echo "NITROBASE_VERSION=local" >> .env
 chmod 600 .env
 ```
 
@@ -53,7 +53,7 @@ docker compose -f docker-compose.prod.yml up -d
 
 | Variable | Required | Description |
 | :--- | :--- | :--- |
-| `DATABASE_URL` | **Yes** | Postgres connection string (e.g., `postgresql://saasbase:pass@postgres:5432/saasbase`). |
+| `DATABASE_URL` | **Yes** | Postgres connection string (e.g., `postgresql://nitrobase:pass@postgres:5432/nitrobase`). |
 | `ENCRYPTION_KEY` | **Yes** | 32+ character random key for encrypting secrets at rest with HKDF. |
 | `SESSION_SECRET` | **Yes** | 32+ character random key for sealing session cookies. |
 | `APP_URL` | No | Public URL of the panel. When starting with `https://`, session cookies receive the `Secure` flag. |

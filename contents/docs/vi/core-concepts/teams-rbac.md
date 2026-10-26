@@ -3,7 +3,7 @@ title: Đội ngũ & Phân quyền RBAC
 description: Quản lý đa người dùng, cộng tác nhóm, phân quyền và tạo liên kết mời thành viên.
 ---
 
-SaaSBase hỗ trợ đa người dùng ngay từ nền tảng. Mọi tài nguyên như máy chủ, ứng dụng, tên miền, đích sao lưu đều thuộc về một **Nhóm (Team)**.
+Nitrobase hỗ trợ đa người dùng ngay từ nền tảng. Mọi tài nguyên như máy chủ, ứng dụng, tên miền, đích sao lưu đều thuộc về một **Nhóm (Team)**.
 
 ## Ma trận phân quyền 4 cấp (RBAC)
 

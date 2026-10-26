@@ -3,7 +3,7 @@ title: Automated Updates & Rollback
 description: Automatic semver version checking, safe pre-update backups, and health check rollbacks.
 ---
 
-SaaSBase periodically checks upstream registries for newer template releases and Git branch commits.
+Nitrobase periodically checks upstream registries for newer template releases and Git branch commits.
 
 ## Safe Update Pipeline
 1. **Pre-Update Backup:** Takes an automatic snapshot of the app's persistent volumes.

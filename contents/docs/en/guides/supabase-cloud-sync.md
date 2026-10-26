@@ -8,4 +8,4 @@ Migrate seamlessly from Supabase Cloud to your own infrastructure without dumpin
 1. Obtain your Supabase Cloud project connection string and service role key.
 2. Add your project under **Settings -> Cloud Connections**.
 3. Go to **Apps -> New App -> Import from Supabase Cloud**.
-4. SaaSBase connects via session pooler with TLS verification, clones schemas, migrates storage buckets, and launches your self-hosted instance.
+4. Nitrobase connects via session pooler with TLS verification, clones schemas, migrates storage buckets, and launches your self-hosted instance.

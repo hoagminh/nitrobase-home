@@ -17,24 +17,24 @@ export const Route = createFileRoute("/{-$locale}/terms-of-service")({
 
 		const canonicalUrl =
 			locale === "en"
-				? "https://saasbase.dev/terms-of-service"
-				: "https://saasbase.dev/vi/terms-of-service";
+				? "https://nitrobase.dev/terms-of-service"
+				: "https://nitrobase.dev/vi/terms-of-service";
 
 		const pageSeo: PageSeo = {
-			title: `SaaS Base · ${doc.title}`,
+			title: `Nitrobase · ${doc.title}`,
 			description: doc.description,
 			type: "article",
 			canonicalUrl,
 			locale,
-			siteName: globalSeoData?.site_name || "SaaS Base",
-			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
+			siteName: globalSeoData?.site_name || "Nitrobase",
+			twitterHandle: globalSeoData?.twitter_handle || "@nitrobase",
 			imageUrl: globalSeoData?.image || "/uploads/hero-preview.png",
 			alternates: [
-				{ hrefLang: "en", href: "https://saasbase.dev/terms-of-service" },
-				{ hrefLang: "vi", href: "https://saasbase.dev/vi/terms-of-service" },
+				{ hrefLang: "en", href: "https://nitrobase.dev/terms-of-service" },
+				{ hrefLang: "vi", href: "https://nitrobase.dev/vi/terms-of-service" },
 				{
 					hrefLang: "x-default",
-					href: "https://saasbase.dev/terms-of-service",
+					href: "https://nitrobase.dev/terms-of-service",
 				},
 			],
 		};

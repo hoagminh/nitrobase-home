@@ -3,7 +3,7 @@ title: Realtime Job Logs Streaming (SSE)
 description: Stream build and deployment logs in real-time using Server-Sent Events (SSE).
 ---
 
-SaaSBase provides a streaming endpoint for monitoring active jobs:
+Nitrobase provides a streaming endpoint for monitoring active jobs:
 
 ```http
 GET /api/v1/jobs/{jobId}/stream

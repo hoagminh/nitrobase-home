@@ -134,7 +134,7 @@ export const DOC_SECTIONS: DocSection[] = [
 			},
 			{
 				slug: "backup-recovery/self-backup",
-				title: msg({ id: "SaaSBase Self-Backup" }),
+				title: msg({ id: "Nitrobase Self-Backup" }),
 			},
 			{
 				slug: "backup-recovery/disaster-recovery",
@@ -148,7 +148,7 @@ export const DOC_SECTIONS: DocSection[] = [
 		items: [
 			{
 				slug: "maintenance/upgrading",
-				title: msg({ id: "Upgrading SaaSBase" }),
+				title: msg({ id: "Upgrading Nitrobase" }),
 			},
 			{
 				slug: "maintenance/rotating-keys",

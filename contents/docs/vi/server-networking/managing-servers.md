@@ -15,8 +15,8 @@ description: Cách thêm một máy chủ VPS mới, chạy quy trình bootstrap
 4. Bấm **Connect & Test** để kiểm tra kết nối.
 
 ## Bootstrap máy chủ
-Sau khi kết nối thành công, bấm **Bootstrap Server**. SaaSBase sẽ hiển thị danh sách các tác vụ sắp thực hiện:
+Sau khi kết nối thành công, bấm **Bootstrap Server**. Nitrobase sẽ hiển thị danh sách các tác vụ sắp thực hiện:
 * Cài đặt Docker CE (nếu chưa có).
-* Khởi tạo mạng Docker nội bộ (`saasbase-network`).
+* Khởi tạo mạng Docker nội bộ (`nitrobase-network`).
 * Triển khai container reverse proxy **Traefik v3**.
 * Cấu hình thư mục dữ liệu và tường lửa.

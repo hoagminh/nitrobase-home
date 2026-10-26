@@ -1,9 +1,9 @@
 ---
 title: Template Specification (template.toml)
-description: How to write and contribute custom templates to the SaaSBase marketplace.
+description: How to write and contribute custom templates to the Nitrobase marketplace.
 ---
 
-Every marketplace app in SaaSBase is defined by a declarative `template.toml` file in the `templates/` directory.
+Every marketplace app in Nitrobase is defined by a declarative `template.toml` file in the `templates/` directory.
 
 ```toml
 [meta]

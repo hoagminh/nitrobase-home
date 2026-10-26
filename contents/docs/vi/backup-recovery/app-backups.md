@@ -11,4 +11,4 @@ description: Thiết lập lịch trình sao lưu tự động cho ứng dụng 
 5. Cài đặt **Số bản lưu giữ (Retention)** (ví dụ: giữ lại 7 bản gần nhất).
 
 ## Cơ chế bù lịch sao lưu (BACKUP_CATCH_UP)
-Nếu máy chủ của bạn bị tắt hoặc khởi động lại đúng vào giờ chạy backup theo lịch, SaaSBase sẽ tự động phát hiện và kích hoạt ngay 1 bản backup bù khi hệ thống khởi động lại.
+Nếu máy chủ của bạn bị tắt hoặc khởi động lại đúng vào giờ chạy backup theo lịch, Nitrobase sẽ tự động phát hiện và kích hoạt ngay 1 bản backup bù khi hệ thống khởi động lại.

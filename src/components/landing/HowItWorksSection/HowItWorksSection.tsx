@@ -36,7 +36,7 @@ export function HowItWorksSection() {
 					</Title>
 					<Text className={styles.description}>
 						{i18n._(
-							"No complex Kubernetes YAML. No terminal gymnastics. Connect your server, pick your stack, and let SaaSBase automate Docker, Traefik, SSL, and secrets.",
+							"No complex Kubernetes YAML. No terminal gymnastics. Connect your server, pick your stack, and let Nitrobase automate Docker, Traefik, SSL, and secrets.",
 						)}
 					</Text>
 				</Stack>

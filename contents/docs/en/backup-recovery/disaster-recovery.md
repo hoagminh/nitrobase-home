@@ -4,7 +4,7 @@ description: Recovering your entire infrastructure on a new machine and understa
 ---
 
 ## Split-Brain Guard
-When a SaaSBase database is restored onto a new host, the panel boots into a **Paused** state. In this state:
+When a Nitrobase database is restored onto a new host, the panel boots into a **Paused** state. In this state:
 * Interrupted jobs are not resumed.
 * Cron backup schedules are suspended.
 * New deployments are locked.
@@ -19,5 +19,5 @@ openssl enc -d -aes-256-cbc -pbkdf2 -md sha256 -iter 200000 \
 
 # 2. Restore into clean PostgreSQL container
 docker compose -f docker-compose.prod.yml exec -T postgres \
-  psql -U saasbase -d saasbase < saasbase-backup/saasbase.sql
+  psql -U nitrobase -d nitrobase < nitrobase-backup/nitrobase.sql
 ```

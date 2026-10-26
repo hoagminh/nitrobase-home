@@ -21,32 +21,32 @@ export const Route = createFileRoute("/{-$locale}/")({
 
 		const title =
 			globalSeoData?.title ||
-			"SaaSBase - Self-Host Supabase & Modern Backends on Any VPS";
+			"Nitrobase - Self-Host Supabase & Modern Backends on Any VPS";
 		const description =
 			globalSeoData?.description ||
 			"Open-source self-hosted PaaS & BaaS deployer. Connect any Ubuntu VPS, bootstrap Docker & Traefik in 1 click, and deploy Supabase full-stack, PocketBase, and apps with encrypted backups and cloud sync.";
 
 		const canonicalUrl =
-			locale === "en" ? "https://saasbase.dev/" : "https://saasbase.dev/vi/";
+			locale === "en" ? "https://nitrobase.dev/" : "https://nitrobase.dev/vi/";
 
 		const pageSeo: PageSeo = {
 			title,
 			description,
 			keywords: globalSeoData?.keywords,
 			imageUrl: globalSeoData?.image || "/uploads/hero-preview.png",
-			siteName: globalSeoData?.site_name || "SaaSBase",
-			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
+			siteName: globalSeoData?.site_name || "Nitrobase",
+			twitterHandle: globalSeoData?.twitter_handle || "@nitrobase",
 			canonicalUrl,
 			locale,
 			alternates: [
-				{ hrefLang: "en", href: "https://saasbase.dev/" },
-				{ hrefLang: "vi", href: "https://saasbase.dev/vi/" },
-				{ hrefLang: "x-default", href: "https://saasbase.dev/" },
+				{ hrefLang: "en", href: "https://nitrobase.dev/" },
+				{ hrefLang: "vi", href: "https://nitrobase.dev/vi/" },
+				{ hrefLang: "x-default", href: "https://nitrobase.dev/" },
 			],
 			jsonLd: {
 				"@context": "https://schema.org",
 				"@type": "SoftwareApplication",
-				name: "SaaS Base",
+				name: "Nitrobase",
 				operatingSystem: "Linux (Ubuntu)",
 				applicationCategory: "DeveloperApplication",
 				description,

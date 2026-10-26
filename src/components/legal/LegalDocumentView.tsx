@@ -168,7 +168,7 @@ export function LegalDocumentView({ doc, activeSlug }: LegalDocumentViewProps) {
 								</Text>
 								<Button
 									component="a"
-									href="mailto:legal@saasbase.dev"
+									href="mailto:legal@nitrobase.dev"
 									leftSection={<Mail size={16} />}
 									fullWidth
 									className={styles.contactBtn}

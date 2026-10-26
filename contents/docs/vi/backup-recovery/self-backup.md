@@ -1,9 +1,9 @@
 ---
-title: Tự sao lưu SaaSBase (Self-Backup)
-description: Sao lưu toàn bộ dữ liệu hệ thống SaaSBase, tạo manifest và mã hóa qua OpenSSL.
+title: Tự sao lưu Nitrobase (Self-Backup)
+description: Sao lưu toàn bộ dữ liệu hệ thống Nitrobase, tạo manifest và mã hóa qua OpenSSL.
 ---
 
-SaaSBase có khả năng tự sao lưu toàn bộ cấu hình và cơ sở dữ liệu của chính mình tại **Data -> Backups -> Take Self-Backup**.
+Nitrobase có khả năng tự sao lưu toàn bộ cấu hình và cơ sở dữ liệu của chính mình tại **Data -> Backups -> Take Self-Backup**.
 
 Gói sao lưu bao gồm:
 1. Bản xuất toàn diện cơ sở dữ liệu PostgreSQL qua `pg_dump`.

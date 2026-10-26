@@ -23,24 +23,24 @@ export const Route = createFileRoute("/{-$locale}/docs/$")({
 
 		const canonicalUrl =
 			locale === "en"
-				? `https://saasbase.dev/docs/${doc.slug}`
-				: `https://saasbase.dev/vi/docs/${doc.slug}`;
+				? `https://nitrobase.dev/docs/${doc.slug}`
+				: `https://nitrobase.dev/vi/docs/${doc.slug}`;
 
 		const pageSeo: PageSeo = {
 			title: `${doc.title}`,
-			description: doc.description || "SaaSBase Technical Documentation",
+			description: doc.description || "Nitrobase Technical Documentation",
 			type: "article",
 			canonicalUrl,
 			locale,
-			siteName: globalSeoData?.site_name || "SaaSBase",
-			twitterHandle: globalSeoData?.twitter_handle || "@saasbase",
+			siteName: globalSeoData?.site_name || "Nitrobase",
+			twitterHandle: globalSeoData?.twitter_handle || "@nitrobase",
 			imageUrl: globalSeoData?.image || "/uploads/hero-preview.png",
 			alternates: [
-				{ hrefLang: "en", href: `https://saasbase.dev/docs/${doc.slug}` },
-				{ hrefLang: "vi", href: `https://saasbase.dev/vi/docs/${doc.slug}` },
+				{ hrefLang: "en", href: `https://nitrobase.dev/docs/${doc.slug}` },
+				{ hrefLang: "vi", href: `https://nitrobase.dev/vi/docs/${doc.slug}` },
 				{
 					hrefLang: "x-default",
-					href: `https://saasbase.dev/docs/${doc.slug}`,
+					href: `https://nitrobase.dev/docs/${doc.slug}`,
 				},
 			],
 		};

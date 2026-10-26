@@ -1,9 +1,9 @@
 ---
 title: Xác thực REST API
-description: Tạo và quản lý API Bearer Token (sbk_...) để xác thực các lệnh gọi REST API vào SaaSBase.
+description: Tạo và quản lý API Bearer Token (sbk_...) để xác thực các lệnh gọi REST API vào Nitrobase.
 ---
 
-SaaSBase cung cấp giao diện REST API chuẩn tại `/api/v1`.
+Nitrobase cung cấp giao diện REST API chuẩn tại `/api/v1`.
 
 ## Tạo mã API Token
 1. Vào **Settings -> API tokens**.

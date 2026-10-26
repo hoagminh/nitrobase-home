@@ -11,4 +11,4 @@ In addition to templates, you can deploy your own proprietary web applications d
 3. Specify the target **Branch** (e.g. `main`).
 4. Select build method: **Dockerfile** or **Nixpacks**.
 5. Set environment variables and port mappings.
-6. Click **Deploy**. SaaSBase clones the branch tip and streams the build log in real-time.
+6. Click **Deploy**. Nitrobase clones the branch tip and streams the build log in real-time.

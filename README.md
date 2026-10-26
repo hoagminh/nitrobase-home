@@ -1,6 +1,6 @@
-# SaaS Base · Landing Page & Web Platform
+# Nitrobase · Landing Page & Web Platform
 
-A modern, high-performance, full-stack web application and marketing landing page for **SaaS Base** — the automated, secure platform for self-hosting Supabase on private VPS infrastructure.
+A modern, high-performance, full-stack web application and marketing landing page for **Nitrobase** — the automated, secure platform for self-hosting Supabase on private VPS infrastructure.
 
 Built with **TanStack Start**, **React 19**, **Mantine UI**, **LinguiJS**, and **Content Collections**, deployed at the edge with **Cloudflare Workers**.
 
@@ -82,8 +82,8 @@ Built with **TanStack Start**, **React 19**, **Mantine UI**, **LinguiJS**, and *
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/hoagminh/saasbase-landing.git
-cd saasbase-landing
+git clone https://github.com/hoagminh/nitrobase-landing.git
+cd nitrobase-landing
 bun install
 ```
 

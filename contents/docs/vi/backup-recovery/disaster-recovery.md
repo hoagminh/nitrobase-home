@@ -4,7 +4,7 @@ description: Khôi phục toàn bộ hệ sinh thái trên máy chủ mới và 
 ---
 
 ## Cơ chế chống xung đột Split-Brain
-Khi cơ sở dữ liệu SaaSBase được khôi phục sang máy chủ mới, hệ thống sẽ tự động khởi động ở trạng thái **Tạm dừng (Paused)**:
+Khi cơ sở dữ liệu Nitrobase được khôi phục sang máy chủ mới, hệ thống sẽ tự động khởi động ở trạng thái **Tạm dừng (Paused)**:
 * Các tác vụ dở dang không tự động chạy lại.
 * Lịch sao lưu tự động tạm thời dừng.
 * Khóa việc triển khai ứng dụng mới.
@@ -19,5 +19,5 @@ openssl enc -d -aes-256-cbc -pbkdf2 -md sha256 -iter 200000 \
 
 # 2. Nạp dữ liệu vào container Postgres
 docker compose -f docker-compose.prod.yml exec -T postgres \
-  psql -U saasbase -d saasbase < saasbase-backup/saasbase.sql
+  psql -U nitrobase -d nitrobase < nitrobase-backup/nitrobase.sql
 ```

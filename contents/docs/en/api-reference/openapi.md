@@ -1,9 +1,9 @@
 ---
 title: OpenAPI 3.0 Specification
-description: Interactive OpenAPI document and specification for SaaSBase API integrations.
+description: Interactive OpenAPI document and specification for Nitrobase API integrations.
 ---
 
-The SaaSBase control panel generates an OpenAPI 3.0 specification available at:
+The Nitrobase control panel generates an OpenAPI 3.0 specification available at:
 
 ```text
 /api/v1/openapi.json

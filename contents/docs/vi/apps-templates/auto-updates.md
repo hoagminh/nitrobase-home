@@ -3,7 +3,7 @@ title: Tự động cập nhật & Rollback an toàn
 description: Cơ chế kiểm tra phiên bản mới, tự động sao lưu trước khi nâng cấp và khôi phục khi có sự cố.
 ---
 
-SaaSBase định kỳ kiểm tra các phiên bản mới của template và commit mới trên nhánh Git.
+Nitrobase định kỳ kiểm tra các phiên bản mới của template và commit mới trên nhánh Git.
 
 ## Quy trình nâng cấp an toàn
 1. **Tự động sao lưu trước khi cập nhật:** Chụp snapshot volume dữ liệu của ứng dụng.

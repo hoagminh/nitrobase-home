@@ -170,7 +170,7 @@ export function Navbar() {
 
 						<ActionIcon
 							component="a"
-							href="https://github.com/hoagminh/saasbase-landing"
+							href="https://github.com/hoagminh/nitrobase-landing"
 							target="_blank"
 							rel="noreferrer"
 							variant="default"
@@ -260,7 +260,7 @@ export function Navbar() {
 
 					<div className={styles.drawerActions}>
 						<a
-							href="https://github.com/hoagminh/saasbase-landing"
+							href="https://github.com/hoagminh/nitrobase-landing"
 							target="_blank"
 							rel="noreferrer"
 							className={styles.drawerSignInBtn}

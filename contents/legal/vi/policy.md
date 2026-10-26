@@ -1,12 +1,12 @@
 ---
 title: "Chính sách Bảo mật"
-description: "Tìm hiểu cách SaaS Base thu thập, bảo vệ và quản lý dữ liệu của bạn khi sử dụng nền tảng hạ tầng tự lưu trữ."
+description: "Tìm hiểu cách Nitrobase thu thập, bảo vệ và quản lý dữ liệu của bạn khi sử dụng nền tảng hạ tầng tự lưu trữ."
 lastUpdated: "2026-10-15"
 ---
 
 ## 1. Giới thiệu
 
-Chào mừng bạn đến với **SaaS Base** ("chúng tôi"). Chúng tôi cam kết bảo vệ quyền riêng tư và đảm bảo bạn có toàn quyền kiểm soát tuyệt đối đối với dữ liệu của mình. Do SaaS Base được xây dựng chuyên biệt để triển khai Supabase tự lưu trữ (self-hosted) trên máy chủ riêng (VPS) của bạn, dữ liệu cơ sở dữ liệu và thông tin nhạy cảm của ứng dụng luôn nằm trọn vẹn dưới quyền kiểm soát của bạn.
+Chào mừng bạn đến với **Nitrobase** ("chúng tôi"). Chúng tôi cam kết bảo vệ quyền riêng tư và đảm bảo bạn có toàn quyền kiểm soát tuyệt đối đối với dữ liệu của mình. Do Nitrobase được xây dựng chuyên biệt để triển khai Supabase tự lưu trữ (self-hosted) trên máy chủ riêng (VPS) của bạn, dữ liệu cơ sở dữ liệu và thông tin nhạy cảm của ứng dụng luôn nằm trọn vẹn dưới quyền kiểm soát của bạn.
 
 Chính sách bảo mật này giải thích thông tin nào được thu thập, cách thức sử dụng và quyền hạn của bạn khi truy cập website, bảng điều khiển triển khai và các dịch vụ liên quan.
 
@@ -21,7 +21,7 @@ Khác biệt với các nền tảng đám mây đóng:
 ## 3. Thông tin chúng tôi thu thập
 
 ### A. Thông tin tài khoản & Xác thực
-Khi bạn đăng ký hoặc đăng nhập tài khoản SaaS Base, chúng tôi thu thập:
+Khi bạn đăng ký hoặc đăng nhập tài khoản Nitrobase, chúng tôi thu thập:
 - Địa chỉ email của bạn.
 - Thông tin đăng nhập hoặc định danh OAuth của bên thứ ba (như tài khoản GitHub hoặc Google).
 - Cài đặt workspace và thông tin hồ sơ của bạn.
@@ -49,7 +49,7 @@ Thông tin thu thập được sử dụng nhằm các mục đích:
 ## 5. An toàn dữ liệu & Thời gian lưu trữ
 
 Chúng tôi áp dụng các tiêu chuẩn bảo mật hiện đại:
-- **Mã hóa toàn diện:** Tất cả kết nối qua SaaS Base đều sử dụng mã hóa TLS 1.3. Khóa bảo mật được bảo vệ bằng cơ chế mã hóa cấp độ phần cứng.
+- **Mã hóa toàn diện:** Tất cả kết nối qua Nitrobase đều sử dụng mã hóa TLS 1.3. Khóa bảo mật được bảo vệ bằng cơ chế mã hóa cấp độ phần cứng.
 - **Không bán dữ liệu:** Chúng tôi không bán, cho thuê hoặc thương mại hóa thông tin cá nhân hay cấu hình hạ tầng của bạn.
 - **Xóa tài khoản:** Bạn có thể yêu cầu xóa tài khoản bất cứ lúc nào. Khi tài khoản bị xóa, toàn bộ token cấu hình liên quan sẽ được dọn dẹp vĩnh viễn.
 
@@ -65,6 +65,6 @@ Bạn có đầy đủ các quyền đối với dữ liệu của mình:
 
 Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc nào liên quan đến Chính sách Bảo mật, vui lòng liên hệ với chúng tôi:
 
-- **Email:** privacy@saasbase.dev
+- **Email:** privacy@nitrobase.dev
 - **Cộng đồng Discord:** https://discord.com
-- **Website:** https://saasbase.dev
+- **Website:** https://nitrobase.dev

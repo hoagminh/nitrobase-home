@@ -7,8 +7,8 @@ description: Hướng dẫn chạy mã nguồn cục bộ với Bun, PostgreSQL 
 
 1. Clone kho mã nguồn và cài đặt dependencies:
 ```bash
-git clone https://github.com/saasbase/saasbase.git
-cd saasbase
+git clone https://github.com/nitrobase/nitrobase.git
+cd nitrobase
 bun install
 ```
 

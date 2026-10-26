@@ -1,9 +1,9 @@
 ---
 title: API Authentication
-description: Generating scoped API tokens (sbk_...) and authenticating requests to the SaaSBase REST API.
+description: Generating scoped API tokens (sbk_...) and authenticating requests to the Nitrobase REST API.
 ---
 
-SaaSBase exposes a REST API at `/api/v1`.
+Nitrobase exposes a REST API at `/api/v1`.
 
 ## Generating a Token
 1. Go to **Settings -> API tokens**.

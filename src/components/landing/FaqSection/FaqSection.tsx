@@ -88,7 +88,7 @@ export function FaqSection() {
 							{i18n._("Everything you need to know")}
 							<br />
 							<span className={styles.highlightText}>
-								{i18n._("about self-hosting with SaaSBase.")}
+								{i18n._("about self-hosting with Nitrobase.")}
 							</span>
 						</Title>
 						<Text className={styles.description}>
