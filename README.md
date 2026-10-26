@@ -1,17 +1,24 @@
-# Nitrobase · Landing Page & Documentation Platform
+# Nitrobase
 
-A modern, high-performance, full-stack marketing website and technical documentation platform for **Nitrobase** — the automated, secure platform for self-hosting Supabase on private VPS infrastructure.
+<p align="center">
+  <img src="public/assets/landing/logo-dark.png#gh-dark-mode-only" alt="Nitrobase Logo" width="320" />
+  <img src="public/assets/landing/logo-light.png#gh-light-mode-only" alt="Nitrobase Logo" width="320" />
+</p>
 
-<p align="left">
-  <a href="https://tanstack.com/start/latest"><img src="https://img.shields.io/badge/TanStack%20Start-232340?style=for-the-badge&logo=reactquery&logoColor=white" alt="TanStack Start" /></a>
-  <a href="https://react.dev/"><img src="https://img.shields.io/badge/React%2019-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React 19" /></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
-  <a href="https://mantine.dev/"><img src="https://img.shields.io/badge/Mantine%20UI-339AF0?style=for-the-badge&logo=mantine&logoColor=white" alt="Mantine UI" /></a>
-  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS_v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="Tailwind CSS v4" /></a>
-  <a href="https://lingui.dev/"><img src="https://img.shields.io/badge/LinguiJS-E23237?style=for-the-badge&logo=i18next&logoColor=white" alt="LinguiJS" /></a>
-  <a href="https://www.content-collections.dev/"><img src="https://img.shields.io/badge/Content%20Collections-24292E?style=for-the-badge&logo=markdown&logoColor=white" alt="Content Collections" /></a>
-  <a href="https://workers.cloudflare.com/"><img src="https://img.shields.io/badge/Cloudflare%20Workers-F38020?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Cloudflare Workers" /></a>
-  <a href="https://bun.sh/"><img src="https://img.shields.io/badge/Bun-000000?style=for-the-badge&logo=bun&logoColor=white" alt="Bun" /></a>
+<p align="center">
+  <strong>Landing Page & Documentation Platform for Nitrobase</strong><br>
+  <em>Automated, secure platform for self-hosting Supabase and modern backends on private VPS infrastructure.</em>
+</p>
+
+<p align="center">
+  <a href="https://tanstack.com/start/latest"><img src="https://img.shields.io/badge/Framework-TanStack_Start-232340?logo=reactquery&logoColor=white" alt="TanStack Start" /></a>
+  <a href="https://react.dev/"><img src="https://img.shields.io/badge/Frontend-React_19-20232A?logo=react&logoColor=61DAFB" alt="React 19" /></a>
+  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/Language-TypeScript-3178C6?logo=typescript&logoColor=white" alt="TypeScript" /></a>
+  <a href="https://mantine.dev/"><img src="https://img.shields.io/badge/UI_Library-Mantine_UI-339AF0?logo=mantine&logoColor=white" alt="Mantine UI" /></a>
+  <a href="https://lingui.dev/"><img src="https://img.shields.io/badge/i18n-LinguiJS-E23237?logo=i18next&logoColor=white" alt="LinguiJS" /></a>
+  <a href="https://www.content-collections.dev/"><img src="https://img.shields.io/badge/CMS-Content_Collections-24292E?logo=markdown&logoColor=white" alt="Content Collections" /></a>
+  <a href="https://workers.cloudflare.com/"><img src="https://img.shields.io/badge/Deploy-Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white" alt="Cloudflare Workers" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-2ea44f" alt="License: MIT" /></a>
 </p>
 
 ---
@@ -34,7 +41,7 @@ A modern, high-performance, full-stack marketing website and technical documenta
 - **Dynamic Content & Legal Collections**:
   - Type-safe Markdown and YAML content management via [Content Collections](https://www.content-collections.dev/).
   - Multilingual legal pages: **Privacy Policy** (`/policy`, `/vi/policy`) and **Terms of Service** (`/terms-of-service`, `/vi/terms-of-service`).
-  - Landing page marketing copy managed via CMS content collection (`contents/landing/content.yaml`).
+  - Landing page marketing copy managed via modular CMS content collections (`contents/landing/`).
 - **Comprehensive SEO & Social Metadata**:
   - Centralized global SEO configuration via `contents/settings/seo.yaml`.
   - Canonical URLs, localized Open Graph, Twitter cards, and `hreflang` alternate tags (`en`, `vi`, `x-default`).
@@ -62,7 +69,7 @@ A modern, high-performance, full-stack marketing website and technical documenta
 │   ├── docs/                     # Bilingual documentation (58+ markdown guides)
 │   │   ├── en/                   # English documentation
 │   │   └── vi/                   # Vietnamese documentation
-│   ├── landing/                  # Landing page marketing copy (content.yaml)
+│   ├── landing/                  # Modular landing page copy (tech-partners, workflow, features...)
 │   ├── legal/                    # Multilingual legal pages (policy.md, terms.md)
 │   └── settings/                 # Global SEO configuration (seo.yaml)
 ├── public/                       # Static public assets
