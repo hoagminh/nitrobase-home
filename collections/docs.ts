@@ -10,8 +10,8 @@ export const docs = defineCollection({
 	include: "**/*.md",
 	schema: z.object({
 		title: z.string(),
-		description: z.string().optional(),
-		order: z.number().optional(),
+		description: z.string().nullable().optional(),
+		order: z.number().nullable().optional(),
 	}),
 	transform: async (doc, context) => {
 		// Convert admonition/callout blocks (:::note[Title] ... :::) to styled HTML

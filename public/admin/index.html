@@ -103,6 +103,52 @@
                 .replace(/"/g, '&quot;')}</code></pre>`
             : '',
       });
+
+      CMS.registerEditorComponent({
+        id: 'callout',
+        label: 'Callout / Admonition',
+        icon: 'announcement',
+        fields: [
+          {
+            name: 'type',
+            label: 'Callout Type',
+            widget: 'select',
+            options: [
+              { label: 'Note (Blue)', value: 'note' },
+              { label: 'Tip (Green)', value: 'tip' },
+              { label: 'Info (Cyan)', value: 'info' },
+              { label: 'Warning (Amber)', value: 'warning' },
+              { label: 'Caution (Orange)', value: 'caution' },
+              { label: 'Danger (Red)', value: 'danger' },
+            ],
+            default: 'note',
+          },
+          {
+            name: 'title',
+            label: 'Title',
+            widget: 'string',
+            required: false,
+          },
+          {
+            name: 'body',
+            label: 'Content',
+            widget: 'text',
+          },
+        ],
+        pattern: /^:::(note|tip|info|warning|caution|danger)(?:\[(.*?)\])?\n([\s\S]*?)\n:::/m,
+        fromBlock: (match) => ({
+          type: match[1] || 'note',
+          title: match[2] || '',
+          body: match[3] || '',
+        }),
+        toBlock: ({ type = 'note', title = '', body = '' }) =>
+          title ? `:::${type}[${title}]\n${body}\n:::` : `:::${type}\n${body}\n:::`,
+        toPreview: ({ type = 'note', title = '', body = '' }) =>
+          `<div style="border-left: 4px solid #339af0; padding: 10px 14px; margin: 10px 0; background: #f8f9fa; border-radius: 4px;">
+            <div style="font-weight: 700; margin-bottom: 6px; text-transform: uppercase; font-size: 11px; color: #1971c2;">${type}: ${title || ''}</div>
+            <div style="font-size: 13px; line-height: 1.5;">${body}</div>
+          </div>`,
+      });
     </script>
   </body>
 </html>

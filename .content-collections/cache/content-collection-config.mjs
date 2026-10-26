@@ -36,8 +36,8 @@ var docs = defineCollection2({
   include: "**/*.md",
   schema: z2.object({
     title: z2.string(),
-    description: z2.string().optional(),
-    order: z2.number().optional()
+    description: z2.string().nullable().optional(),
+    order: z2.number().nullable().optional()
   }),
   transform: async (doc, context) => {
     const contentWithCallouts = doc.content.replace(
