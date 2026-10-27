@@ -170,7 +170,7 @@ export function Navbar() {
 
 						<ActionIcon
 							component="a"
-							href="https://github.com/hoagminh/nitrobase-landing"
+							href="https://github.com/AydenGroup/nitrobase"
 							target="_blank"
 							rel="noreferrer"
 							variant="default"
@@ -181,7 +181,7 @@ export function Navbar() {
 							<GithubIcon size={18} />
 						</ActionIcon>
 
-						<LocalizedLink to="/signup" className={styles.primaryBtn}>
+						<LocalizedLink to="/" className={styles.primaryBtn}>
 							{i18n._("Get Started")}
 						</LocalizedLink>
 					</div>

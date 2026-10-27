@@ -123,7 +123,7 @@ export function FaqSection() {
 							</Stack>
 							<Button
 								type="button"
-								variant="subtle"
+								variant="transparent"
 								onClick={openContact}
 								className={styles.contactBtn}
 								rightSection={<MoveRight size={14} />}

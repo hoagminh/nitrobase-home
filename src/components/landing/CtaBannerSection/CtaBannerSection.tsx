@@ -37,8 +37,7 @@ export function CtaBannerSection() {
 				<Stack align="center" gap={12} className={styles.actionsArea}>
 					<Button
 						component={LocalizedLink}
-						to="/signup"
-						size="md"
+						to="/"
 						radius="md"
 						className={styles.ctaBtn}
 						rightSection={<MoveRight size={16} />}

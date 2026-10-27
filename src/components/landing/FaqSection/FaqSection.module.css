@@ -107,13 +107,12 @@
 	font-weight: 500;
 	width: fit-content;
 	height: auto;
-	background: transparent;
 	border: none;
 	transition: transform 0.15s ease;
 }
 
 .contactBtn:hover {
-	background: transparent;
+	color: var(--text-primary);
 	transform: translateX(4px);
 }
 

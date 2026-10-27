@@ -29,7 +29,7 @@ import styles from "./HeroSection.module.css";
 export function HeroSection() {
 	const { i18n } = useLingui();
 
-	const curlSnippet = "curl -fsSL https://get.nitrobase.dev | bash";
+	const curlSnippet = "curl -fsSL https://nitrobase.app/install.sh | sudo bash";
 
 	return (
 		<Box component="section" className={styles.section}>
@@ -47,7 +47,7 @@ export function HeroSection() {
 					>
 						<span className={styles.badgeDot} />
 						<span className={styles.badgeText}>
-							{i18n._("Nitrobase v1.0 is live")}
+							{i18n._("Nitrobase v0.1.0-beta.0 is live")}
 						</span>
 						<ChevronRight size={13} className={styles.badgeChevron} />
 					</a>
@@ -68,7 +68,7 @@ export function HeroSection() {
 					<Group gap={14} className={styles.actions}>
 						<Button
 							component={LocalizedLink}
-							to="/signup"
+							to="/"
 							size="md"
 							radius="md"
 							className={styles.primaryCta}
@@ -78,7 +78,7 @@ export function HeroSection() {
 						</Button>
 						<Button
 							component="a"
-							href="https://github.com/hoagminh/nitrobase-landing"
+							href="https://github.com/AydenGroup/nitrobase"
 							target="_blank"
 							rel="noreferrer"
 							size="md"
