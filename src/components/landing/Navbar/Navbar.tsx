@@ -120,8 +120,8 @@ export function Navbar() {
 					<img
 						src={
 							isDark
-								? "/assets/landing/logo-dark.png"
-								: "/assets/landing/logo-light.png"
+								? "/assets/landing/logo-dark.svg"
+								: "/assets/landing/logo-light.svg"
 						}
 						alt="Nitrobase Logo"
 						className={styles.logoImage}
@@ -208,10 +208,10 @@ export function Navbar() {
 					<img
 						src={
 							isDark
-								? "/assets/landing/logo-dark.png"
-								: "/assets/landing/logo-light.png"
+								? "/assets/landing/logo-dark.svg"
+								: "/assets/landing/logo-light.svg"
 						}
-						alt="SaaS Base"
+						alt="Nitrobase Logo"
 						className={styles.logoImage}
 					/>
 				}

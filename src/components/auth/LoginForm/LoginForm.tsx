@@ -83,8 +83,8 @@ export function LoginForm() {
 					<img
 						src={
 							isDark
-								? "/assets/landing/logo-dark.png"
-								: "/assets/landing/logo-light.png"
+								? "/assets/landing/logo-dark.svg"
+								: "/assets/landing/logo-light.svg"
 						}
 						alt="Nitrobase Logo"
 						className={styles.logoImg}
