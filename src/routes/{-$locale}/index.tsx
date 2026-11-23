@@ -10,7 +10,7 @@ import layoutStyles from "#/components/landing/LandingLayout.module.css";
 import { Navbar } from "#/components/landing/Navbar/Navbar";
 import { SectionDivider } from "#/components/landing/SectionDivider/SectionDivider";
 import { TechStackSection } from "#/components/landing/TechStackSection/TechStackSection";
-import { TestimonialsSection } from "#/components/landing/TestimonialsSection/TestimonialsSection";
+// import { TestimonialsSection } from "#/components/landing/TestimonialsSection/TestimonialsSection";
 import type { Locale } from "#/libs/i18n";
 import { generatePageHead, type PageSeo } from "#/libs/seo";
 
@@ -91,8 +91,8 @@ function LandingPage() {
 			<HowItWorksSection />
 			<SectionDivider />
 			<FeaturesSection />
-			<SectionDivider />
-			<TestimonialsSection />
+			{/* <SectionDivider />
+			<TestimonialsSection /> */}
 			<SectionDivider />
 			<FaqSection />
 			<SectionDivider />
