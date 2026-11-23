@@ -49,7 +49,7 @@ export const DOC_SECTIONS: DocSection[] = [
 			},
 			{
 				slug: "core-concepts/security-encryption",
-				title: msg({ id: "Security & Encryption v2" }),
+				title: msg({ id: "Security & Encryption" }),
 			},
 			{ slug: "core-concepts/teams-rbac", title: msg({ id: "Teams & RBAC" }) },
 		],
@@ -83,6 +83,10 @@ export const DOC_SECTIONS: DocSection[] = [
 			{
 				slug: "apps-templates/deploying-apps",
 				title: msg({ id: "Deploying Marketplace Apps" }),
+			},
+			{
+				slug: "apps-templates/databases",
+				title: msg({ id: "Standalone Databases" }),
 			},
 			{
 				slug: "apps-templates/git-deployments",
@@ -183,6 +187,10 @@ export const DOC_SECTIONS: DocSection[] = [
 			{
 				slug: "api-reference/openapi",
 				title: msg({ id: "OpenAPI Specification" }),
+			},
+			{
+				slug: "api-reference/mcp-server",
+				title: msg({ id: "MCP Server (AI Agents)" }),
 			},
 		],
 	},

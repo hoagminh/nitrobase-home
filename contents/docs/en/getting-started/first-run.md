@@ -1,37 +1,43 @@
 ---
 title: First-Run Setup & Administrator Creation
-description: Claiming your instance administrator account or restoring from an existing backup on first launch.
+description: Claiming your instance administrator account or restoring from an existing self-backup on first launch.
 ---
 
-When you access a fresh Nitrobase installation for the first time at `http://<server-ip>:3000`, you will be greeted by the **First-Run Wizard**.
+When you open a fresh Nitrobase installation at `http://<server-ip>:3000` (recommended over an SSH tunnel such as `ssh -L 3000:localhost:3000 root@<server-ip>` before HTTPS is configured), you are greeted by the **First-Run Setup** page.
 
-## Security Safeguards
+## One-Time Setup Token
 
-To prevent malicious actors from scanning the internet and taking over fresh installations, Nitrobase implements two primary defenses:
+To prevent anyone who reaches a fresh panel on the internet from claiming it before you do, Nitrobase always requires a one-time **Setup Token** until the first account exists:
 
-1. **Setup Token Protection:** If Nitrobase was installed via `scripts/install.sh`, you must enter the one-time **Setup Token** printed in your terminal during installation. Without this token, account creation is locked.
-2. **Local Host Warning:** In manual or development installations without a `SETUP_TOKEN` configured, the registration page will display a prominent security notice: *The first person to open this page will become the instance administrator.*
+- **Installed with the script or Docker installer:** The installer generated a 32-character `SETUP_TOKEN`, saved it in `.env`, and printed it in your terminal.
+- **Manual Compose install without `SETUP_TOKEN`:** Nitrobase automatically generates a one-time token at boot and logs it until the first account is created:
+  ```bash
+  docker compose logs app | grep "Setup token"
+  ```
 
-## Option A: Registering the Administrator
+## Option A: Create the Instance Administrator
 
-1. Open `http://<server-ip>:3000` in your browser.
-2. Enter your **Setup Token** (if prompted).
-3. Fill in the administrator registration form:
-   * **Admin Email:** Used for security notifications and team ownership.
-   * **Password:** Minimum 10 characters.
-4. Click **Complete Setup**. You will be logged in immediately to the Nitrobase dashboard.
+1. Open `http://<server-ip>:3000` (or `http://localhost:3000` via SSH tunnel).
+2. Enter your **Setup Token**.
+3. Enter your administrator email and password (**minimum 8 characters**).
+4. Submit to create the first account. This account becomes the **Instance Administrator** and the **Owner** of the initial team.
 
-## Option B: Restoring From a Backup
+## Option B: Restore from a Self-Backup
 
-If you are migrating an existing Nitrobase instance to a new server:
+If you are moving an existing Nitrobase installation to a new server:
 
-1. On the first-run screen, click **Restore from a backup**.
-2. Provide your **Setup Token**.
-3. Upload your encrypted Nitrobase self-backup file (`nitrobase/<date>.tar.gz.enc`).
-4. Enter the SHA-256 checksum and the original `ENCRYPTION_KEY` from your old server.
-5. Nitrobase will:
-   * Verify file integrity against the SHA-256 hash.
-   * Decrypt and inspect the manifest.
-   * Stream and import the database dump under a non-superuser role in a single transaction.
-   * Re-encrypt credentials using the new server's key.
-   * Boot up in a **Paused** state to guard against split-brain scenarios.
+1. On the first-run screen, choose **Restore from a backup**.
+2. Enter the **Setup Token**.
+3. Upload the encrypted self-backup archive (`nitrobase/<date>-<id>.tar.gz.enc`, up to 256 MB by default).
+4. Enter its **SHA-256 checksum** (shown in **Data → Backups**) and the **old `ENCRYPTION_KEY`** from the previous server.
+5. Nitrobase verifies the checksum, decrypts the archive, loads the dump as an unprivileged PostgreSQL role (`nitrobase_restore`), runs any migrations for the current version, and re-encrypts secrets for the new server's `ENCRYPTION_KEY`.
+6. The restored panel starts in a **Paused** state (split-brain guard) until an instance administrator confirms takeover.
+
+## Post-Setup Checklist
+
+After signing in, the dashboard's **Getting started** checklist guides you through:
+
+1. **Get a server ready:** Bootstrap *Localhost* or add a remote VPS over SSH.
+2. **Deploy your first app:** Pick a marketplace template, standalone database, Git repository, or custom compose file (a free `*.sslip.io` domain with HTTPS is provisioned automatically for routed apps).
+3. **Add an off-site backup destination:** Configure S3, Cloudflare R2, or Backblaze B2 under **Data → Destinations** and attach a backup schedule.
+4. **Harden the panel:** Configure a panel domain with HTTPS under **Settings → Instance**, enable **Two-Factor Authentication (2FA)**, and set up notification channels.

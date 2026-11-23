@@ -1,20 +1,31 @@
 ---
 title: Tích hợp Cloudflare Tunnel
-description: Công khai ứng dụng ra Internet mà không cần mở cổng 80/443 thông qua Cloudflare Tunnel.
+description: Xuất bản ứng dụng không cần mở cổng 80/443 bằng Cloudflare Tunnel và cổng vào cô lập trên Traefik.
 ---
 
-Máy chủ của bạn có thể xuất bản ứng dụng ra Internet thông qua **Cloudflare Tunnel** mà không cần mở bất kỳ cổng public nào trên tường lửa.
+Máy chủ được quản lý có thể công khai ứng dụng qua [Cloudflare Tunnel](https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/) thay vì mở cổng công khai `80` và `443`. Nitrobase chỉ cần token kết nối của tunnel — không gọi API Cloudflare và không lưu thông tin tài khoản Cloudflare của bạn.
 
 ## Các bước thiết lập
 
-1. Trên bảng điều khiển Cloudflare Zero Trust, vào **Networks -> Tunnels -> Create a tunnel**.
-2. Sao chép chuỗi mã Token của tunnel.
-3. Trong Nitrobase, vào mục **Server -> Settings -> Cloudflare Tunnel**. Dán mã Token và bật tùy chọn **Tunnel only**.
-4. Trên Cloudflare, thêm **Public Hostname** trỏ tới dịch vụ:
+1. Trong **Cloudflare Zero Trust**, vào **Networks → Tunnels**, tạo một tunnel quản lý từ xa (`cloudflared`) và sao chép token kết nối.
+2. Trong Nitrobase, mở **Server → Settings → Cloudflare Tunnel**:
+   - Dán token kết nối (lưu tại `/etc/nitrobase/tunnel/cloudflared.env` quyền `0600` và mã hóa trong PostgreSQL).
+   - Bật tunnel.
+   - Tùy chọn bật chế độ **Tunnel only** để Traefik không mở cổng `80`/`443` trên tường lửa máy chủ.
+3. Trong Cloudflare Zero Trust, thêm **Public Hostname** cho từng tên miền trỏ về dịch vụ:
    ```text
    http://nitrobase-traefik:8081
    ```
+4. Trong Nitrobase, đánh dấu tên miền là **Via Cloudflare Tunnel** tại tab **Domains** của ứng dụng.
 
-:::tip[Đóng toàn bộ cổng mạng]
-Ở chế độ Tunnel-Only, bạn có thể đóng hoàn toàn cổng 80 và 443 trên firewall của VPS. Cloudflare sẽ xử lý SSL và chuyển tiếp an toàn lưu lượng vào mạng nội bộ của Traefik.
+## Kiến trúc cô lập mạng Tunnel
+
+Nitrobase tách biệt lưu lượng tunnel trên một mạng Docker riêng (`nitrobase-tunnel`, subnet mặc định `172.31.254.0/29`) chỉ dùng chung giữa `nitrobase-traefik` (bind tại `172.31.254.2:8081`) và `nitrobase-cloudflared`:
+
+- Các container ứng dụng trên `nitrobase-network` không thể chạm tới cổng tunnel này.
+- Các tên miền chạy qua tunnel chỉ gắn vào entrypoint riêng `:8081`, đảm bảo không ai có thể vượt qua Cloudflare Access hoặc WAF bằng cách gửi thẳng yêu cầu vào IP công khai của VPS trên cổng `80`/`443`.
+- Nitrobase kiểm tra endpoint `/ready` nội bộ của `cloudflared` (`CLOUDFLARED_METRICS_PORT`, mặc định `20241`) để hiển thị trạng thái kết nối trực tiếp.
+
+:::tip[Không cần mở cổng Web]
+Khi bật **Tunnel only**, bạn có thể chặn hoàn toàn cổng `80` và `443` trên tường lửa VPS — chỉ cần cho phép kết nối chiều đi từ `cloudflared`.
 :::

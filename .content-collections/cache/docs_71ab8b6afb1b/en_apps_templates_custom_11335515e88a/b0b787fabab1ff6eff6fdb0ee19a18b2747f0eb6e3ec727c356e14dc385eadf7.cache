@@ -1,1 +1,0 @@
-"<p>For complex microservices or apps that require specialized configurations, you can deploy using a custom <code>docker-compose.yml</code> file.</p>\n<p>Nitrobase automatically injects Traefik routing labels and connects the containers to <code>nitrobase-network</code>.</p>"

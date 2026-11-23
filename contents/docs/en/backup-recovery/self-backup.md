@@ -1,11 +1,22 @@
 ---
 title: Nitrobase Self-Backup
-description: Complete panel database backup, manifest archives, and OpenSSL encryption.
+description: Encrypted backups of the Nitrobase control panel database, manifest format, and scheduled off-site copies.
 ---
 
-Nitrobase can take a self-backup of its own PostgreSQL database under **Data -> Backups -> Take Self-Backup**.
+In addition to backing up your apps, Nitrobase backs up its own PostgreSQL control-plane database (servers, apps, encrypted credentials, domains, schedules, audit logs, and team configuration) under **Data → Backups** (requires `instance.manage` permission, available to Instance Administrators).
 
-The backup bundle contains:
-1. Complete PostgreSQL database dump via `pg_dump`.
-2. Metadata manifest (schema version, timestamp, instance marker).
-3. Encryption using OpenSSL AES-256-CBC PBKDF2 with your master `ENCRYPTION_KEY`.
+## What a Self-Backup Contains
+
+Each self-backup is uploaded as `nitrobase/<date>-<id>.tar.gz.enc` along with a recorded SHA-256 checksum:
+
+1. **PostgreSQL dump (`nitrobase.sql`):** Full logical dump created with `pg_dump` (`SELF_BACKUP_PG_DUMP`).
+2. **Manifest:** Metadata including schema/app version, timestamp, and instance marker.
+3. **Portable OpenSSL Encryption:** Gzipped tar archive encrypted using OpenSSL `aes-256-cbc` with PBKDF2-SHA256 (`SELF_BACKUP_PBKDF2_ITERATIONS=200000`) and your `ENCRYPTION_KEY`.
+
+## Mandatory Pre-Upgrade Self-Backup
+
+Whenever you trigger an in-panel Nitrobase upgrade under **Settings → Instance**, Nitrobase requires and takes a fresh self-backup to your chosen destination before pulling the new image or running database migrations.
+
+:::caution[Keep Your ENCRYPTION_KEY Separate]
+The self-backup archive is encrypted with `ENCRYPTION_KEY`, and the secrets inside the dumped database are also encrypted with `ENCRYPTION_KEY`. Store your `.env` (or `ENCRYPTION_KEY`) in a separate password manager—never in the same bucket as your backups.
+:::

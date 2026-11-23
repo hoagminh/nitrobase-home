@@ -1,11 +1,22 @@
 ---
 title: Tự sao lưu Nitrobase (Self-Backup)
-description: Sao lưu toàn bộ dữ liệu hệ thống Nitrobase, tạo manifest và mã hóa qua OpenSSL.
+description: Sao lưu mã hóa cơ sở dữ liệu điều khiển của chính Nitrobase, định dạng manifest và mã hóa OpenSSL.
 ---
 
-Nitrobase có khả năng tự sao lưu toàn bộ cấu hình và cơ sở dữ liệu của chính mình tại **Data -> Backups -> Take Self-Backup**.
+Ngoài sao lưu các ứng dụng, Nitrobase còn tự sao lưu cơ sở dữ liệu PostgreSQL của chính bảng điều khiển (máy chủ, ứng dụng, khóa đã mã hóa, tên miền, lịch trình, nhật ký kiểm toán và cấu hình đội ngũ) tại **Data → Backups** (yêu cầu quyền `instance.manage` dành cho Quản trị viên hệ thống).
 
-Gói sao lưu bao gồm:
-1. Bản xuất toàn diện cơ sở dữ liệu PostgreSQL qua `pg_dump`.
-2. File manifest chứa thông tin phiên bản schema, thời gian và instance marker.
-3. Mã hóa an toàn bằng OpenSSL AES-256-CBC PBKDF2 sử dụng khóa `ENCRYPTION_KEY`.
+## Thành phần của bản Self-Backup
+
+Mỗi bản tự sao lưu được tải lên theo đường dẫn `nitrobase/<date>-<id>.tar.gz.enc` kèm mã kiểm tra SHA-256:
+
+1. **Bản dump PostgreSQL (`nitrobase.sql`):** Bản dump logic đầy đủ tạo bằng `pg_dump` (`SELF_BACKUP_PG_DUMP`).
+2. **Manifest:** Siêu dữ liệu gồm phiên bản schema/ứng dụng, thời điểm và định danh instance.
+3. **Mã hóa OpenSSL phổ thông:** Gói tar.gz được mã hóa bằng OpenSSL `aes-256-cbc` với PBKDF2-SHA256 (`SELF_BACKUP_PBKDF2_ITERATIONS=200000`) sử dụng `ENCRYPTION_KEY`, cho phép giải mã độc lập trên mọi máy tính.
+
+## Bắt buộc tự sao lưu trước khi nâng cấp
+
+Mỗi khi bạn bấm nâng cấp Nitrobase ngay trong giao diện (**Settings → Instance**), hệ thống bắt buộc tạo một bản tự sao lưu mới tới điểm lưu trữ bạn chọn trước khi tải image mới hoặc chạy migration cơ sở dữ liệu.
+
+:::caution[Lưu ENCRYPTION_KEY tách biệt]
+Cả tệp tự sao lưu lẫn các bí mật bên trong cơ sở dữ liệu đều được mã hóa bằng `ENCRYPTION_KEY`. Hãy lưu `.env` (hoặc `ENCRYPTION_KEY`) trong trình quản lý mật khẩu riêng — không bao giờ lưu chung vào cùng bucket chứa bản sao lưu.
+:::

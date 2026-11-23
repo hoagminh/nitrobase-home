@@ -1,61 +1,76 @@
 ---
 title: Manual Docker Compose Installation
-description: How to install Nitrobase manually using Git and Docker Compose for custom environments.
+description: Install Nitrobase manually using release artifacts or a local Git checkout with Docker Compose v2.
 ---
 
-If you prefer full control over your environment, want to run Nitrobase behind an existing reverse proxy, or are developing locally, you can install Nitrobase manually using Git and Docker Compose.
+If you want complete control over your compose files or are building from a local checkout, you can run Nitrobase directly with Docker Compose v2.
 
 ## Prerequisites
-* Docker 24.0+ and Docker Compose v2.24+ installed on the host.
-* OpenSSL CLI tool installed.
 
+- Docker Engine with Docker Compose v2 (`docker compose`).
+- OpenSSL CLI (`openssl`) for generating random secrets.
 
-## Installation Steps
+## Option A: Official Release Artifacts
 
-### 1. Clone the Repository
+In an empty directory, download `docker-compose.prod.yml` and `.env.example` from the same release on [GitHub Releases](https://github.com/AydenGroup/nitrobase/releases):
+
 ```bash
-git clone https://github.com/nitrobase/nitrobase.git nitrobase
-cd nitrobase
+mkdir nitrobase && cd nitrobase
+VERSION=0.1.0-beta.9
+BASE=https://github.com/AydenGroup/nitrobase/releases/download/v$VERSION
+curl -fsSL -o compose.yaml "$BASE/docker-compose.prod.yml"
+curl -fsSL -o .env "$BASE/env.example"
+
+for key in ENCRYPTION_KEY SESSION_SECRET POSTGRES_PASSWORD; do
+  sed -i.bak "s|^$key=.*|$key=$(openssl rand -hex 32)|" .env
+done
+sed -i.bak "s|^NITROBASE_VERSION=.*|NITROBASE_VERSION=$VERSION|" .env
+rm -f .env.bak && chmod 600 .env
+
+# For pre-releases, enable pre-release update checks:
+case "$VERSION" in *-*) echo "RELEASE_CHANNEL=prerelease" >> .env ;; esac
+
+docker compose up -d
+docker compose logs app | grep "Setup token"
 ```
 
-### 2. Configure Environment Variables
-Copy the template configuration file:
+## Option B: Build from a Local Git Checkout
+
 ```bash
+git clone https://github.com/AydenGroup/nitrobase.git && cd nitrobase
 cp .env.example .env
-```
-
-Generate cryptographically secure 32-byte hex keys:
-```bash
-sed -i "s|^ENCRYPTION_KEY=.*|ENCRYPTION_KEY=$(openssl rand -hex 32)|" .env
-sed -i "s|^SESSION_SECRET=.*|SESSION_SECRET=$(openssl rand -hex 32)|" .env
-sed -i "s|^POSTGRES_PASSWORD=.*|POSTGRES_PASSWORD=$(openssl rand -hex 32)|" .env
-echo "NITROBASE_IMAGE=nitrobase" >> .env
-echo "NITROBASE_VERSION=local" >> .env
+for key in ENCRYPTION_KEY SESSION_SECRET POSTGRES_PASSWORD; do
+  sed -i "s|^$key=.*|$key=$(openssl rand -hex 32)|" .env
+done
+sed -i 's|^NITROBASE_IMAGE=.*|NITROBASE_IMAGE=nitrobase|; s|^NITROBASE_VERSION=.*|NITROBASE_VERSION=local|' .env
 chmod 600 .env
-```
 
-:::caution[Backup Your Encryption Key]
-Store your `ENCRYPTION_KEY` in a password manager outside of the server! If this key is lost, all stored credentials, SSH keys, and encrypted backups cannot be decrypted.
-:::
-
-### 3. Start the Stack
-For building from the local checkout:
-```bash
 docker compose -f docker-compose.prod.yml -f docker-compose.build.yml up -d --build
 ```
 
-Or to use pre-built official release images:
-```bash
-docker compose -f docker-compose.prod.yml up -d
-```
+:::caution[Back Up Your ENCRYPTION_KEY]
+Store `.env`—especially `ENCRYPTION_KEY`—in a password manager outside the server. Without `ENCRYPTION_KEY`, stored credentials, SSH keys, and encrypted backups cannot be decrypted.
+:::
 
-## Core Environment Variables Reference
+## Core Environment Variables
+
+Any runtime setting defined in `src/config/server.ts` can be placed in `.env` (loaded via `env_file` in `docker-compose.prod.yml`). The server refuses to start if a required secret is missing, shorter than 32 characters, or a known placeholder.
 
 | Variable | Required | Description |
 | :--- | :--- | :--- |
-| `DATABASE_URL` | **Yes** | Postgres connection string (e.g., `postgresql://nitrobase:pass@postgres:5432/nitrobase`). |
-| `ENCRYPTION_KEY` | **Yes** | 32+ character random key for encrypting secrets at rest with HKDF. |
-| `SESSION_SECRET` | **Yes** | 32+ character random key for sealing session cookies. |
-| `APP_URL` | No | Public URL of the panel. When starting with `https://`, session cookies receive the `Secure` flag. |
-| `TRUST_PROXY` | No | Set to `true` when running behind Traefik or Cloudflare to read real client IP. |
-| `ACME_EMAIL` | No | Email address used for Let's Encrypt certificate renewal notifications. |
+| `DATABASE_URL` | **Yes** | PostgreSQL connection string (in `docker-compose.prod.yml`, built automatically from `POSTGRES_PASSWORD`). |
+| `ENCRYPTION_KEY` | **Yes** | At least 32 random characters. Encrypts all secrets at rest (AES-256-GCM + HKDF). |
+| `ENCRYPTION_KEY_PREVIOUS` | No | Comma-separated previous encryption keys (newest first) kept after key rotation so older backups remain restorable. |
+| `SESSION_SECRET` | **Yes** | At least 32 random characters. Seals session cookies. |
+| `POSTGRES_PASSWORD` | **Yes*** | Used by `docker-compose.prod.yml` for the bundled `postgres:16-alpine` container (use hex). |
+| `NITROBASE_VERSION` | **Yes*** | Image tag to run (e.g. `0.1.0-beta.9`). Updated automatically by in-panel upgrades. |
+| `NITROBASE_IMAGE` | No | Panel image without tag (default `ghcr.io/aydengroup/nitrobase`). |
+| `PANEL_BIND` | No | Host bind address and port (default `0.0.0.0:3000`). Set to `127.0.0.1:3000` once behind HTTPS. |
+| `APP_URL` | No | Public URL of the panel (e.g. `https://panel.example.com`). Session cookies are marked `Secure` only when this starts with `https://`. |
+| `TRUST_PROXY` | No | Set to `true` when behind Traefik or another reverse proxy so rate limits and audit logs see real client IPs (`TRUSTED_PROXY_HOPS`, default `1`). |
+| `ACME_EMAIL` | No | Let's Encrypt registration email (defaults to the administrator's email). |
+| `GITHUB_TOKEN` | No | Optional GitHub token to raise API rate limits when listing template versions. |
+| `SETUP_TOKEN` | No | One-time token (min 16 chars) for initial admin signup or first-run restore. If omitted, Nitrobase generates one and prints it in logs. |
+| `RELEASE_CHANNEL` | No | `stable` (default) or `prerelease` to receive beta/pre-release upgrade notifications. |
+
+\* Required when using `docker-compose.prod.yml`.
