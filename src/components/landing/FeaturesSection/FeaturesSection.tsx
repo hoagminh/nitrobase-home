@@ -18,8 +18,16 @@ import {
 	ShieldCheck,
 	Zap,
 } from "lucide-react";
+import { LocalizedLink } from "#/libs/i18n";
 import { useLandingContent } from "#/libs/landing";
 import styles from "./FeaturesSection.module.css";
+
+const FEATURE_DOC_LINKS: Record<string, string> = {
+	"vps-bootstrap": "/docs/core-concepts/architecture",
+	"supabase-full-stack": "/docs/apps-templates/deploying-apps",
+	"cloud-sync-migration": "/docs/guides/supabase-cloud-sync",
+	"enterprise-security": "/docs/core-concepts/security-encryption",
+};
 
 export function FeaturesSection() {
 	const { i18n } = useLingui();
@@ -94,12 +102,15 @@ export function FeaturesSection() {
 							<Text className={styles.cardDesc}>{item.desc}</Text>
 						</Stack>
 
-						<a href="#how-it-works" className={styles.cardAction}>
+						<LocalizedLink
+							to={FEATURE_DOC_LINKS[item.id] ?? "/docs"}
+							className={styles.cardAction}
+						>
 							<Group gap={6} wrap="nowrap" className={styles.actionRow}>
 								<Text component="span">{item.action}</Text>
 								<MoveRight size={14} style={{ flexShrink: 0 }} />
 							</Group>
-						</a>
+						</LocalizedLink>
 					</Stack>
 				))}
 			</SimpleGrid>

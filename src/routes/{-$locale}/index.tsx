@@ -21,13 +21,13 @@ export const Route = createFileRoute("/{-$locale}/")({
 
 		const title =
 			globalSeoData?.title ||
-			"Nitrobase - Self-Host Supabase & Modern Backends on Any VPS";
+			"Nitrobase - Self-Host Supabase, Databases & Modern Backends on Your Own Servers";
 		const description =
 			globalSeoData?.description ||
-			"Open-source self-hosted PaaS & BaaS deployer. Connect any Ubuntu VPS, bootstrap Docker & Traefik in 1 click, and deploy Supabase full-stack, PocketBase, and apps with encrypted backups and cloud sync.";
+			"Self-hosted PaaS & BaaS control panel. Connect any VPS over SSH, bootstrap Docker & Traefik v3, and deploy Supabase, Appwrite, PocketBase, databases, or Git apps with AES-256-GCM secrets, verified backups, Cloud Sync, and MCP server.";
 
 		const canonicalUrl =
-			locale === "en" ? "https://nitrobase.dev/" : "https://nitrobase.dev/vi/";
+			locale === "en" ? "https://nitrobase.app/" : "https://nitrobase.app/vi/";
 
 		const pageSeo: PageSeo = {
 			title,
@@ -39,15 +39,15 @@ export const Route = createFileRoute("/{-$locale}/")({
 			canonicalUrl,
 			locale,
 			alternates: [
-				{ hrefLang: "en", href: "https://nitrobase.dev/" },
-				{ hrefLang: "vi", href: "https://nitrobase.dev/vi/" },
-				{ hrefLang: "x-default", href: "https://nitrobase.dev/" },
+				{ hrefLang: "en", href: "https://nitrobase.app/" },
+				{ hrefLang: "vi", href: "https://nitrobase.app/vi/" },
+				{ hrefLang: "x-default", href: "https://nitrobase.app/" },
 			],
 			jsonLd: {
 				"@context": "https://schema.org",
 				"@type": "SoftwareApplication",
 				name: "Nitrobase",
-				operatingSystem: "Linux (Ubuntu)",
+				operatingSystem: "Linux (Ubuntu, Debian), Docker",
 				applicationCategory: "DeveloperApplication",
 				description,
 				offers: {

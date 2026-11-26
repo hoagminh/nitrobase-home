@@ -93,7 +93,7 @@ export function FaqSection() {
 						</Title>
 						<Text className={styles.description}>
 							{i18n._(
-								"Clear, technical answers to common questions about VPS requirements, Supabase Cloud sync, encrypted backups, and security architecture.",
+								"Clear, technical answers to common questions about VPS requirements, Cloud Sync, encrypted backups, MCP agents, and security architecture.",
 							)}
 						</Text>
 					</Stack>

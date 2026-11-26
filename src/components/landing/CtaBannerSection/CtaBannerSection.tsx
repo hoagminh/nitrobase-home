@@ -29,7 +29,7 @@ export function CtaBannerSection() {
 					</Title>
 					<Text className={styles.description}>
 						{i18n._(
-							"Deploy Supabase, PocketBase, and full-stack apps on your own VPS with automated Docker bootstrap, encrypted backups, and zero-downtime migrations.",
+							"Deploy Supabase, Appwrite, PocketBase, standalone databases, and Git apps on your own VPS with guided bootstrap, verified backups, and built-in MCP support.",
 						)}
 					</Text>
 				</Stack>
@@ -37,7 +37,7 @@ export function CtaBannerSection() {
 				<Stack align="center" gap={12} className={styles.actionsArea}>
 					<Button
 						component={LocalizedLink}
-						to="/"
+						to="/docs/getting-started/quickstart-vps"
 						radius="md"
 						className={styles.ctaBtn}
 						rightSection={<MoveRight size={16} />}
@@ -46,7 +46,7 @@ export function CtaBannerSection() {
 					</Button>
 					<Text component="span" className={styles.subText}>
 						{i18n._(
-							"Open Source • Free & Self-Hosted • No Credit Card Required",
+							"Fair Source (FSL-1.1-ALv2) • Free & Self-Hosted • No Credit Card Required",
 						)}
 					</Text>
 				</Stack>

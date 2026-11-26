@@ -181,7 +181,10 @@ export function Navbar() {
 							<GithubIcon size={18} />
 						</ActionIcon>
 
-						<LocalizedLink to="/" className={styles.primaryBtn}>
+						<LocalizedLink
+							to="/docs/getting-started/quickstart-vps"
+							className={styles.primaryBtn}
+						>
 							{i18n._("Get Started")}
 						</LocalizedLink>
 					</div>
@@ -260,7 +263,7 @@ export function Navbar() {
 
 					<div className={styles.drawerActions}>
 						<a
-							href="https://github.com/hoagminh/nitrobase-landing"
+							href="https://github.com/AydenGroup/nitrobase"
 							target="_blank"
 							rel="noreferrer"
 							className={styles.drawerSignInBtn}
@@ -272,7 +275,7 @@ export function Navbar() {
 							</Group>
 						</a>
 						<LocalizedLink
-							to="/signup"
+							to="/docs/getting-started/quickstart-vps"
 							className={styles.drawerPrimaryBtn}
 							onClick={() => setOpened(false)}
 						>

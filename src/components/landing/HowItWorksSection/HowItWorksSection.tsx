@@ -55,7 +55,7 @@ export function HowItWorksSection() {
 							<CircleCheckBig size={16} className={styles.checkIcon} />
 							<Text component="span">
 								{i18n._(
-									"Automated SSH TOFU verification & Docker 27 bootstrap",
+									"Guided SSH TOFU verification, Docker CE & Traefik v3 bootstrap",
 								)}
 							</Text>
 						</Group>
@@ -63,7 +63,7 @@ export function HowItWorksSection() {
 							<CircleCheckBig size={16} className={styles.checkIcon} />
 							<Text component="span">
 								{i18n._(
-									"Production Supabase cluster with Postgres 16, pgvector & Studio",
+									"Supabase, Appwrite, PocketBase, databases & Git apps in 1 click",
 								)}
 							</Text>
 						</Group>
@@ -71,7 +71,7 @@ export function HowItWorksSection() {
 							<CircleCheckBig size={16} className={styles.checkIcon} />
 							<Text component="span">
 								{i18n._(
-									"Automated AES-256 encrypted backups to Cloudflare R2 / S3",
+									"Verified backups to S3 / R2 / B2 & built-in MCP server for AI agents",
 								)}
 							</Text>
 						</Group>

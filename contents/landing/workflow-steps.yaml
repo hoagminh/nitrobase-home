@@ -2,46 +2,49 @@ en:
   workflowSteps:
     - step: 1
       badgeKey: "01"
-      title: Connect VPS & Bootstrap
-      desc: Connect any fresh Ubuntu or Debian server over SSH with TOFU host key
-        verification. Nitrobase automatically provisions Docker Engine 27,
-        Traefik v3 reverse proxy, and configures TLS 1.3 Let's Encrypt
-        certificates.
+      title: Connect VPS & Guided Bootstrap
+      desc: Connect any Ubuntu or Debian VPS over SSH with TOFU host key verification,
+        or use Localhost. Nitrobase previews every change before provisioning
+        Docker CE, Traefik v3, automatic Let's Encrypt HTTPS, or Cloudflare
+        Tunnel.
       imageUrl: /uploads/step-1.png
     - step: 2
       badgeKey: "02"
-      title: Deploy Supabase & Backends
-      desc: Launch full-stack Supabase (Postgres 16, pgvector, GoTrue Auth, Kong
-        Gateway, Studio), PocketBase, Appwrite, or import your entire database
-        directly from Supabase Cloud with automatic credential generation.
+      title: Deploy Backends, DBs & Git Apps
+      desc: Launch Supabase (with ES256 keys & Studio), Appwrite, PocketBase,
+        standalone databases (Postgres, MySQL, MariaDB, Valkey, MongoDB), n8n,
+        or your own Git repo (Dockerfile, Railpack, Static), or import from
+        Supabase & Appwrite Cloud.
       imageUrl: /uploads/step-2.png
     - step: 3
       badgeKey: "03"
-      title: Backups & Zero-Downtime Migration
-      desc: Automate AES-256-CBC encrypted backups streamed offsite to Cloudflare R2,
-        AWS S3, or B2. Move apps between servers seamlessly with automated
-        health verification, instant rollback, and real-time telemetry.
+      title: Backups, Moves & AI Automation
+      desc: Schedule consistent .tar.zst app backups and OpenSSL self-backups via
+        rclone to S3, Cloudflare R2, or Backblaze B2. Move apps between servers
+        with health checks and automatic rollback, or operate via REST & MCP.
       imageUrl: /uploads/step-3.png
 vi:
   workflowSteps:
     - step: 1
       badgeKey: "01"
-      title: Kết nối VPS & Khởi tạo tự động
-      desc: Kết nối máy chủ Ubuntu hoặc Debian mới qua SSH với cơ chế xác minh khóa
-        TOFU. Nitrobase tự động cài đặt Docker Engine 27, reverse proxy Traefik
-        v3 và cấu hình chứng chỉ SSL Let's Encrypt TLS 1.3.
+      title: Kết nối VPS & Khởi tạo có xem trước
+      desc: Kết nối bất kỳ VPS Ubuntu hoặc Debian nào qua SSH có xác minh TOFU, hoặc
+        dùng ngay Localhost. Nitrobase hiển thị trước mọi thay đổi rồi cài đặt
+        Docker CE, Traefik v3, HTTPS Let's Encrypt tự động hoặc Cloudflare
+        Tunnel.
       imageUrl: /uploads/step-1.png
     - step: 2
       badgeKey: "02"
-      title: Triển khai Supabase & Backend
-      desc: Khởi chạy cụm Supabase full-stack (Postgres 16, pgvector, GoTrue Auth,
-        Kong Gateway, Studio), PocketBase, Appwrite hoặc nhập trực tiếp database
-        từ Supabase Cloud với thông tin xác thực tự sinh.
+      title: Triển khai Backend, DB & Git App
+      desc: Khởi chạy Supabase (kèm khóa ES256 & Studio), Appwrite, PocketBase, cơ sở
+        dữ liệu độc lập (Postgres, MySQL, MariaDB, Valkey, MongoDB), n8n hoặc
+        kho Git (Dockerfile, Railpack, Static), hay nhập từ Supabase & Appwrite
+        Cloud.
       imageUrl: /uploads/step-2.png
     - step: 3
       badgeKey: "03"
-      title: Sao lưu & Di chuyển không Downtime
-      desc: Tự động sao lưu mã hóa AES-256-CBC truyền trực tiếp lên Cloudflare R2, AWS
-        S3 hoặc B2. Di chuyển ứng dụng giữa các máy chủ an toàn với xác minh sức
-        khỏe tự động, hoàn tác tức thì và giám sát theo thời gian thực.
+      title: Sao lưu, Di chuyển & Tự động hóa AI
+      desc: Lập lịch sao lưu .tar.zst nhất quán và tự sao lưu OpenSSL qua rclone lên
+        S3, Cloudflare R2 hoặc Backblaze B2. Di chuyển app giữa các máy chủ có
+        kiểm tra sức khỏe, rollback tự động và vận hành qua REST & MCP.
       imageUrl: /uploads/step-3.png

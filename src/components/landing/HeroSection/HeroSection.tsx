@@ -40,14 +40,14 @@ export function HeroSection() {
 			>
 				<Stack gap={20} className={styles.content}>
 					<a
-						href="https://github.com/hoagminh/nitrobase-landing"
+						href="https://github.com/AydenGroup/nitrobase/releases"
 						target="_blank"
 						rel="noreferrer"
 						className={styles.badgeTag}
 					>
 						<span className={styles.badgeDot} />
 						<span className={styles.badgeText}>
-							{i18n._("Nitrobase v0.1.0-beta.0 is live")}
+							{i18n._("Nitrobase v0.1.0-beta.9 is live")}
 						</span>
 						<ChevronRight size={13} className={styles.badgeChevron} />
 					</a>
@@ -61,14 +61,14 @@ export function HeroSection() {
 
 					<Text className={styles.description}>
 						{i18n._(
-							"Nitrobase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS over SSH, bootstrap Docker & Traefik in 1 click, and run production-grade Supabase, PocketBase, Appwrite, n8n and more with zero vendor lock-in.",
+							"Nitrobase is a self-hosted PaaS & BaaS control panel. Connect any VPS over SSH, bootstrap Docker & Traefik v3 in 1 click, and deploy Supabase, Appwrite, PocketBase, standalone databases, n8n, or your own Git apps with zero vendor lock-in.",
 						)}
 					</Text>
 
 					<Group gap={14} className={styles.actions}>
 						<Button
 							component={LocalizedLink}
-							to="/"
+							to="/docs/getting-started/quickstart-vps"
 							size="md"
 							radius="md"
 							className={styles.primaryCta}

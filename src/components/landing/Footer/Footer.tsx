@@ -167,7 +167,7 @@ export function Footer() {
 					</Title>
 					<Text className={styles.brandDesc} maw={350}>
 						{i18n._(
-							"Nitrobase is the open-source self-hosted PaaS & BaaS deployer. Connect any VPS, deploy Supabase full-stack or templates in minutes, and own your infrastructure 100%.",
+							"Nitrobase is a fair-source self-hosted PaaS & BaaS control panel. Connect any VPS, deploy Supabase, Appwrite, PocketBase, databases, or Git apps in minutes, and own your infrastructure 100%.",
 						)}
 					</Text>
 

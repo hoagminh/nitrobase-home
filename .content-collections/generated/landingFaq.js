@@ -4,38 +4,43 @@ export default {
     "faqItems": [
       {
         "id": "faq-1",
-        "question": "What is Nitrobase and how does it compare to Coolify or Dokploy?",
-        "answer": "Nitrobase is an open-source, self-hosted PaaS and BaaS deployer. While general PaaS tools focus on general web apps, Nitrobase provides deep, specialized automation for modern Backend-as-a-Service and workflow platforms (including Supabase, PocketBase, Appwrite, and n8n), with automated database clustering, connection pooling, cloud migration, and offsite disaster recovery."
+        "question": "What is Nitrobase and how is it licensed?",
+        "answer": "Nitrobase is a fair-source (FSL-1.1-ALv2, converting automatically to Apache 2.0 two years after each release), self-hosted PaaS and BaaS control panel. You can use, modify, and self-host it freely for personal, company, or client projects. It ships first-class templates for Supabase, Appwrite, PocketBase, standalone databases (PostgreSQL, MySQL, MariaDB, Valkey, MongoDB), n8n, Plausible, Umami, and RustFS, alongside Git deployments (Dockerfile, Railpack, Static), Custom Compose, REST API, and an MCP server for AI agents."
       },
       {
         "id": "faq-2",
-        "question": "What VPS providers and operating systems are supported?",
-        "answer": "Nitrobase runs on any fresh Ubuntu (20.04/22.04/24.04 LTS) or Debian server (amd64 or arm64 architecture) with 1 GB RAM minimum (512 MB for PocketBase, 2 GB for Appwrite & n8n, 4 GB+ recommended for full Supabase stacks). You can connect servers from Hetzner, DigitalOcean, Vultr, Linode, AWS, GCP, OVH, Scaleway, Contabo, or any bare-metal server via SSH."
+        "question": "What operating systems, VPS providers, and specs are required?",
+        "answer": "The VPS install script and guided server bootstrap support Ubuntu and Debian (amd64 or arm64) from any provider (Hetzner, DigitalOcean, Vultr, Linode, AWS, GCP, OVH, bare-metal, etc.), and the official Docker installer image (ghcr.io/aydengroup/nitrobase-installer:beta) runs on any OS with Docker. The panel and its Postgres use ~300 MB RAM and 1 GB disk; we recommend at least 2 GB RAM and 5 GB free disk (a full Supabase stack uses 1–1.5 GB RAM; add a 2 GB swap file on small VPS nodes)."
       },
       {
         "id": "faq-3",
-        "question": "What components are included in the self-hosted Supabase stack?",
-        "answer": "The stack deploys the full production Supabase ecosystem: PostgreSQL 16 (with pgvector for AI embeddings), Supavisor connection pooler, Kong API Gateway, GoTrue Auth with JWT & OAuth, PostgREST for REST APIs, Realtime WebSockets (CDC), Storage, and the Supabase Studio dashboard."
+        "question": "What is included in the self-hosted Supabase template?",
+        "answer": "Nitrobase deploys tested monthly supabase/supabase releases (v1.YY.MM) with PostgreSQL + pgvector, Supavisor pooler, Kong Gateway, GoTrue Auth, PostgREST, Realtime, Storage, Edge Functions, and Studio. Every demo secret is replaced with generated credentials—including asymmetric ES256 API keys on v1.26.04+—and the built-in Supabase plugin adds Edge Function management, encrypted function secrets, an audited SQL runner, and storage metadata repair."
       },
       {
         "id": "faq-4",
-        "question": "How does Cloud Sync from Supabase Cloud work?",
-        "answer": "Nitrobase securely connects to your hosted Supabase Cloud project via encrypted credentials and session pooler, then automatically replicates your database schema, table data, storage bucket files, and edge functions to your private VPS, eliminating prohibitive egress bandwidth fees."
+        "question": "How does Cloud Sync work with Supabase Cloud and Appwrite Cloud?",
+        "answer": "Nitrobase supports one-off import (cloud to self-hosted) and export (self-hosted to an empty cloud project) for both Supabase Cloud and Appwrite Cloud. For Supabase, it connects over TLS verify-full to copy your database, storage files via rclone, edge functions, and pg_cron jobs (paused by default so old URLs are not called). For Appwrite, it preserves your Project ID and copies users, teams, databases, storage, function settings, and platforms."
       },
       {
         "id": "faq-5",
-        "question": "How does Nitrobase secure secrets, keys, and backups?",
-        "answer": "All secrets, passwords, and SSH keys are stored in a versioned format (v2:) using HKDF key derivation. Database backups are encrypted with AES-256-CBC and streamed offsite to Cloudflare R2, AWS S3, or Backblaze B2. Furthermore, a one-time SETUP_TOKEN prevents unauthorized instance takeovers during initialization."
+        "question": "How does Nitrobase secure secrets, Compose files, and backups?",
+        "answer": "All stored secrets (SSH keys, app env vars, database passwords, destination keys) are encrypted at rest using authenticated AES-256-GCM with HKDF-SHA256 (Format v3) and support atomic ENCRYPTION_KEY rotation with ENCRYPTION_KEY_PREVIOUS fallback. Every Compose file passes strict security checks (no host escapes, privileged containers, or reserved labels/networks). App backups (.tar.zst with encrypted env.enc) and OpenSSL AES-256-CBC self-backups upload via rclone to S3, R2, B2, or a local folder, protected by a one-time SETUP_TOKEN, 2FA, RBAC, and Split-Brain Guard."
       },
       {
         "id": "faq-6",
-        "question": "Can I publish apps securely without opening public firewall ports?",
-        "answer": "Yes! Nitrobase natively integrates Cloudflare Tunnel (Zero Trust). You can publish your applications and dashboards to the web using an outbound tunnel connector token, keeping ports 80 and 443 closed on your VPS firewall."
+        "question": "Can I publish apps without opening ports 80 and 443?",
+        "answer": "Yes. Nitrobase natively supports Cloudflare Tunnel using only the tunnel connector token—never calling the Cloudflare API. Tunnel traffic is isolated on a private Docker network (nitrobase-tunnel, 172.31.254.0/29) routed to Traefik's private entrypoint (http://nitrobase-traefik:8081). With Tunnel-Only mode enabled, ports 80 and 443 can stay completely blocked on your VPS firewall."
       },
       {
         "id": "faq-7",
-        "question": "How does zero-downtime server migration work?",
-        "answer": "When moving an app to another server, Nitrobase takes an atomic backup, streams it via S3/R2 storage, restores and health-checks all containers on the target machine, updates DNS records, and only removes source resources once health is 100% verified. If any step fails, it automatically rolls back."
+        "question": "How does moving an app between servers work?",
+        "answer": "Under App → Settings → Move to another server, Nitrobase takes a consistent backup on the source server, restores the app with the same app ID, data, and environment on the target server, waits for full health and stability verification, and only then removes the old copy. Free *.sslip.io domains follow automatically (custom domains list the exact DNS records to update), and any failure deletes the target copy and restarts the original app untouched."
+      },
+      {
+        "id": "faq-8",
+        "question": "Can AI coding agents like Claude Code or Cursor manage Nitrobase?",
+        "answer": "Yes. Nitrobase exposes a stateless Streamable HTTP MCP server at /api/mcp authenticated with scoped nbk_... bearer tokens. Every non-streaming /api/v1 operation is automatically exposed as an MCP tool with read-only/destructive safety hints, dedicated AI agent (read-only) and AI agent (operator) token presets, copyable Claude Code & Cursor snippets in Settings → API tokens, rate limiting, and full audit logging tagged channel: mcp."
       }
     ]
   },
@@ -43,38 +48,43 @@ export default {
     "faqItems": [
       {
         "id": "faq-1",
-        "question": "Nitrobase là gì và so với Coolify hay Dokploy như thế nào?",
-        "answer": "Nitrobase là nền tảng PaaS & BaaS Deployer tự lưu trữ mã nguồn mở. Trong khi các công cụ PaaS thông thường tập trung vào ứng dụng web tổng quát, Nitrobase được tối ưu chuyên biệt cho các nền tảng Backend-as-a-Service và tự động hóa quy trình hiện đại (bao gồm Supabase, PocketBase, Appwrite và n8n), với tự động hóa cụm cơ sở dữ liệu, connection pooling, đồng bộ đám mây và phục hồi thảm họa ngoại vi."
+        "question": "Nitrobase là gì và sử dụng giấy phép nào?",
+        "answer": "Nitrobase là bảng điều khiển PaaS & BaaS tự lưu trữ theo mô hình fair source (FSL-1.1-ALv2, tự động chuyển sang Apache 2.0 sau 2 năm kể từ mỗi bản phát hành). Bạn được tự do sử dụng, chỉnh sửa và tự lưu trữ cho dự án cá nhân, công ty hoặc khách hàng. Hệ thống tích hợp sẵn template cho Supabase, Appwrite, PocketBase, cơ sở dữ liệu độc lập (PostgreSQL, MySQL, MariaDB, Valkey, MongoDB), n8n, Plausible, Umami và RustFS, cùng triển khai Git (Dockerfile, Railpack, Static), Custom Compose, REST API và máy chủ MCP cho AI agent."
       },
       {
         "id": "faq-2",
-        "question": "Những nhà cung cấp VPS và hệ điều hành nào được hỗ trợ?",
-        "answer": "Nitrobase hoạt động trên mọi máy chủ Ubuntu (20.04/22.04/24.04 LTS) hoặc Debian mới (kiến trúc amd64 hoặc arm64) với tối thiểu 1 GB RAM (512 MB cho PocketBase, 2 GB cho Appwrite & n8n, khuyến nghị từ 4 GB RAM cho cụm Supabase đầy đủ). Bạn có thể kết nối VPS từ Hetzner, DigitalOcean, Vultr, Linode, AWS, GCP, OVH, Scaleway, Contabo hoặc máy chủ vật lý riêng thông qua SSH."
+        "question": "Yêu cầu hệ điều hành, nhà cung cấp VPS và cấu hình phần cứng là gì?",
+        "answer": "Script cài đặt VPS và trình khởi tạo hỗ trợ Ubuntu và Debian (amd64 hoặc arm64) trên mọi nhà cung cấp (Hetzner, DigitalOcean, Vultr, Linode, AWS, GCP, OVH, máy chủ vật lý...), còn Docker installer image chính thức (ghcr.io/aydengroup/nitrobase-installer:beta) chạy trên mọi hệ điều hành có Docker. Bản thân panel và Postgres chỉ dùng ~300 MB RAM và 1 GB đĩa; khuyến nghị tối thiểu 2 GB RAM và 5 GB đĩa trống (một cụm Supabase đầy đủ dùng 1–1,5 GB RAM; nên thêm 2 GB swap trên VPS nhỏ)."
       },
       {
         "id": "faq-3",
-        "question": "Cụm Supabase tự lưu trữ bao gồm những thành phần nào?",
-        "answer": "Hệ thống triển khai đầy đủ hệ sinh thái Supabase chuẩn production: PostgreSQL 16 (tích hợp sẵn pgvector cho AI vector embeddings), Supavisor connection pooler, Kong API Gateway, GoTrue Auth hỗ trợ JWT & OAuth, PostgREST cho RESTful API, Realtime WebSockets (CDC), Storage và bảng điều khiển Supabase Studio."
+        "question": "Template Supabase tự lưu trữ bao gồm những gì?",
+        "answer": "Nitrobase triển khai các bản phát hành hàng tháng đã kiểm thử của supabase/supabase (v1.YY.MM) gồm PostgreSQL + pgvector, Supavisor, Kong Gateway, GoTrue Auth, PostgREST, Realtime, Storage, Edge Functions và Studio. Mọi khóa mẫu đều được thay bằng bí mật tự sinh — gồm cả khóa bất đối xứng ES256 từ v1.26.04+ — và plugin Supabase tích hợp cho phép quản lý Edge Functions, bí mật function mã hóa, chạy SQL có kiểm toán và sửa siêu dữ liệu Storage."
       },
       {
         "id": "faq-4",
-        "question": "Tính năng Cloud Sync từ Supabase Cloud hoạt động ra sao?",
-        "answer": "Nitrobase kết nối bảo mật tới dự án Supabase Cloud đang chạy thông qua thông tin mã hóa và session pooler, sau đó tự động sao chép toàn bộ schema cơ sở dữ liệu, dữ liệu bảng, tệp tin Storage và Edge Functions về máy chủ riêng của bạn, giúp loại bỏ hoàn toàn chi phí băng thông ngoại vi đắt đỏ."
+        "question": "Tính năng Cloud Sync với Supabase Cloud và Appwrite Cloud hoạt động ra sao?",
+        "answer": "Nitrobase hỗ trợ nhập (từ cloud về self-hosted) và xuất (từ self-hosted lên dự án cloud trống) cho cả Supabase Cloud lẫn Appwrite Cloud. Với Supabase, hệ thống kết nối qua TLS verify-full để sao chép cơ sở dữ liệu, tệp Storage bằng rclone, Edge Functions và tác vụ pg_cron (mặc định tạm dừng để tránh gọi nhầm địa chỉ cũ). Với Appwrite, hệ thống giữ nguyên Project ID và sao chép người dùng, đội ngũ, database, storage, cấu hình function và platforms."
       },
       {
         "id": "faq-5",
-        "question": "Nitrobase bảo vệ các bí mật, khóa và bản sao lưu như thế nào?",
-        "answer": "Bảo mật chuẩn doanh nghiệp với mã hóa bí mật định dạng v2 bằng HKDF, xoay vòng khóa không gián đoạn, sao lưu mã hóa AES-256-CBC truyền lên Cloudflare R2/S3, mã SETUP_TOKEN chống chiếm quyền, 2FA và nhật ký kiểm toán toàn diện."
+        "question": "Nitrobase bảo vệ bí mật, file Compose và bản sao lưu như thế nào?",
+        "answer": "Mọi bí mật lưu trữ (khóa SSH, biến môi trường, mật khẩu DB, khóa kho sao lưu) đều được mã hóa xác thực AES-256-GCM với HKDF-SHA256 (Format v3) và hỗ trợ xoay khóa ENCRYPTION_KEY kèm dự phòng ENCRYPTION_KEY_PREVIOUS. Mọi file Compose đều đi qua chính sách bảo mật nghiêm ngặt (chặn thoát thư mục, container privileged và nhãn/mạng dành riêng). Bản sao lưu app (.tar.zst chứa env.enc mã hóa) và tự sao lưu OpenSSL AES-256-CBC tải qua rclone lên S3, R2, B2 hoặc thư mục máy chủ, bảo vệ bởi SETUP_TOKEN dùng một lần, 2FA, RBAC và cơ chế chống Split-Brain."
       },
       {
         "id": "faq-6",
-        "question": "Tôi có thể xuất bản ứng dụng an toàn mà không cần mở cổng tường lửa công khai không?",
-        "answer": "Hoàn toàn được! Nitrobase tích hợp sẵn Cloudflare Tunnel (Zero Trust). Bạn có thể xuất bản ứng dụng và bảng điều khiển ra Internet chỉ bằng token kết nối tunnel một chiều, giữ kín hoàn toàn cổng 80 và 443 trên tường lửa máy chủ của bạn."
+        "question": "Tôi có thể xuất bản ứng dụng mà không cần mở cổng 80 và 443 không?",
+        "answer": "Có. Nitrobase tích hợp sẵn Cloudflare Tunnel chỉ cần token kết nối — không bao giờ gọi API Cloudflare. Lưu lượng tunnel được cô lập trên mạng Docker riêng (nitrobase-tunnel, 172.31.254.0/29) trỏ tới cổng riêng của Traefik (http://nitrobase-traefik:8081). Khi bật chế độ Tunnel-Only, bạn có thể khóa hoàn toàn cổng 80 và 443 trên tường lửa VPS."
       },
       {
         "id": "faq-7",
-        "question": "Quy trình di chuyển máy chủ không gián đoạn (Zero-Downtime Migration) diễn ra như thế nào?",
-        "answer": "Khi chuyển ứng dụng sang máy chủ khác, Nitrobase tự động tạo bản sao lưu nguyên khối, truyền qua bộ lưu trữ S3/R2, bung nén và kiểm tra sức khỏe tất cả container trên máy chủ đích, cập nhật DNS và chỉ dọn dẹp tài nguyên ở máy chủ nguồn khi đích đến đã đạt 100% hoạt động. Nếu có bất kỳ lỗi nào xảy ra, hệ thống sẽ tự động rollback nguyên vẹn về nguồn."
+        "question": "Quy trình di chuyển ứng dụng giữa các máy chủ diễn ra như thế nào?",
+        "answer": "Tại App → Settings → Move to another server, Nitrobase tạo bản sao lưu nhất quán trên máy chủ nguồn, khôi phục lên máy chủ đích với cùng App ID, dữ liệu và biến môi trường, chờ kiểm tra sức khỏe và độ ổn định hoàn tất rồi mới gỡ bản cũ. Tên miền miễn phí *.sslip.io tự cập nhật theo máy mới (tên miền riêng hiển thị chính xác bản ghi DNS cần đổi), và nếu có lỗi, hệ thống xóa bản đích và khởi động lại app gốc nguyên vẹn."
+      },
+      {
+        "id": "faq-8",
+        "question": "Các AI coding agent như Claude Code hay Cursor có thể điều khiển Nitrobase không?",
+        "answer": "Có. Nitrobase tích hợp sẵn máy chủ MCP Streamable HTTP stateless tại /api/mcp xác thực bằng Bearer token nbk_... phân quyền. Mọi endpoint /api/v1 (trừ stream SSE) đều tự động thành công cụ MCP có nhãn an toàn read-only/destructive, kèm preset AI agent (read-only) và AI agent (operator), đoạn cấu hình sao chép nhanh cho Claude Code & Cursor trong Settings → API tokens, rate limit và nhật ký kiểm toán gắn nhãn channel: mcp."
       }
     ]
   }
