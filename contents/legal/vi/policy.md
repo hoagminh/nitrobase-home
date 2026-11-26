@@ -1,70 +1,69 @@
 ---
 title: "Chính sách Bảo mật"
-description: "Tìm hiểu cách Nitrobase thu thập, bảo vệ và quản lý dữ liệu của bạn khi sử dụng nền tảng hạ tầng tự lưu trữ."
-lastUpdated: "2026-10-15"
+description: "Tìm hiểu cách website Nitrobase xử lý dữ liệu truy cập và cách phần mềm Nitrobase tự lưu trữ giữ toàn bộ dữ liệu trên máy chủ riêng của bạn."
+lastUpdated: "2026-11-27"
 ---
 
-## 1. Giới thiệu
+## 1. Tổng quan
 
-Chào mừng bạn đến với **Nitrobase** ("chúng tôi"). Chúng tôi cam kết bảo vệ quyền riêng tư và đảm bảo bạn có toàn quyền kiểm soát tuyệt đối đối với dữ liệu của mình. Do Nitrobase được xây dựng chuyên biệt để triển khai Supabase tự lưu trữ (self-hosted) trên máy chủ riêng (VPS) của bạn, dữ liệu cơ sở dữ liệu và thông tin nhạy cảm của ứng dụng luôn nằm trọn vẹn dưới quyền kiểm soát của bạn.
+Chính sách Bảo mật này mô tả cách dữ liệu được xử lý trên hai phạm vi tách biệt:
 
-Chính sách bảo mật này giải thích thông tin nào được thu thập, cách thức sử dụng và quyền hạn của bạn khi truy cập website, bảng điều khiển triển khai và các dịch vụ liên quan.
+1. **Website Nitrobase** (`https://nitrobase.app`), bao gồm trang giới thiệu, tài liệu hướng dẫn và script cài đặt công khai (`https://nitrobase.app/install.sh`).
+2. **Phần mềm Nitrobase tự lưu trữ (Self-Hosted)** (`github.com/AydenGroup/nitrobase`), do bạn tự tải về và vận hành trên máy chủ của riêng mình theo giấy phép **Functional Source License, Version 1.1, ALv2 Future License (`FSL-1.1-ALv2`)**.
 
-## 2. Triết lý cốt lõi: Máy chủ của bạn, Dữ liệu của bạn
+Vì Nitrobase là bảng điều khiển **100% tự lưu trữ**, chúng tôi không vận hành dịch vụ đám mây tập trung để thu thập khóa máy chủ, cơ sở dữ liệu hay dữ liệu ứng dụng của bạn.
 
-Khác biệt với các nền tảng đám mây đóng:
+## 2. Phần mềm Nitrobase tự lưu trữ (Máy chủ của bạn, Dữ liệu của bạn)
 
-- **Chúng tôi không bao giờ lưu trữ các bản ghi dữ liệu hay bảng cơ sở dữ liệu của bạn.** Mọi database, storage bucket và bảng xác thực đều vận hành trực tiếp bên trong các Docker container trên VPS của bạn.
-- **Kết nối SSH và API trực tiếp:** Khóa máy chủ dùng để thiết lập 1-click được mã hóa AES-256-GCM an toàn. Chúng tôi không can thiệp vào lưu lượng dữ liệu riêng tư.
-- **Tự do di chuyển 100%:** Bạn có thể xuất dữ liệu, sao lưu, di chuyển sang nhà cung cấp VPS khác hoặc hủy bỏ phiên bản bất cứ lúc nào mà không bị ràng buộc (vendor lock-in).
+Khi bạn cài đặt và vận hành Nitrobase trên VPS hoặc máy chủ cục bộ của mình:
 
-## 3. Thông tin chúng tôi thu thập
+- **Không thu thập Telemetry (Zero Telemetry):** Nitrobase **không** gửi dữ liệu thống kê sử dụng, địa chỉ IP máy chủ, thông tin tài khoản, nhật ký triển khai hay báo cáo lỗi về cho chúng tôi.
+- **Toàn quyền lưu trữ cục bộ:** Mọi tài khoản panel, đội ngũ, khóa SSH, mật khẩu máy chủ, biến môi trường, dữ liệu cơ sở dữ liệu, chỉ số giám sát, nhật ký kiểm toán (Audit Log) và bản sao lưu đều nằm hoàn toàn trên hạ tầng do bạn kiểm soát.
+- **Mã hóa phần mềm khi lưu trữ:** Toàn bộ bí mật lưu trong PostgreSQL của bảng điều khiển và tệp `env.enc` trong bản sao lưu ứng dụng được mã hóa ngay trên máy chủ của bạn bằng **AES-256-GCM** có xác thực kết hợp **HKDF-SHA256** (Format `v3:`) từ chính `ENCRYPTION_KEY` của bạn. Tệp tự sao lưu bảng điều khiển (`.tar.gz.enc`) được mã hóa bằng OpenSSL **AES-256-CBC** (PBKDF2-SHA256, 200.000 vòng lặp) với `ENCRYPTION_KEY` của bạn. Chúng tôi không bao giờ có quyền truy cập vào `ENCRYPTION_KEY` hay dữ liệu đã mã hóa của bạn.
 
-### A. Thông tin tài khoản & Xác thực
-Khi bạn đăng ký hoặc đăng nhập tài khoản Nitrobase, chúng tôi thu thập:
-- Địa chỉ email của bạn.
-- Thông tin đăng nhập hoặc định danh OAuth của bên thứ ba (như tài khoản GitHub hoặc Google).
-- Cài đặt workspace và thông tin hồ sơ của bạn.
+### Các kết nối chiều đi từ bản Nitrobase tự lưu trữ
 
-### B. Siêu dữ liệu cấu hình máy chủ
-Để tự động hóa quá trình triển khai và theo dõi trạng thái hệ thống:
-- Thông tin nhà cung cấp VPS (ví dụ: Hetzner, Vultr, DigitalOcean, hoặc địa chỉ IP tùy chỉnh).
-- Phiên bản hệ điều hành (ví dụ: Ubuntu 22.04 / 24.04 LTS).
-- Cấu hình tài nguyên hệ thống (CPU, RAM, dung lượng ổ đĩa).
-- Nhật ký quá trình triển khai và tín hiệu kiểm tra tình trạng hoạt động (health check).
+Bản Nitrobase trên máy chủ của bạn chỉ tạo kết nối mạng chiều đi trực tiếp tới các dịch vụ bên thứ ba phục vụ cho tính năng bạn sử dụng hoặc chủ động cấu hình:
 
-### C. Dữ liệu kỹ thuật & Nhật ký truy cập
-Khi bạn sử dụng website, chúng tôi có thể thu thập thông tin chẩn đoán tiêu chuẩn:
-- Loại thiết bị, trình duyệt, địa chỉ IP và ngôn ngữ ưu tiên.
-- Thời gian tương tác và đường dẫn chuyển hướng.
+- **Kiểm tra phiên bản & template:** Truy vấn `RELEASE_REPO` (mặc định `AydenGroup/nitrobase` trên GitHub) và kho mã nguồn của các template trên GitHub để lấy danh sách phiên bản. Bạn có thể tắt kiểm tra cập nhật panel bằng `UPDATE_CHECK_ENABLED=false` trong `.env`, hoặc trỏ `RELEASE_REPO` / `RELEASE_API_URL` sang máy chủ Git riêng.
+- **Kho chứa container (Container Registry):** Kéo Docker image từ GHCR (`ghcr.io`), Docker Hub hoặc registry khai báo trong ứng dụng/template của bạn.
+- **TLS & Tên miền:** Kết nối tới Let's Encrypt (ACME) khi cấp/gia hạn chứng chỉ HTTPS và `sslip.io` khi dùng tên miền miễn phí tự động.
+- **Tích hợp do bạn cấu hình:** Kết nối trực tiếp tới điểm lưu trữ sao lưu (S3, Cloudflare R2, Backblaze B2), máy chủ Git, Cloudflare Tunnel, kênh thông báo (SMTP, Discord, Slack, Telegram, Webhook) hoặc Cloud Sync (Supabase Cloud, Appwrite Cloud) mà bạn tự thiết lập.
 
-## 4. Cách chúng tôi sử dụng thông tin
+Mỗi dịch vụ bên thứ ba bạn kết nối tuân theo chính sách bảo mật riêng của nhà cung cấp đó.
 
-Thông tin thu thập được sử dụng nhằm các mục đích:
-- **Khởi tạo & Quản lý:** Thực hiện việc cài đặt 1-click, điều phối container Docker và thiết lập lịch tự động sao lưu.
-- **Bảo mật hệ thống:** Xác thực tài khoản, phát hiện hành vi gian lận và ngăn chặn các mối đe dọa bảo mật.
-- **Thông báo dịch vụ:** Gửi cảnh báo quan trọng về trạng thái triển khai, thông báo sự cố sao lưu và các bản vá lỗi bảo mật.
-- **Nâng cấp sản phẩm:** Phân tích ẩn danh để tối ưu hóa hiệu năng kịch bản triển khai và công cụ dòng lệnh (CLI).
+## 3. Thông tin được xử lý bởi Website Nitrobase (`https://nitrobase.app`)
 
-## 5. An toàn dữ liệu & Thời gian lưu trữ
+Khi bạn truy cập `https://nitrobase.app` hoặc tải `https://nitrobase.app/install.sh`:
 
-Chúng tôi áp dụng các tiêu chuẩn bảo mật hiện đại:
-- **Mã hóa toàn diện:** Tất cả kết nối qua Nitrobase đều sử dụng mã hóa TLS 1.3. Khóa bảo mật được bảo vệ bằng cơ chế mã hóa cấp độ phần cứng.
-- **Không bán dữ liệu:** Chúng tôi không bán, cho thuê hoặc thương mại hóa thông tin cá nhân hay cấu hình hạ tầng của bạn.
-- **Xóa tài khoản:** Bạn có thể yêu cầu xóa tài khoản bất cứ lúc nào. Khi tài khoản bị xóa, toàn bộ token cấu hình liên quan sẽ được dọn dẹp vĩnh viễn.
+- **Nhật ký máy chủ/CDN tiêu chuẩn:** Hạ tầng lưu trữ/CDN của website (Cloudflare) có thể xử lý siêu dữ liệu yêu cầu HTTP cơ bản — như địa chỉ IP, trình duyệt (user agent), đường dẫn yêu cầu và thời điểm truy cập — nhằm đảm bảo bảo mật, chống tấn công DDoS và duy trì ổn định hệ thống.
+- **Tùy chọn hiển thị:** Trình duyệt lưu các tùy chọn nhẹ ở phía người dùng (ngôn ngữ `en`/`vi` và giao diện sáng/tối).
+- **Thông tin bạn chủ động gửi:** Nếu bạn gửi email tới `hoagminhit@gmail.com` hoặc gửi yêu cầu liên hệ/đăng ký nhận tin trên website, chúng tôi chỉ dùng thông tin liên hệ đó để phản hồi yêu cầu hoặc gửi thông báo cập nhật bạn đã đăng ký.
 
-## 6. Quyền của bạn
+## 4. Mục đích sử dụng thông tin trên Website
 
-Bạn có đầy đủ các quyền đối với dữ liệu của mình:
-- Yêu cầu truy cập và xuất bản sao dữ liệu tài khoản.
-- Yêu cầu chỉnh sửa các thông tin chưa chính xác.
-- Yêu cầu xóa toàn bộ dữ liệu ("Quyền được lãng quên").
-- Rút lại sự đồng ý đối với việc xử lý thông tin bất kỳ lúc nào.
+Thông tin trên `https://nitrobase.app` chỉ được sử dụng để:
+
+- Phục vụ nội dung website, tài liệu kỹ thuật và script cài đặt ổn định, an toàn.
+- Ngăn chặn lạm dụng, tấn công tự động và bảo vệ hạ tầng website.
+- Phản hồi các câu hỏi hỗ trợ, bảo mật, giấy phép hoặc pháp lý từ bạn.
+
+Chúng tôi **không bao giờ bán, cho thuê hoặc trao đổi** thông tin cá nhân của bạn cho bên thứ ba.
+
+## 5. Lưu giữ dữ liệu & Quyền của bạn
+
+- **Dữ liệu tự lưu trữ:** Bạn trực tiếp kiểm soát thời gian lưu giữ, sao lưu, phân quyền và xóa dữ liệu trong bản Nitrobase trên máy chủ của chính mình.
+- **Trao đổi qua website/email:** Email hoặc yêu cầu bạn gửi chỉ được lưu trong thời gian cần thiết để giải quyết yêu cầu hoặc tuân thủ quy định pháp luật.
+- **Quyền riêng tư:** Tùy theo quy định pháp luật tại khu vực của bạn (bao gồm GDPR và CCPA), bạn có quyền yêu cầu truy cập, chỉnh sửa hoặc xóa thông tin liên hệ cá nhân đã gửi cho chúng tôi qua email.
+
+## 6. Thay đổi Chính sách
+
+Chúng tôi có thể cập nhật Chính sách Bảo mật này khi website hoặc yêu cầu pháp lý thay đổi. Mọi cập nhật sẽ được công bố tại trang này kèm ngày `Cập nhật lần cuối` mới.
 
 ## 7. Liên hệ
 
-Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc nào liên quan đến Chính sách Bảo mật, vui lòng liên hệ với chúng tôi:
+Nếu bạn có bất kỳ câu hỏi nào về Chính sách Bảo mật hoặc muốn thực hiện quyền riêng tư của mình, vui lòng liên hệ:
 
 - **Email:** hoagminhit@gmail.com
-- **Cộng đồng Discord:** https://discord.com
+- **GitHub:** https://github.com/AydenGroup/nitrobase
 - **Website:** https://nitrobase.app

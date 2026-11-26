@@ -1,70 +1,69 @@
 ---
 title: "Privacy Policy"
-description: "Learn how Nitrobase collects, protects, and manages your data when using our self-hosted infrastructure platform."
-lastUpdated: "2026-10-15"
+description: "Learn how the Nitrobase website handles visitor data and how the self-hosted Nitrobase software keeps your infrastructure data strictly on your own servers."
+lastUpdated: "2026-11-27"
 ---
 
-## 1. Introduction
+## 1. Overview
 
-Welcome to **Nitrobase** ("we", "our", or "us"). We are committed to protecting your privacy and ensuring you have complete control over your data. Because Nitrobase is built specifically for self-hosting Supabase and related backend infrastructure on your own servers, your core database records and sensitive application data remain exclusively under your control.
+This Privacy Policy describes how data is handled across:
 
-This Privacy Policy explains what information we collect, how we use it, and the choices available to you when you use our website, deployment dashboard, and associated services.
+1. **The Nitrobase Website** (`https://nitrobase.app`), including our marketing pages, documentation, and public installer script (`https://nitrobase.app/install.sh`).
+2. **The Self-Hosted Nitrobase Software** (`github.com/AydenGroup/nitrobase`), which you download and run on your own servers under the **Functional Source License, Version 1.1, ALv2 Future License (`FSL-1.1-ALv2`)**.
 
-## 2. Our Core Philosophy: Your Infrastructure, Your Data
+Because Nitrobase is a **100% self-hosted** control panel, there is no hosted Nitrobase Cloud service collecting your server credentials, databases, or application data.
 
-Unlike closed proprietary Cloud DB providers:
+## 2. Self-Hosted Nitrobase Software (Your Servers, Your Data)
 
-- **We never store your database rows, tables, or client records.** All databases, storage buckets, and auth schemas run directly within Docker containers deployed on your designated VPS server.
-- **Direct SSH & API Connections:** Connection keys and server tokens used for one-click setup are encrypted with AES-256-GCM. We do not inspect your private database traffic.
-- **Complete Portability:** You retain the freedom to export, migrate, or destroy your self-hosted instances at any time without vendor lock-in.
+When you install and run Nitrobase on your own VPS or local machine:
 
-## 3. Information We Collect
+- **No Telemetry or Phone-Home:** Nitrobase does **not** send usage analytics, server IP addresses, account details, deployment logs, or crash reports back to us.
+- **Complete Local Ownership:** Every panel user account, team, SSH key, server password, environment variable, database record, monitoring metric, audit log, and backup archive resides exclusively on infrastructure you control.
+- **Software Encryption at Rest:** Stored secrets in your panel's PostgreSQL database and app `env.enc` backup members are encrypted on your server using authenticated **AES-256-GCM** with **HKDF-SHA256** (Format `v3:`) derived from your own `ENCRYPTION_KEY`. Portable panel self-backup archives (`.tar.gz.enc`) are encrypted with OpenSSL **AES-256-CBC** (PBKDF2-SHA256, 200,000 iterations) using your `ENCRYPTION_KEY`. We never have access to your `ENCRYPTION_KEY` or your encrypted data.
 
-### A. Account & Authentication Information
-When you create an account or sign in to Nitrobase, we collect:
-- Your email address.
-- Your authentication credentials or third-party OAuth IDs (e.g., GitHub or Google profile identifiers).
-- Your workspace and user profile settings.
+### Outbound Connections Made by Your Self-Hosted Instance
 
-### B. Server Configuration Metadata
-To automate deployment and system health monitoring, our platform processes:
-- VPS provider details (e.g., Hetzner, Vultr, DigitalOcean, or custom IP addresses).
-- Operating system version (e.g., Ubuntu 22.04 / 24.04 LTS).
-- System resource specifications (CPU, RAM, storage allocations).
-- Deployment logs and health status pings.
+Your self-hosted Nitrobase instance only makes outbound network requests to external services required for features you use or configure—directly from your server to those third-party providers:
 
-### C. Technical & Usage Data
-When you navigate our website, we may automatically collect standard diagnostic metrics:
-- Device type, browser user agent, IP address, and preferred locale.
-- Page interaction duration and referring URLs.
+- **Release & template version checks:** Queries `RELEASE_REPO` (default `AydenGroup/nitrobase` on GitHub) and upstream template repositories on GitHub to check for newer releases. You can disable panel update checks by setting `UPDATE_CHECK_ENABLED=false` in `.env`, or point `RELEASE_REPO` / `RELEASE_API_URL` to your own Git server.
+- **Container registries:** Pulls Docker images from GHCR (`ghcr.io`), Docker Hub, or registries declared in your apps/templates.
+- **TLS & Domains:** Contacts Let's Encrypt (ACME) when issuing/renewing HTTPS certificates and `sslip.io` when using automatic free domains.
+- **User-configured integrations:** Connects directly to the backup destinations (S3, Cloudflare R2, Backblaze B2), Git hosts, Cloudflare Tunnel, notification channels (SMTP, Discord, Slack, Telegram, Webhooks), or Cloud Sync providers (Supabase Cloud, Appwrite Cloud) that you explicitly configure.
 
-## 4. How We Use Your Information
+Each third-party service you connect to is governed by its own privacy policy.
 
-We use the collected information for the following purposes:
-- **Provisioning & Management:** Enabling one-click deployment, container orchestration, and automated backup configurations.
-- **Platform Security:** Authenticating accounts, detecting fraudulent activities, and mitigating security threats.
-- **Service Communications:** Sending critical deployment notifications, backup failure alerts, and security patches.
-- **Product Improvements:** Analyzing non-identifiable usage statistics to optimize deployment scripts and CLI tools.
+## 3. Information Handled by the Nitrobase Website (`https://nitrobase.app`)
 
-## 5. Data Security & Retention
+When you visit `https://nitrobase.app` or download `https://nitrobase.app/install.sh`:
 
-We implement modern industry-standard security safeguards:
-- **Encryption at Rest & in Transit:** All communications with Nitrobase are secured via TLS 1.3. Server keys are stored using hardware-level encryption mechanisms.
-- **Zero Third-Party Data Selling:** We do not sell, rent, or monetize your personal or infrastructure information.
-- **Account Deletion:** You can request account deletion at any time. Upon deletion, all associated configuration tokens and deployment profiles are permanently purged.
+- **Standard Hosting & CDN Logs:** Our web hosting/CDN infrastructure (Cloudflare) may process standard HTTP request metadata—such as IP address, browser user agent, requested URL, and timestamp—for security, DDoS mitigation, and reliability.
+- **Preferences:** Your browser stores lightweight local preferences (such as selected language `en`/`vi` and light/dark theme).
+- **Voluntary Communications:** If you email us at `hoagminhit@gmail.com` or submit an inquiry or update subscription on the website, we use your contact details solely to respond to your message or share requested product updates.
 
-## 6. Your Rights
+## 4. How We Use Website Information
 
-Depending on your jurisdiction (such as GDPR in the EU or CCPA in California), you have rights regarding your personal information, including:
-- The right to access and obtain a copy of your stored account data.
-- The right to rectify inaccurate information.
-- The right to erasure ("Right to be Forgotten").
-- The right to data portability.
+Information collected through `https://nitrobase.app` is used strictly to:
+
+- Serve documentation, website content, and the installer script reliably and securely.
+- Prevent abuse, automated attacks, and unauthorized disruption of our website infrastructure.
+- Respond to support, security, licensing, or legal inquiries you send us.
+
+We **never sell, rent, or trade** your personal information to third parties.
+
+## 5. Data Retention & Your Rights
+
+- **Self-Hosted Data:** You control retention, deletion, backups, and access for all data inside your own Nitrobase instance directly on your servers.
+- **Website Communications:** Emails or inquiries sent to us are retained only as long as necessary to resolve your request or comply with legal obligations.
+- **Your Privacy Rights:** Depending on your jurisdiction (including GDPR and CCPA), you may request access to, correction of, or deletion of any personal contact data you have shared with us via email.
+
+## 6. Changes to This Policy
+
+We may update this Privacy Policy from time to time to reflect changes in our website or legal requirements. Any updates will be posted on this page with an updated `Last updated` date.
 
 ## 7. Contact Us
 
-If you have any questions or concerns regarding this Privacy Policy or our security practices, please contact our privacy team at:
+If you have questions about this Privacy Policy or wish to exercise your privacy rights, please contact us:
 
 - **Email:** hoagminhit@gmail.com
-- **Discord Community:** https://discord.com
+- **GitHub:** https://github.com/AydenGroup/nitrobase
 - **Website:** https://nitrobase.app
