@@ -6,8 +6,9 @@
 </p>
 
 <p align="center">
-  <strong>Landing Page & Documentation Platform for Nitrobase</strong><br>
-  <em>Automated, secure platform for self-hosting Supabase and modern backends on private VPS infrastructure.</em>
+  <strong>Landing Page & Documentation Portal for <a href="https://nitrobase.app">Nitrobase</a></strong><br>
+  <em>Self-hosted PaaS &amp; BaaS control panel for deploying Supabase, Appwrite, PocketBase, databases, and Git apps on your own servers.</em><br>
+  <a href="https://nitrobase.app">Website</a> · <a href="https://nitrobase.app/docs">Docs</a> · <a href="https://github.com/AydenGroup/nitrobase">Nitrobase Core Repo</a>
 </p>
 
 <p align="center">
@@ -18,7 +19,7 @@
   <a href="https://lingui.dev/"><img src="https://img.shields.io/badge/i18n-LinguiJS-E23237?logo=i18next&logoColor=white" alt="LinguiJS" /></a>
   <a href="https://www.content-collections.dev/"><img src="https://img.shields.io/badge/CMS-Content_Collections-24292E?logo=markdown&logoColor=white" alt="Content Collections" /></a>
   <a href="https://workers.cloudflare.com/"><img src="https://img.shields.io/badge/Deploy-Cloudflare_Workers-F38020?logo=cloudflare&logoColor=white" alt="Cloudflare Workers" /></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-2ea44f" alt="License: MIT" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/Site_License-MIT-2ea44f" alt="Site License: MIT" /></a>
 </p>
 
 ---
@@ -28,31 +29,32 @@
 - **Full-Stack & SSR**: Powered by [TanStack Start](https://tanstack.com/start/latest) and React 19 with type-safe file-based routing and Server-Side Rendering.
 - **Design System & Mantine UI**: Integrated with [@mantine/core](https://mantine.dev/) and [@mantine/carousel](https://mantine.dev/x/carousel/) supporting:
   - Seamless Dark and Light color schemes with zero-flicker hydration.
-  - Interactive product tour modals, code snippet copy, and live stack progress indicators.
+  - Interactive workflow canvas (`HeroWorkflowCanvas`), one-click install snippet copy, and support modal.
   - Mobile-optimized responsive header with slide-out right drawer navigation.
-- **Extensive Technical Documentation Portal**:
-  - Over 58 bilingual technical guides covering Getting Started, Architecture, Server Networking, Custom Compose, Backup & Disaster Recovery, and API Reference.
-  - Markdown rendered with syntax highlighting via [Shiki](https://shiki.style/) and interactive [Mermaid](https://mermaid.js.org/) architecture diagrams.
-  - Sticky table of contents, in-page search, and bilingual navigation.
+- **Bilingual Technical Documentation Portal**:
+  - 74 bilingual Markdown files (37 English + 37 Vietnamese guides) covering Getting Started, Core Concepts, Server & Networking, Apps & Standalone Databases, Cloud Sync (Supabase & Appwrite), Backup & Disaster Recovery, Maintenance, REST API & OpenAPI 3.1, MCP Server (`/api/mcp`), and Contributing.
+  - Rendered with [Shiki](https://shiki.style/) syntax highlighting (with copy buttons), admonition callouts, responsive tables, and interactive [Mermaid](https://mermaid.js.org/) diagrams.
+  - Collapsible accordion sidebar navigation and Prev/Next pagination.
 - **Complete Internationalization (i18n)**:
   - Built with [LinguiJS v6](https://lingui.dev/) with full English (`en`) and Vietnamese (`vi`) catalogs.
   - Locale-aware routing with `/` (English default) and `/vi` prefix.
-  - Zero-hardcoded strings with `i18n._(...)` and module-level `msg({ id: "..." })` descriptors.
+  - Zero hardcoded UI strings using `i18n._(...)` and module-level `msg({ id: "..." })` descriptors.
 - **Dynamic Content & Legal Collections**:
   - Type-safe Markdown and YAML content management via [Content Collections](https://www.content-collections.dev/).
-  - Multilingual legal pages: **Privacy Policy** (`/policy`, `/vi/policy`) and **Terms of Service** (`/terms-of-service`, `/vi/terms-of-service`).
-  - Landing page marketing copy managed via modular CMS content collections (`contents/landing/`).
+  - Multilingual legal pages aligned with Nitrobase's `FSL-1.1-ALv2` license and self-hosted model: **Privacy Policy** (`/policy`, `/vi/policy`) and **Terms of Service** (`/terms-of-service`, `/vi/terms-of-service`).
+  - Landing page copy managed via modular YAML collections (`contents/landing/`).
+- **Public Installer Hosting**:
+  - Serves [`public/install.sh`](public/install.sh) at `https://nitrobase.app/install.sh` (kept in sync with [`AydenGroup/nitrobase/scripts/install.sh`](https://github.com/AydenGroup/nitrobase/blob/main/scripts/install.sh) with LF line endings enforced via `.gitattributes`).
 - **Comprehensive SEO & Social Metadata**:
   - Centralized global SEO configuration via `contents/settings/seo.yaml`.
-  - Canonical URLs, localized Open Graph, Twitter cards, and `hreflang` alternate tags (`en`, `vi`, `x-default`).
-- **Git-based CMS**:
-  - Embedded browser-based [Sveltia CMS](https://sveltia.github.io/sveltia-cms/) at `/admin` for direct content publishing and editing.
+  - Canonical URLs (`https://nitrobase.app`), localized Open Graph, Twitter cards, JSON-LD, and `hreflang` alternate tags (`en`, `vi`, `x-default`).
+- **Git-Based CMS**:
+  - Embedded browser-based [Sveltia CMS](https://sveltia.github.io/sveltia-cms/) at `/admin` for content editing and publishing.
 - **Edge Deployment Ready**:
   - Configured for [Cloudflare Workers](https://developers.cloudflare.com/workers/) using `@cloudflare/vite-plugin` and Wrangler.
-- **Strict Code Quality & Git Hooks**:
-  - Fast linting and formatting via [Biome](https://biomejs.dev/).
-  - Automated pre-commit and pre-push checks via [Lefthook](https://github.com/evilmartians/lefthook).
-  - [Conventional Commits](https://www.conventionalcommits.org/) enforced with [Commitlint](https://commitlint.js.org/).
+- **Code Quality & Git Hooks**:
+  - Linting and formatting via [Biome](https://biomejs.dev/).
+  - Automated pre-commit, commit-msg, and pre-push checks via [Lefthook](https://github.com/evilmartians/lefthook) and [Commitlint](https://commitlint.js.org/).
 
 ---
 
@@ -61,36 +63,41 @@
 ```text
 ├── collections/                  # Content Collections schema definitions
 │   ├── author.ts                 # Authors schema
-│   ├── docs.ts                   # Documentation schema & Shiki/Mermaid plugins
-│   ├── landing.ts                # Landing page CMS content schema
+│   ├── docs.ts                   # Documentation schema, callouts & Shiki plugins
+│   ├── landing.ts                # Landing page CMS content schemas
 │   ├── legal.ts                  # Privacy Policy and Terms of Service schema
 │   └── settings.ts               # Global SEO configuration schema
 ├── contents/                     # Raw Markdown & YAML content
-│   ├── docs/                     # Bilingual documentation (58+ markdown guides)
+│   ├── docs/                     # Bilingual documentation (37 EN + 37 VI guides)
 │   │   ├── en/                   # English documentation
 │   │   └── vi/                   # Vietnamese documentation
-│   ├── landing/                  # Modular landing page copy (tech-partners, workflow, features...)
-│   ├── legal/                    # Multilingual legal pages (policy.md, terms.md)
+│   ├── landing/                  # Modular landing copy (faq, features, tech-partners, workflow-steps...)
+│   ├── legal/                    # Multilingual legal pages (en/vi policy.md, terms.md)
 │   └── settings/                 # Global SEO configuration (seo.yaml)
 ├── public/                       # Static public assets
-│   ├── admin/                    # Sveltia / Decap CMS configuration and entry
-│   ├── assets/landing/           # Brand logo assets (logo-dark.png, logo-light.png)
-│   └── uploads/                  # CMS media upload directory
+│   ├── admin/                    # Sveltia CMS configuration and entry
+│   ├── assets/landing/           # Brand logo assets (logo-dark.svg/png, logo-light.svg/png)
+│   ├── uploads/                  # Landing & CMS media assets (step-1..3.png, logos...)
+│   └── install.sh                # Public VPS installer served at https://nitrobase.app/install.sh (LF)
 ├── src/
 │   ├── components/
-│   │   ├── auth/                 # Sign In form & modal authentication views
-│   │   ├── docs/                 # Documentation layout, sidebar, TOC
-│   │   ├── landing/              # Hero, Navbar, Features, HowItWorks, FAQ, Footer
+│   │   ├── auth/                 # Sign In form & background canvas
+│   │   ├── docs/                 # DocsView layout, sidebar navigation, Mermaid & copy buttons
+│   │   ├── landing/              # Hero, HeroWorkflowCanvas, Navbar, Features, HowItWorks, FAQ, CTA, Footer
 │   │   └── legal/                # LegalDocumentView reading component
-│   ├── constants/                # Docs hierarchy, navigation menus, and static datasets
+│   ├── constants/                # Docs navigation tree & landing link constants
 │   ├── libs/
+│   │   ├── auth.ts               # CMS OAuth helpers
 │   │   ├── i18n.ts               # Lingui setup, Locale utilities, LocalizedLink
+│   │   ├── landing.ts            # Landing collection data hook
 │   │   └── seo.ts                # SEO metadata generator helper
-│   ├── locales/                  # Lingui compiled catalogs (en.json, vi.json)
+│   ├── locales/                  # Lingui JSON & compiled JS catalogs (en, vi)
 │   ├── routes/                   # TanStack Router file-based route hierarchy
 │   │   ├── __root.tsx            # HTML root document, MantineProvider & DevTools
-│   │   └── {-$locale}/           # Locale-prefixed routes (/, /vi, /docs, /login, /policy...)
+│   │   ├── api/                  # CMS GitHub OAuth API routes
+│   │   └── {-$locale}/           # Locale-prefixed routes (/, /vi, /docs/$, /login, /policy, /terms-of-service)
 │   └── theme/                    # Mantine custom typography and color theme
+├── .gitattributes                # Enforces LF line endings for *.sh scripts
 ├── content-collections.ts        # Content Collections root configuration
 └── vite.config.ts                # Vite, Rolldown Babel macros & Cloudflare plugins
 ```
@@ -108,8 +115,8 @@
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/hoagminh/nitrobase-landing.git
-cd nitrobase-landing
+git clone https://github.com/hoagminh/nitrobase-home.git
+cd nitrobase-home
 bun install
 ```
 
@@ -118,7 +125,7 @@ bun install
 Run the local development server with Hot Module Replacement (HMR):
 
 ```bash
-bun dev
+bun run dev
 ```
 
 Visit [http://localhost:3000](http://localhost:3000) to view the application.
@@ -127,24 +134,23 @@ Visit [http://localhost:3000](http://localhost:3000) to view the application.
 
 ## Localization (i18n) Workflow
 
-All user-visible strings must be internationalized using Lingui.
+All user-visible UI strings must go through Lingui (`i18n._(...)` or module-level `msg()`).
 
 ### 1. Extract Strings
-Extract source strings to `src/locales/en.json` and `src/locales/vi.json`:
+
+Extract source strings to `src/locales/en.json` and `src/locales/vi.json` and prune unused keys:
 
 ```bash
 bun run i18n:extract
 ```
 
 ### 2. Translate Missing Keys
-Provide translations for newly extracted keys in `src/locales/vi.json` or run the automated translation helper:
 
-```bash
-bun run translate:vi
-```
+Fill in any empty values in `src/locales/vi.json`.
 
 ### 3. Compile Catalogs
-Compile message catalogs into optimized runtime JavaScript bundles:
+
+Compile message catalogs into runtime JavaScript bundles:
 
 ```bash
 bun run i18n:compile
@@ -152,45 +158,46 @@ bun run i18n:compile
 
 ---
 
+## Syncing `public/install.sh`
+
+Whenever [`scripts/install.sh`](https://github.com/AydenGroup/nitrobase/blob/main/scripts/install.sh) changes in `AydenGroup/nitrobase`, copy it to `public/install.sh` using **UTF-8 (no BOM) with LF (`\n`) line endings** (enforced by `.gitattributes` so `curl -fsSL https://nitrobase.app/install.sh | sudo bash` runs cleanly on Linux VPS hosts).
+
+---
+
 ## Available Scripts
 
 | Command | Description |
 | :--- | :--- |
-| `bun dev` | Starts the local Vite development server on port 3000 |
+| `bun run dev` | Starts the local Vite development server on port 3000 |
 | `bun run build` | Extracts/compiles i18n catalogs and builds the production bundle |
 | `bun run preview` | Previews the production build locally |
 | `bun run deploy` | Builds the app and deploys to Cloudflare Workers via Wrangler |
 | `bun run check` | Checks formatting and lints code using Biome |
-| `bun run format` | Auto-formats codebase using Biome |
+| `bun run format` | Checks formatting with Biome (use `bunx biome format --write` to apply) |
 | `bun run lint` | Runs Biome linter across the project |
 | `bun run typecheck` | Validates TypeScript types with `tsc --noEmit` |
-| `bun run i18n:extract` | Extracts translatable strings from code into `.json` catalogs |
+| `bun run i18n:extract` | Extracts translatable strings from code into `.json` catalogs (`--clean`) |
 | `bun run i18n:compile` | Compiles `.json` message catalogs into runtime JS |
-| `bun run translate:vi` | Translates missing Vietnamese keys via automated translation script |
 
 ---
 
 ## Git Workflow & Commit Guidelines
 
-This project strictly enforces **Conventional Commits**. Any commit message failing the convention will be rejected by Commitlint:
+This project enforces **Conventional Commits** via Commitlint:
 
 ```text
-feat(landing): add interactive stack deployment modal
+feat(landing): update hero workflow canvas
+docs(legal): align privacy policy and terms with FSL-1.1-ALv2
 fix(navbar): align mobile drawer padding on iOS
-style(auth): hide back button text on mobile
 chore(i18n): update Vietnamese message catalog
 ```
 
 - Allowed types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `build`, `ci`, `chore`, `revert`.
-- Lefthook automatically executes `check` (Biome) before every commit and push.
-
-### Git Remotes
-
-- **GitHub (origin)**: `https://github.com/hoagminh/nitrobase-landing.git`
-- **Internal / Mirror (ayden)**: `https://dev.ayden.one/nitrobase-landing.git`
+- Lefthook runs `biome check` on `pre-commit` and `pre-push`, and `commitlint` on `commit-msg`.
 
 ---
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+- **This website & documentation repository** is licensed under the [MIT License](LICENSE).
+- **The Nitrobase software** ([`AydenGroup/nitrobase`](https://github.com/AydenGroup/nitrobase)) is **fair source**, licensed under the **Functional Source License, Version 1.1, ALv2 Future License (`FSL-1.1-ALv2`)**, converting automatically to Apache License 2.0 two years after each release.
