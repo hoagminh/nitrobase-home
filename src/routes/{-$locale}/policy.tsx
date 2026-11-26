@@ -17,8 +17,8 @@ export const Route = createFileRoute("/{-$locale}/policy")({
 
 		const canonicalUrl =
 			locale === "en"
-				? "https://nitrobase.dev/policy"
-				: "https://nitrobase.dev/vi/policy";
+				? "https://nitrobase.app/policy"
+				: "https://nitrobase.app/vi/policy";
 
 		const pageSeo: PageSeo = {
 			title: `Nitrobase · ${doc.title}`,
@@ -30,9 +30,9 @@ export const Route = createFileRoute("/{-$locale}/policy")({
 			twitterHandle: globalSeoData?.twitter_handle || "@nitrobase",
 			imageUrl: globalSeoData?.image || "/uploads/hero-preview.png",
 			alternates: [
-				{ hrefLang: "en", href: "https://nitrobase.dev/policy" },
-				{ hrefLang: "vi", href: "https://nitrobase.dev/vi/policy" },
-				{ hrefLang: "x-default", href: "https://nitrobase.dev/policy" },
+				{ hrefLang: "en", href: "https://nitrobase.app/policy" },
+				{ hrefLang: "vi", href: "https://nitrobase.app/vi/policy" },
+				{ hrefLang: "x-default", href: "https://nitrobase.app/policy" },
 			],
 		};
 

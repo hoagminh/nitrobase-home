@@ -65,6 +65,6 @@ Bạn có đầy đủ các quyền đối với dữ liệu của mình:
 
 Nếu bạn có bất kỳ câu hỏi hoặc thắc mắc nào liên quan đến Chính sách Bảo mật, vui lòng liên hệ với chúng tôi:
 
-- **Email:** privacy@nitrobase.dev
+- **Email:** hoagminhit@gmail.com
 - **Cộng đồng Discord:** https://discord.com
-- **Website:** https://nitrobase.dev
+- **Website:** https://nitrobase.app

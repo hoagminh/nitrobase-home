@@ -65,6 +65,6 @@ Depending on your jurisdiction (such as GDPR in the EU or CCPA in California), y
 
 If you have any questions or concerns regarding this Privacy Policy or our security practices, please contact our privacy team at:
 
-- **Email:** privacy@nitrobase.dev
+- **Email:** hoagminhit@gmail.com
 - **Discord Community:** https://discord.com
-- **Website:** https://nitrobase.dev
+- **Website:** https://nitrobase.app

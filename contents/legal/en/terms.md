@@ -56,6 +56,6 @@ These Terms are governed by and construed in accordance with applicable laws wit
 
 If you have questions about these Terms of Service, please contact us at:
 
-- **Email:** legal@nitrobase.dev
+- **Email:** hoagminhit@gmail.com
 - **Discord:** https://discord.com
-- **Website:** https://nitrobase.dev
+- **Website:** https://nitrobase.app

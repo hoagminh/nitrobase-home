@@ -54,6 +54,6 @@ Chúng tôi có quyền điều chỉnh các Điều khoản này bất kỳ lú
 
 Nếu bạn có bất kỳ câu hỏi nào về các Điều khoản Dịch vụ, vui lòng liên hệ:
 
-- **Email:** legal@nitrobase.dev
+- **Email:** hoagminhit@gmail.com
 - **Discord:** https://discord.com
-- **Website:** https://nitrobase.dev
+- **Website:** https://nitrobase.app
